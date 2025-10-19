@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pause on the Way</title>
+  <meta name="description" content="낯선 길 위에서도 멈추어 쉬다 — 여행자와 노마드를 위한 호텔 심리·정서 케어 서비스" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="icon" href="favicon-64.png" sizes="64x64" type="image/png" />
+  <link rel="icon" href="favicon-192.png" sizes="192x192" type="image/png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root{
+      --ptw-bg: #FAF8F5;      /* warm beige */
+      --ptw-ink:#1F2937;      /* slate-800 */
+      --ptw-accent:#9CA3AF;   /* gray-400 */
+      --ptw-primary:#1B365D;  /* deep navy */
+      --ptw-gold:#C8A676;     /* soft gold */
+    }
+    html, body { background: var(--ptw-bg); color: var(--ptw-ink); }
+    .font-display{ font-family: 'Playfair Display', serif; }
+    .font-sans{ font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif; }
+    /* Subtle fade/slide */
+    .fade-up{opacity:0; transform: translateY(12px); animation: fadeUp .8s ease-out forwards;}
+    @keyframes fadeUp{to{opacity:1; transform: translateY(0);}}
+    /* Glass card */
+    .glass{backdrop-filter: blur(8px); background: rgba(255,255,255,.6); border:1px solid rgba(0,0,0,.06);}    
+    /* Soft shadow */
+    .soft-shadow{ box-shadow: 0 10px 30px rgba(31,54,93,.08);} 
+    /* Accent underline */
+    .u-ink{ position: relative; }
+    .u-ink::after{ content:""; position:absolute; left:0; bottom:-6px; width:100%; height:8px; background: linear-gradient(90deg, var(--ptw-gold), transparent); opacity:.35; border-radius: 9999px; }
+  </style>
+</head>
+<body class="font-sans antialiased">
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-[rgba(250,248,245,.7)]/70 backdrop-blur border-b border-black/5">
+    <div class="mx-auto max-w-7xl px-5 py-4 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <div class="h-9 w-9 rounded-full bg-gradient-to-br from-[#E8E1D7] to-white border border-black/5 flex items-center justify-center">
+          <span class="text-sm font-semibold tracking-wide" style="color:var(--ptw-primary)">PAUSE</span>
+        </div>
+        <span class="font-display text-xl">Pause on the Way</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-7 text-[15px]">
+        <a href="#about" class="hover:opacity-70">소개</a>
+        <a href="#features" class="hover:opacity-70">서비스</a>
+        <a href="#flow" class="hover:opacity-70">이용방법</a>
+        <a href="#hotels" class="hover:opacity-70">호텔 제휴</a>
+        <a href="#cta" class="inline-flex items-center gap-2 rounded-full px-4 py-2 text-white" style="background:var(--ptw-primary)">지금 예약</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden rounded-full border px-3 py-2 text-sm">메뉴</button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="hidden md:hidden border-b border-black/5 bg-white/70 backdrop-blur">
+    <div class="max-w-7xl mx-auto px-5 py-4 flex flex-col gap-3 text-[15px]">
+      <a href="#about" class="hover:opacity-70">소개</a>
+      <a href="#features" class="hover:opacity-70">서비스</a>
+      <a href="#flow" class="hover:opacity-70">이용방법</a>
+      <a href="#hotels" class="hover:opacity-70">호텔 제휴</a>
+      <a href="#cta" class="inline-flex items-center justify-center rounded-full px-4 py-2 text-white w-max" style="background:var(--ptw-primary)">지금 예약</a>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="absolute -top-20 -right-10 h-72 w-72 rounded-full bg-[#D9E4EC] blur-3xl opacity-40"></div>
+    <div class="absolute -bottom-20 -left-10 h-72 w-72 rounded-full bg-[#E5D9CC] blur-3xl opacity-50"></div>
+
+    <div class="max-w-7xl mx-auto px-5 pt-14 pb-10 md:pt-24 md:pb-20 grid md:grid-cols-2 items-center gap-10">
+      <div class="fade-up">
+        <h1 class="font-display text-4xl md:text-5xl leading-tight">
+          낯선 길 위에서도 <span class="u-ink">멈추어 쉬다</span>
+        </h1>
+        <p class="mt-5 text-[17px] leading-7 text-gray-600">
+          Pause on the Way는 여행자·노마드·출장자를 위한 <strong>호텔 심리·정서 케어</strong> 서비스입니다.
+          투숙 중 편안한 라운지 또는 객실에서, 전문 상담사가 <em>가벼운 대화</em>로 마음의 여백을 만들어 드립니다.
+        </p>
+        <div class="mt-8 flex flex-wrap items-center gap-3">
+          <a href="#cta" class="rounded-full px-5 py-3 text-white soft-shadow" style="background:var(--ptw-primary)">지금 예약</a>
+          <a href="#features" class="rounded-full px-5 py-3 border soft-shadow bg-white/70">서비스 보기</a>
+        </div>
+        <div class="mt-6 text-sm text-gray-500">* 30–45분의 라이트 상담 · 호텔 카페/라운지/객실 선택 가능 · 비밀보장</div>
+      </div>
+
+      <div class="relative fade-up md:delay-100">
+        <div class="glass soft-shadow rounded-3xl p-6 md:p-8">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="h-10 w-10 rounded-full bg-[#F2EEE8] border border-black/5 flex items-center justify-center">
+              <span class="text-xs tracking-wider font-semibold" style="color:var(--ptw-primary)">REST</span>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">세션 미리보기</p>
+              <p class="font-medium">“오늘, 마음은 어디쯤 와 있나요?”</p>
+            </div>
+          </div>
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+            <li class="rounded-2xl border bg-white/70 p-4">감정 체크 & 기분 기록</li>
+            <li class="rounded-2xl border bg-white/70 p-4">여행 스트레스 완화</li>
+            <li class="rounded-2xl border bg-white/70 p-4">수면·리듬 코칭</li>
+            <li class="rounded-2xl border bg-white/70 p-4">관계/업무 긴장 이완</li>
+          </ul>
+          <div class="mt-4 rounded-2xl border p-4 bg-white/70">
+            <p class="text-sm text-gray-600 leading-6">“가볍게 이야기하고, 편안하게 쉬세요. 내일의 여정은 더 가벼워집니다.”</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="max-w-7xl mx-auto px-5 py-12 md:py-20">
+    <div class="grid md:grid-cols-2 gap-10 items-center">
+      <div class="fade-up">
+        <h2 class="font-display text-3xl md:text-4xl">왜 호텔에서 상담인가요?</h2>
+        <p class="mt-5 text-gray-600 leading-7">호텔은 현대의 수도원입니다. 깨끗하고 정돈된 공간에서, 우리는 더 잘 멈추고 더 깊이 회복할 수 있습니다. Pause on the Way는 호텔의 조용한 한 켠에서 <strong>가벼운 상담</strong>을 제공하여, 여행의 피로·업무 긴장·외로움 등을 부드럽게 풀어드립니다.</p>
+      </div>
+      <div class="fade-up md:delay-100">
+        <div class="rounded-3xl border soft-shadow bg-white/70 p-6 grid gap-4">
+          <div class="flex items-start gap-4">
+            <div class="h-10 w-10 rounded-full bg-[#E9EEF3] flex items-center justify-center">🧭</div>
+            <div>
+              <p class="font-medium">여정 친화적</p>
+              <p class="text-sm text-gray-600">체크인-체크아웃 일정에 맞춘 유연한 스케줄링.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="h-10 w-10 rounded-full bg-[#EDE7DF] flex items-center justify-center">🤝</div>
+            <div>
+              <p class="font-medium">신뢰 가능</p>
+              <p class="text-sm text-gray-600">경력 검증된 상담사, 익명·비밀 보장.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="h-10 w-10 rounded-full bg-[#E7EFE7] flex items-center justify-center">🫖</div>
+            <div>
+              <p class="font-medium">공간의 힘</p>
+              <p class="text-sm text-gray-600">라운지·카페·객실 중 원하는 분위기를 선택.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="max-w-7xl mx-auto px-5 py-12 md:py-20">
+    <h2 class="font-display text-3xl md:text-4xl text-center">서비스</h2>
+    <p class="mt-4 text-center text-gray-600">가벼운 상담으로, 내일의 발걸음을 가볍게.</p>
+
+    <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="rounded-3xl border bg-white/70 p-6 soft-shadow">
+        <p class="text-2xl">🌤️</p>
+        <h3 class="mt-3 font-medium">Mood Check</h3>
+        <p class="mt-2 text-sm text-gray-600">30초 감정 체크 & 세션 요약 제공.</p>
+      </div>
+      <div class="rounded-3xl border bg-white/70 p-6 soft-shadow">
+        <p class="text-2xl">🧘</p>
+        <h3 class="mt-3 font-medium">Breathing & Ease</h3>
+        <p class="mt-2 text-sm text-gray-600">5분 호흡/이완 루틴으로 즉각적 안정.</p>
+      </div>
+      <div class="rounded-3xl border bg-white/70 p-6 soft-shadow">
+        <p class="text-2xl">🗺️</p>
+        <h3 class="mt-3 font-medium">Travel Coaching</h3>
+        <p class="mt-2 text-sm text-gray-600">수면·루틴·관계 스트레스 경량 코칭.</p>
+      </div>
+      <div class="rounded-3xl border bg-white/70 p-6 soft-shadow">
+        <p class="text-2xl">☕</p>
+        <h3 class="mt-3 font-medium">Cafe Talk</h3>
+        <p class="mt-2 text-sm text-gray-600">카페에서 부담 없이 나누는 스몰토크.</p>
+      </div>
+      <div class="rounded-3xl border bg-white/70 p-6 soft-shadow">
+        <p class="text-2xl">🔒</p>
+        <h3 class="mt-3 font-medium">Privacy First</h3>
+        <p class="mt-2 text-sm text-gray-600">익명 예약, 대화 메모 비공개 기본.</p>
+      </div>
+      <div class="rounded-3xl border bg-white/70 p-6 soft-shadow">
+        <p class="text-2xl">📄</p>
+        <h3 class="mt-3 font-medium">Session Note</h3>
+        <p class="mt-2 text-sm text-gray-600">요약 리포트로 내일의 나를 가볍게.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Flow -->
+  <section id="flow" class="max-w-7xl mx-auto px-5 py-12 md:py-20">
+    <h2 class="font-display text-3xl md:text-4xl text-center">이용 방법</h2>
+    <div class="mt-10 grid md:grid-cols-4 gap-6">
+      <div class="rounded-3xl border bg-white/70 p-6 soft-shadow">
+        <p class="text-sm text-gray-500">STEP 1</p>
+        <p class="font-medium mt-1">호텔/시간 선택</p>
+        <p class="text-sm text-gray-600 mt-2">라운지·카페·객실 중 원하는 장소 선택.</p>
+      </div>
+      <div class="rounded-3xl border bg-white/70 p-6 soft-shadow">
+        <p class="text-sm text-gray-500">STEP 2</p>
+        <p class="font-medium mt-1">가벼운 설문</p>
+        <p class="text-sm text-gray-600 mt-2">기분·피로·수면 등 30초 체크.</p>
+      </div>
+      <div class="rounded-3xl border bg-white/70 p-6 soft-shadow">
+        <p class="text-sm text-gray-500">STEP 3</p>
+        <p class="font-medium mt-1">세션 진행</p>
+        <p class="text-sm text-gray-600 mt-2">30–45분 대화로 마음의 여백 만들기.</p>
+      </div>
+      <div class="rounded-3xl border bg-white/70 p-6 soft-shadow">
+        <p class="text-sm text-gray-500">STEP 4</p>
+        <p class="font-medium mt-1">요약 & 다음 한 걸음</p>
+        <p class="text-sm text-gray-600 mt-2">세션 요약과 작은 루틴 제안.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hotels CTA -->
+  <section id="hotels" class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[#EDE6DB] to-transparent"></div>
+    <div class="relative max-w-7xl mx-auto px-5 py-14 md:py-20 grid md:grid-cols-2 gap-10 items-center">
+      <div class="fade-up">
+        <h2 class="font-display text-3xl md:text-4xl">호텔 제휴</h2>
+        <p class="mt-4 text-gray-700 leading-7">Pause on the Way는 투숙 경험을 정서적 웰니스로 확장합니다. 카페·라운지 팝업부터 객실 내 프라이빗 세션까지, 호텔의 톤앤매너에 맞춘 모듈형 운영이 가능합니다.</p>
+        <ul class="mt-4 grid gap-2 text-sm text-gray-700 list-disc ml-5">
+          <li>라운지 팝업: 1–2인 상담 부스 / 4–8시간 운영</li>
+          <li>객실 프라이빗: 사전 예약제, 비밀보장</li>
+          <li>월간 웰니스 이벤트: ‘Pause Night’ 토크 & 라이브</li>
+        </ul>
+        <a href="#cta" class="mt-6 inline-flex rounded-full px-5 py-3 text-white" style="background:var(--ptw-primary)">제휴 문의</a>
+      </div>
+      <div class="fade-up md:delay-100">
+        <div class="rounded-3xl border soft-shadow bg-white/70 p-6">
+          <p class="text-sm text-gray-500">브랜드 문장</p>
+          <p class="text-xl font-display leading-relaxed mt-2">“호텔에서의 하루가 단순한 숙박이 아니라,
+            당신 마음의 쉼이 되도록.”</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta" class="max-w-7xl mx-auto px-5 py-16 md:py-24">
+    <div class="rounded-3xl border soft-shadow bg-white p-8 md:p-12 text-center">
+      <h2 class="font-display text-3xl md:text-4xl">지금, 잠시 멈춰 쉬어가세요</h2>
+      <p class="mt-3 text-gray-600">30–45분 라이트 상담 · 호텔 라운지/카페/객실 중 선택 · 익명 예약 가능</p>
+      <div class="mt-6 flex flex-wrap gap-3 justify-center">
+        <a href="#" class="rounded-full px-6 py-3 text-white" style="background:var(--ptw-primary)">세션 예약</a>
+        <a href="#" class="rounded-full px-6 py-3 border">카카오톡 문의</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-black/5">
+    <div class="max-w-7xl mx-auto px-5 py-10 grid md:grid-cols-2 gap-6 items-center">
+      <div>
+        <p class="font-display text-xl">Pause on the Way</p>
+        <p class="text-sm text-gray-600 mt-1">길 위의 쉼, 마음의 회복.</p>
+      </div>
+      <div class="justify-self-end text-sm text-gray-500">
+        <p>© <span id="year"></span> Pause on the Way. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const btn=document.getElementById('menuBtn');
+    const mm=document.getElementById('mobileMenu');
+    if(btn){ btn.addEventListener('click',()=> mm.classList.toggle('hidden')); }
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
