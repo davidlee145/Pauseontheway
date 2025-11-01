@@ -87,6 +87,11 @@
         color: white;
         border-color: transparent;
       }
+          .brand-text{font-size:clamp(16px,4.6vw,20px);line-height:1.2}
+      @media (max-width: 360px){
+        .brand-text{font-size:clamp(15px,4.8vw,19px)}
+        .lang-toggle{padding-left:.6rem;padding-right:.6rem}
+      }
     </style>
   </head>
   <body class="font-sans antialiased">
@@ -95,16 +100,16 @@
       id="siteHeader"
       class="sticky top-0 z-50 bg-[rgba(250,248,245,.7)]/70 backdrop-blur border-b border-black/5"
     >
-      <div class="mx-auto max-w-7xl px-5 py-4 flex items-center justify-between flex-nowrap">
-        <a href="#" class="flex items-center gap-3 shrink-0 whitespace-nowrap" aria-label="Pause on the Way 홈" data-i18n-aria="logo_aria">
+      <div class="mx-auto max-w-7xl px-5 py-4 flex items-center justify-between flex-nowrap" style="padding-left:max(1.25rem,env(safe-area-inset-left)); padding-right:max(1.25rem,env(safe-area-inset-right));">
+        <a href="#" class="flex items-center gap-3 shrink-0 whitespace-nowrap mr-3 md:mr-5" aria-label="Pause on the Way 홈" data-i18n-aria="logo_aria">
           <div
             class="h-9 w-9 rounded-full bg-gradient-to-br from-[#E8E1D7] to-white border border-black/5 flex items-center justify-center"
           >
             <span class="text-sm font-semibold tracking-wide" style="color: var(--ptw-primary)">PAUSE</span>
           </div>
-          <span class="font-display text-xl whitespace-nowrap truncate max-w-\[50vw\]">Pause on the Way</span>
+          <span class="font-display brand-text whitespace-nowrap truncate max-w-[55vw] md:max-w-none">Pause on the Way</span>
         </a>
-        <nav class="hidden md:flex items-center gap-4 md:gap-6 text-[15px]">
+        <nav class="hidden md:flex items-center gap-4 md:gap-6 text-[15px] ml-1 md:ml-3">
           <a href="#about" class="hover:opacity-70" data-i18n="nav_about">소개</a>
           <a href="#features" class="hover:opacity-70" data-i18n="nav_features">서비스</a>
           <a href="#flow" class="hover:opacity-70" data-i18n="nav_flow">이용방법</a>
@@ -116,13 +121,13 @@
             data-i18n="nav_book"
             >지금 예약</a
           >
-          <div class="flex items-center gap-1 ml-1" role="group" aria-label="Language">
+          <div class="flex items-center gap-2 ml-3 md:ml-5" role="group" aria-label="Language">
             <button id="btnKO" class="px-3 py-2 rounded-full text-sm lang-toggle" data-lang="ko" aria-pressed="true">KO</button>
             <button id="btnEN" class="px-3 py-2 rounded-full text-sm lang-toggle" data-lang="en" aria-pressed="false">EN</button>
           </div>
         </nav>
-        <div class="md:hidden flex items-center gap-2 flex-none">
-          <div class="flex items-center gap-1" role="group" aria-label="Language">
+        <div class="md:hidden flex items-center gap-3 flex-none">
+          <div class="flex items-center gap-2" role="group" aria-label="Language">
             <button id="btnKOM" class="px-3 py-2 rounded-full text-sm lang-toggle" data-lang="ko" aria-pressed="true">KO</button>
             <button id="btnENM" class="px-3 py-2 rounded-full text-sm lang-toggle" data-lang="en" aria-pressed="false">EN</button>
           </div>
