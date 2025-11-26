@@ -615,19 +615,29 @@
       <div
         class="max-w-7xl mx-auto px-5 py-10 grid md:grid-cols-2 gap-6 items-center"
       >
+        <!-- 왼쪽: 브랜드 -->
         <div>
           <p class="font-display text-xl">Pause on the Way</p>
-          <p class="text-sm text-gray-600 mt-1" data-i18n="footer_tag"></p>
+          <p class="text-sm text-gray-600 mt-1" data-i18n="footer_tag">
+            길 위의 쉼, 마음의 회복.
+          </p>
         </div>
 
-        <div class="text-sm text-gray-500 md:text-right leading-6">
+        <!-- 오른쪽: 카피라이트 + 법인 정보 -->
+        <div
+          class="justify-self-start md:justify-self-end text-sm text-gray-500 text-left md:text-right"
+        >
           <p>
-            © <span id="year"></span> Pause on the Way. <span
-              data-i18n="footer_all"
-            ></span>
+            © <span id="year"></span> Pause on the Way.
+            <span data-i18n="footer_all">All rights reserved.</span>
           </p>
-          <p data-i18n="footer_company"></p>
-          <p data-i18n="footer_address"></p>
+          <p
+            class="mt-1 text-[11px] leading-relaxed text-gray-400"
+            data-i18n="footer_biz"
+          >
+            사업자등록번호 494-81-03292 · 주식회사 메리굿 · 대표 이경원 ·
+            서울특별시 강서구 마곡중앙6로 11, 314-14호(마곡동, 보타닉파크타워3)
+          </p>
         </div>
       </div>
     </footer>
@@ -804,13 +814,9 @@
           en: "Rest on the road. Recovery for the mind.",
         },
         footer_all: { ko: "All rights reserved.", en: "All rights reserved." },
-        footer_company: {
-          ko: "사업자등록번호 494-81-03292 · 주식회사 메리굿 · 대표 이경원",
-          en: "Biz Reg. No. 494-81-03292 · Merrygood Co., Ltd · CEO Kyoungwon Lee",
-        },
-        footer_address: {
-          ko: "서울특별시 강서구 마곡중앙6로 11, 314-14호 (보타닉파크타워3)",
-          en: "11 Magokjungang 6-ro, #314-14, Gangseo-gu, Seoul (Botanic Park Tower 3)",
+        footer_biz: {
+          ko: "사업자등록번호 : 494-81-03292 | 주식회사 메리굿 | 대표 : 이경원 <br /> 주소 : 서울특별시 강서구 마곡중앙6로 11, 314-14호(마곡동, 보타닉파크타워3)",
+          en: "Biz reg. no : 494-81-03292 | Merrygood Co., Ltd | CEO : Kyoung-Won Lee <br /> Address : 314-14-ho, 11 Magokjungang 6-ro, Gangseo-gu, Seoul, 07801, Republic of Korea (Botanic Park Tower 3)",
         },
       };
 
