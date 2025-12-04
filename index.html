@@ -606,6 +606,15 @@
             >이메일 문의</a
           >
           <!-- <a href="#" class="rounded-full px-6 py-3 border">카카오톡 문의</a> -->
+          <a
+            href="#"
+            onclick="copyTelephone(); return false;"
+            class="mt-6 inline-flex rounded-full px-6 py-3 border shadow-md hover:shadow-lg transition"
+            style="border-color: var(--ptw-primary); color: var(--ptw-primary)"
+            data-i18n="cta_telephone"
+          >
+            전화 문의
+          </a>
         </div>
       </div>
     </section>
@@ -634,8 +643,7 @@
           <p
             class="mt-1 text-[11px] leading-relaxed text-gray-400"
             data-i18n="footer_biz"
-          >
-          </p>
+          ></p>
         </div>
       </div>
     </footer>
@@ -806,6 +814,7 @@
           en: "30–45 min light counseling · Lounge/Cafe · Confidential",
         },
         cta_email: { ko: "이메일 문의", en: "Email us" },
+        cta_telephone: { ko: "전화 문의", en: "Telephone us" },
 
         footer_tag: {
           ko: "길 위의 쉼, 마음의 회복.",
@@ -888,15 +897,73 @@
         return (navigator.language || "ko").startsWith("en") ? "en" : "ko";
       }
 
+      function tryOpen(url) {
+        const a = document.createElement("a");
+        a.href = url;
+        document.body.appendChild(a);
+
+        // 새 탭/새 창이 아니라 '앱 열기 요청' 느낌을 유지하기 위해 click 사용
+        a.click();
+
+        document.body.removeChild(a);
+      }
+
+      function fallbackCopy(text, message) {
+        navigator.clipboard.writeText(text).then(() => alert(message));
+      }
+
+      /* ---------------- EMAIL ---------------- */
       function copyEmail() {
         const lang = localStorage.getItem("ptw-lang") || "ko";
-        const msg =
+        const email = "pauseontheway@gmail.com";
+
+        const message =
           lang === "en"
-            ? "Email copied: pauseontheway@gmail.com"
-            : "이메일 주소가 복사되었습니다: pauseontheway@gmail.com";
-        navigator.clipboard
-          .writeText("pauseontheway@gmail.com")
-          .then(() => alert(msg));
+            ? "Email copied: " + email
+            : "이메일 주소가 복사되었습니다: " + email;
+
+        // 1) mailto 실행 시도
+        try {
+          tryOpen("mailto:" + email);
+
+          // 2) mailto가 실패하는 환경 판단:
+          // 데스크탑 Chrome/브라우저는 mailto 클릭해도 앱이 없으면 아무 일도 없거나 download로 빠짐.
+          // 그래서 작게 지연 후 copy fallback.
+          setTimeout(() => {
+            // mailto 동작 여부를 판단할 수는 없지만,
+            // "실질적 동작 확인 불가능 = 안전하게 fallback"
+            fallbackCopy(email, message);
+          }, 400);
+        } catch (err) {
+          // 예외 발생 → fallback
+          fallbackCopy(email, message);
+        }
+
+        return false;
+      }
+
+      /* ---------------- TELEPHONE ---------------- */
+      function copyTelephone() {
+        const lang = localStorage.getItem("ptw-lang") || "ko";
+        const tel = "070-8080-4224";
+
+        const message =
+          lang === "en"
+            ? "Telephone number copied: " + tel
+            : "전화번호가 복사되었습니다: " + tel;
+
+        try {
+          tryOpen("tel:" + tel);
+
+          // PC/일부 브라우저에서 tel 프로토콜이 동작하지 않으면 아무 반응 없음
+          setTimeout(() => {
+            fallbackCopy(tel, message);
+          }, 400);
+        } catch (err) {
+          fallbackCopy(tel, message);
+        }
+
+        return false;
       }
 
       // ---------- Mobile header/menu ----------
