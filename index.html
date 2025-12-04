@@ -952,14 +952,13 @@
             ? "Telephone number copied: " + tel
             : "전화번호가 복사되었습니다: " + tel;
 
-        try {
-          tryOpen("tel:" + tel);
+        const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-          // PC/일부 브라우저에서 tel 프로토콜이 동작하지 않으면 아무 반응 없음
-          setTimeout(() => {
-            fallbackCopy(tel, message);
-          }, 400);
-        } catch (err) {
+        if (isMobile) {
+          // 모바일: tel: 링크만 작동 (복사 알럿 없음)
+          tryOpen("tel:" + tel);
+        } else {
+          // PC: tel: 작동 불가 → 그냥 복사/알럿
           fallbackCopy(tel, message);
         }
 
