@@ -610,8 +610,7 @@
             href="#"
             onclick="copyTelephone(); return false;"
             class="mt-6 inline-flex rounded-full px-6 py-3 border shadow-md hover:shadow-lg transition"
-            style="border-color: var(--ptw-primary); color: var(--ptw-primary)"
-            data-i18n="cta_telephone"
+            data-i18n="cta_phone"
           >
             전화 문의
           </a>
@@ -814,7 +813,7 @@
           en: "30–45 min light counseling · Lounge/Cafe · Confidential",
         },
         cta_email: { ko: "이메일 문의", en: "Email us" },
-        cta_telephone: { ko: "전화 문의", en: "Telephone us" },
+        cta_phone: { ko: "전화 문의", en: "Phone us" },
 
         footer_tag: {
           ko: "길 위의 쉼, 마음의 회복.",
@@ -823,7 +822,7 @@
         footer_all: { ko: "All rights reserved.", en: "All rights reserved." },
         footer_biz: {
           ko: "사업자등록번호 : 494-81-03292 | 주식회사 메리굿 | 대표 : 이경원 | 전화 : 070-8080-4224 <br /> 주소 : 서울특별시 강서구 마곡중앙6로 11, 314-14호(마곡동, 보타닉파크타워3)",
-          en: "Biz reg. no : 494-81-03292 | Merrygood Co., Ltd | CEO : Kyoung-Won Lee | Tel : 070-8080-4224 <br /> Address : 314-14-ho, 11 Magokjungang 6-ro, Gangseo-gu, Seoul, 07801, Republic of Korea (Botanic Park Tower 3)",
+          en: "Biz reg. no : 494-81-03292 | Merrygood Co., Ltd | CEO : Kyoung-Won Lee | Phone : 070-8080-4224 <br /> Address : 314-14-ho, 11 Magokjungang 6-ro, Gangseo-gu, Seoul, 07801, Republic of Korea (Botanic Park Tower 3)",
         },
       };
 
@@ -943,23 +942,23 @@
       }
 
       /* ---------------- TELEPHONE ---------------- */
-      function copyTelephone() {
+      function copyPhone() {
         const lang = localStorage.getItem("ptw-lang") || "ko";
-        const tel = "070-8080-4224";
+        const phone = "070-8080-4224";
 
         const message =
           lang === "en"
-            ? "Telephone number copied: " + tel
-            : "전화번호가 복사되었습니다: " + tel;
+            ? "Phone number copied: " + phone
+            : "전화번호가 복사되었습니다: " + phone;
 
         const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
         if (isMobile) {
-          // 모바일: tel: 링크만 작동 (복사 알럿 없음)
-          tryOpen("tel:" + tel);
+          // 모바일: phone: 링크만 작동 (복사 알럿 없음)
+          tryOpen("phone:" + phone);
         } else {
-          // PC: tel: 작동 불가 → 그냥 복사/알럿
-          fallbackCopy(tel, message);
+          // PC: phone: 작동 불가 → 그냥 복사/알럿
+          fallbackCopy(phone, message);
         }
 
         return false;
