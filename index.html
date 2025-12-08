@@ -941,7 +941,7 @@
         return false;
       }
 
-      /* ---------------- TELEPHONE ---------------- */
+      /* ---------------- PHONE ---------------- */
       function copyPhone() {
         const lang = localStorage.getItem("ptw-lang") || "ko";
         const phone = "070-8080-4224";
@@ -955,7 +955,7 @@
 
         if (isMobile) {
           // 모바일: phone: 링크만 작동 (복사 알럿 없음)
-          tryOpen("phone:" + phone);
+          tryOpen("tel:" + phone);
         } else {
           // PC: phone: 작동 불가 → 그냥 복사/알럿
           fallbackCopy(phone, message);
