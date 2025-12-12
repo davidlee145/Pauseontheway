@@ -643,6 +643,35 @@
             class="mt-1 text-[11px] leading-relaxed text-gray-400"
             data-i18n="footer_biz"
           ></p>
+          <!-- 정책 링크 -->
+          <div
+            class="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-[11px] text-gray-400 justify-start md:justify-end"
+          >
+            <a
+              id="linkTerms"
+              href="/terms.html"
+              class="hover:text-gray-600 underline underline-offset-2"
+              data-i18n="footer_terms"
+            >
+              이용약관
+            </a>
+            <a
+              id="linkPrivacy"
+              href="/privacy.html"
+              class="hover:text-gray-600 underline underline-offset-2"
+              data-i18n="footer_privacy"
+            >
+              개인정보처리방침
+            </a>
+            <a
+              id="linkRefund"
+              href="/refund.html"
+              class="hover:text-gray-600 underline underline-offset-2"
+              data-i18n="footer_refund"
+            >
+              취소·환불 정책
+            </a>
+          </div>
         </div>
       </div>
     </footer>
@@ -824,6 +853,9 @@
           ko: "사업자등록번호 : 494-81-03292 | 주식회사 메리굿 | 대표 : 이경원 | 전화 : 070-8080-4224 <br /> 주소 : 서울특별시 강서구 마곡중앙6로 11, 314-14호(마곡동, 보타닉파크타워3)",
           en: "Biz reg. no : 494-81-03292 | Merrygood Co., Ltd | CEO : Kyoung-Won Lee | Phone : 070-8080-4224 <br /> Address : 314-14-ho, 11 Magokjungang 6-ro, Gangseo-gu, Seoul, 07801, Republic of Korea (Botanic Park Tower 3)",
         },
+        footer_refund: { ko: "취소·환불 정책", en: "Cancellation & Refund" },
+        footer_terms: { ko: "이용약관", en: "Terms of Service" },
+        footer_privacy: { ko: "개인정보처리방침", en: "Privacy Policy" },
       };
 
       const META = {
@@ -847,23 +879,49 @@
       }
 
       function applyI18n(lang) {
-        // Elements with data-i18n (innerHTML)
+        // Elements with data-i18n
         document.querySelectorAll("[data-i18n]").forEach((el) => {
           const key = el.getAttribute("data-i18n");
           const pack = I18N[key];
-          if (pack) el.innerHTML = pack[lang] || pack.ko;
+          if (!pack) return;
+
+          const value = pack[lang] || pack.ko;
+
+          // ✅ HTML을 써야 하는 요소만 innerHTML (예: hero_title, hero_desc, footer_biz 등)
+          const allowHtmlKeys = new Set([
+            "hero_title",
+            "hero_desc",
+            "preview_tip",
+            "about_desc",
+            "footer_biz",
+            "brand_copy",
+          ]);
+
+          if (allowHtmlKeys.has(key)) {
+            el.innerHTML = value;
+          } else {
+            el.textContent = value;
+          }
+          // ✅ policy links keep the language
+          const qs = `?lang=${lang}`;
+          const t = document.getElementById("linkTerms");
+          const p = document.getElementById("linkPrivacy");
+          const r = document.getElementById("linkRefund");
+          if (t) t.href = `/terms.html${qs}`;
+          if (p) p.href = `/privacy.html${qs}`;
+          if (r) r.href = `/refund.html${qs}`;
         });
+
         // Elements with data-i18n-aria (ARIA labels/text)
         document.querySelectorAll("[data-i18n-aria]").forEach((el) => {
           const key = el.getAttribute("data-i18n-aria");
           const pack = I18N[key];
           if (pack) el.setAttribute("aria-label", pack[lang] || pack.ko);
         });
-        // Menu button text (kept as visible label of the button)
+
         const menuBtn = document.getElementById("menuBtn");
         if (menuBtn) menuBtn.textContent = lang === "en" ? "Menu" : "메뉴";
 
-        // Toggle buttons pressed states
         [
           document.getElementById("btnKO"),
           document.getElementById("btnEN"),
