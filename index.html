@@ -860,10 +860,27 @@
           ko: "길 위의 쉼, 마음의 회복.",
           en: "Rest on the road. Recovery for the mind.",
         },
-        footer_all: { ko: "All rights reserved.", en: "All rights reserved." },
+        footer_all: {
+          ko: "All rights reserved.",
+          en: "All rights reserved.",
+        },
         footer_biz: {
-          ko: "사업자등록번호 : 494-81-03292 | 주식회사 메리굿 | 대표 : 이경원 | 전화 : 070-8080-4224 <br /> 주소 : 서울특별시 강서구 마곡중앙6로 11, 314-14호(마곡동, 보타닉파크타워3)",
-          en: "Biz reg. no : 494-81-03292 | Merrygood Co., Ltd | CEO : Kyoung-Won Lee | Phone : 070-8080-4224 <br /> Address : 314-14-ho, 11 Magokjungang 6-ro, Gangseo-gu, Seoul, 07801, Republic of Korea (Botanic Park Tower 3)",
+          ko: [
+            "사업자등록번호 : 494-81-03292",
+            "통신판매업신고번호 : 2026-서울강서-0012",
+            "주식회사 메리굿",
+            "대표 : 이경원",
+            "전화 : 070-8080-4224",
+            "주소 : 서울특별시 강서구 마곡중앙6로 11 314-14호 (마곡동 보타닉파크타워3)",
+          ],
+          en: [
+            "Biz reg. no : 494-81-03292",
+            "E-commerce reg. no : 2026-Seoul-Gangseo-0012",
+            "Merrygood Co., Ltd",
+            "CEO : Kyoung-Won Lee",
+            "Phone : 070-8080-4224",
+            "Address : 314-14-ho 11 Magokjungang 6-ro Gangseo-gu Seoul 07801 Republic of Korea (Botanic Park Tower 3)",
+          ],
         },
         footer_refund: { ko: "취소·환불 정책", en: "Cancellation & Refund" },
         footer_terms: { ko: "이용약관", en: "Terms of Service" },
@@ -914,11 +931,17 @@
             "city_note",
           ]);
 
-          if (allowHtmlKeys.has(key)) {
+          if (key === "footer_biz") {
+            // value는 배열 (ko/en)
+            el.innerHTML = value
+              .map((item, idx) => `<span>${idx > 0 ? " | " : ""}${item}</span>`)
+              .join("");
+          } else if (allowHtmlKeys.has(key)) {
             el.innerHTML = value;
           } else {
             el.textContent = value;
           }
+
           // ✅ policy links keep the language
           const qs = `?lang=${lang}`;
           const t = document.getElementById("linkTerms");
