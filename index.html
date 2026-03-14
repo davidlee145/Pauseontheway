@@ -42,6 +42,9 @@
         --ptw-primary: #1b365d; /* deep navy */
         --ptw-gold: #c8a676; /* soft gold */
       }
+      #siteHeader {
+        transition: transform 0.3s ease;
+      }
       html,
       body {
         background: var(--ptw-bg);
@@ -139,7 +142,7 @@
         "
       >
         <a
-          href="#"
+          href="/"
           class="flex items-center gap-3 shrink-0 whitespace-nowrap mr-3 md:mr-5"
           aria-label="Pause on the Way 홈"
           data-i18n-aria="logo_aria"
@@ -587,16 +590,13 @@
             </li>
           </ul>
           <a
-            href="#"
-            onclick="
-              copyEmail();
-              return false;
-            "
+            href="/contact/"
             class="mt-6 inline-flex rounded-full px-6 py-3 text-white shadow-md hover:shadow-lg transition"
             style="background: var(--ptw-primary)"
             data-i18n="hotels_cta"
-            >제휴 문의</a
           >
+            제휴 문의
+          </a>
         </div>
         <div class="fade-up md:delay-100">
           <div class="rounded-3xl border soft-shadow bg-white/70 p-6">
@@ -627,17 +627,13 @@
         </p>
         <div class="mt-6 flex flex-wrap gap-3 justify-center">
           <a
-            href="#"
-            onclick="
-              copyEmail();
-              return false;
-            "
+            href="/contact/"
             class="mt-6 inline-flex rounded-full px-6 py-3 text-white shadow-md hover:shadow-lg transition"
             style="background: var(--ptw-primary)"
             data-i18n="cta_email"
-            >이메일 문의</a
           >
-          <!-- <a href="#" class="rounded-full px-6 py-3 border">카카오톡 문의</a> -->
+            이메일 문의
+          </a>
           <a
             href="#"
             onclick="
@@ -692,7 +688,7 @@
           >
             <a
               id="linkTerms"
-              href="/terms.html"
+              href="/terms/"
               class="hover:text-gray-600 underline underline-offset-2"
               data-i18n="footer_terms"
             >
@@ -700,7 +696,7 @@
             </a>
             <a
               id="linkPrivacy"
-              href="/privacy.html"
+              href="/privacy/"
               class="hover:text-gray-600 underline underline-offset-2"
               data-i18n="footer_privacy"
             >
@@ -708,7 +704,7 @@
             </a>
             <a
               id="linkRefund"
-              href="/refund.html"
+              href="/refund/"
               class="hover:text-gray-600 underline underline-offset-2"
               data-i18n="footer_refund"
             >
@@ -986,9 +982,9 @@
           const t = document.getElementById("linkTerms");
           const p = document.getElementById("linkPrivacy");
           const r = document.getElementById("linkRefund");
-          if (t) t.href = `/terms.html${qs}`;
-          if (p) p.href = `/privacy.html${qs}`;
-          if (r) r.href = `/refund.html${qs}`;
+          if (t) t.href = `/terms/${qs}`;
+          if (p) p.href = `/privacy/${qs}`;
+          if (r) r.href = `/refund/${qs}`;
         });
 
         // Elements with data-i18n-aria (ARIA labels/text)
@@ -1135,12 +1131,17 @@
         const y = el.getBoundingClientRect().top + window.pageYOffset - offset;
         window.scrollTo({ top: y, behavior: "smooth" });
       }
+
       document.querySelectorAll('a[href^="#"]').forEach((a) => {
         a.addEventListener("click", (e) => {
           const hash = a.getAttribute("href");
           if (hash && hash.length > 1) {
             e.preventDefault();
             scrollToHash(hash);
+
+            // URL에 #about 같은 해시 안 남게
+            history.replaceState(null, null, location.pathname);
+
             closeMenu();
           }
         });
@@ -1168,6 +1169,22 @@
 
       // Init
       setLangFrom(getInitialLang());
+
+      let lastScrollY = window.scrollY;
+
+      window.addEventListener("scroll", () => {
+        const currentScroll = window.scrollY;
+
+        if (currentScroll > lastScrollY && currentScroll > 80) {
+          // 아래로 스크롤 → 숨김
+          header.style.transform = "translateY(-100%)";
+        } else {
+          // 위로 스크롤 → 표시
+          header.style.transform = "translateY(0)";
+        }
+
+        lastScrollY = currentScroll;
+      });
     </script>
   </body>
 </html>

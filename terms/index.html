@@ -187,23 +187,51 @@ These Terms shall take effect as of the date of posting.
         return (navigator.language || "ko").startsWith("en") ? "en" : "ko";
       }
 
+      function paintButtons(lang) {
+        const ko = document.getElementById("btnKO");
+        const en = document.getElementById("btnEN");
+        const on = "#1b365d";
+
+        ko.style.background = lang === "ko" ? on : "transparent";
+        ko.style.color = lang === "ko" ? "white" : "#111827";
+        ko.style.borderColor =
+          lang === "ko" ? "transparent" : "rgba(0,0,0,.12)";
+
+        en.style.background = lang === "en" ? on : "transparent";
+        en.style.color = lang === "en" ? "white" : "#111827";
+        en.style.borderColor =
+          lang === "en" ? "transparent" : "rgba(0,0,0,.12)";
+      }
+
       function setLang(lang) {
         const L = lang === "en" ? "en" : "ko";
         localStorage.setItem("ptw-lang", L);
         document.documentElement.lang = L;
 
+        // 타이틀 변경
+        const titles = {
+          ko: "이용약관 | Pause on the Way",
+          en: "Terms of Service | Pause on the Way",
+        };
+        document.title = titles[L];
+
+        // meta description 변경 (SEO)
+        const descriptions = {
+          ko: "Pause on the Way 서비스 이용약관 페이지",
+          en: "Pause on the Way Terms of Service page",
+        };
+        let metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) {
+          metaDesc.setAttribute("content", descriptions[L]);
+        }
+        document
+          .querySelector('meta[name="description"]')
+          .setAttribute("content", descriptions[L]);
+
         document.getElementById("title").textContent = TERMS[L].title;
         document.getElementById("body").textContent = TERMS[L].body;
 
-        // 버튼 표시(선택)
-        document.getElementById("btnKO").style.background =
-          L === "ko" ? "#1b365d" : "transparent";
-        document.getElementById("btnKO").style.color =
-          L === "ko" ? "white" : "#111827";
-        document.getElementById("btnEN").style.background =
-          L === "en" ? "#1b365d" : "transparent";
-        document.getElementById("btnEN").style.color =
-          L === "en" ? "white" : "#111827";
+        paintButtons(L);
 
         // 주소창 lang 유지(공유용)
         const u = new URL(location.href);
