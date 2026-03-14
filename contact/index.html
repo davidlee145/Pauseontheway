@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>제휴 문의 — Pause on the Way</title>
+    <title>제휴 문의 | Pause on the Way</title>
     <meta name="robots" content="noindex" />
     <style>
       body {
@@ -83,19 +83,15 @@
     </main>
 
     <script>
-      // 메인 페이지 언어 그대로 사용
       const lang = localStorage.getItem("ptw-lang") || "ko";
       document.documentElement.lang = lang;
 
-      // 타이틀 변경
-      const titles = { ko: "제휴 문의 — Pause on the Way", en: "Partnership Inquiry — Pause on the Way" };
+      const titles = { ko: "제휴 문의 | Pause on the Way", en: "Partnership Inquiry | Pause on the Way" };
       document.title = titles[lang];
 
-      // 폼 subject
-      const subjects = { ko: "제휴 문의 — Pause on the Way", en: "Partnership Inquiry — Pause on the Way" };
+      const subjects = { ko: "제휴 문의 | Pause on the Way", en: "Partnership Inquiry | Pause on the Way" };
       document.getElementById("form-subject").value = subjects[lang];
 
-      // 텍스트 변경
       document.querySelectorAll("[data-ko]").forEach(el => {
         if(lang === "en" && el.dataset.en){
           el.textContent = el.dataset.en;
@@ -104,12 +100,10 @@
         }
       });
 
-      // placeholder 변경
       document.querySelectorAll("[data-placeholder-ko]").forEach(el => {
         el.placeholder = lang === "en" ? el.dataset.placeholderEn : el.dataset.placeholderKo;
       });
 
-      // 버튼 텍스트 변경
       const btn = document.querySelector("button[type=submit]");
       btn.textContent = lang === "en" ? btn.dataset.en : btn.dataset.ko;
     </script>

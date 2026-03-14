@@ -208,14 +208,12 @@ These Terms shall take effect as of the date of posting.
         localStorage.setItem("ptw-lang", L);
         document.documentElement.lang = L;
 
-        // 타이틀 변경
         const titles = {
           ko: "이용약관 | Pause on the Way",
           en: "Terms of Service | Pause on the Way",
         };
         document.title = titles[L];
 
-        // meta description 변경 (SEO)
         const descriptions = {
           ko: "Pause on the Way 서비스 이용약관 페이지",
           en: "Pause on the Way Terms of Service page",
@@ -233,7 +231,6 @@ These Terms shall take effect as of the date of posting.
 
         paintButtons(L);
 
-        // 주소창 lang 유지(공유용)
         const u = new URL(location.href);
         u.searchParams.set("lang", L);
         history.replaceState({}, "", u.toString());
