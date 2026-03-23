@@ -623,11 +623,8 @@
             이메일 문의
           </a>
           <a
-            href="#"
-            onclick="
-              copyPhone();
-              return false;
-            "
+            href="tel:07080804224"
+            onclick="return copyPhone(event);"
             class="mt-6 inline-flex rounded-full px-6 py-3 border shadow-md hover:shadow-lg transition"
             data-i18n="cta_phone"
           >
@@ -1001,7 +998,7 @@
         return (navigator.language || "ko").startsWith("en") ? "en" : "ko";
       }
 
-      function copyPhone() {
+      function copyPhone(e) {
         const lang = localStorage.getItem("ptw-lang") || "ko";
         const phone = "070-8080-4224";
 
@@ -1013,12 +1010,22 @@
         const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
         if (isMobile) {
-          tryOpen("tel:" + phone);
+          return true;
         } else {
+          e.preventDefault();
           fallbackCopy(phone, message);
+          return false;
         }
+      }
 
-        return false;
+      function tryOpen(url) {
+        window.location.href = url;
+      }
+
+      function fallbackCopy(text, message) {
+        navigator.clipboard.writeText(text).then(() => {
+          alert(message);
+        });
       }
 
       const header = document.getElementById("siteHeader");
