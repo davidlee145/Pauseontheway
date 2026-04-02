@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-LQP3VZB2V0"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-LQP3VZB2V0");
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>이용약관 | Pause on the Way</title>
+    <meta name="description" content="Pause on the Way 이용약관" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        --ptw-bg: #faf8f5;
+        --ptw-ink: #1f2937;
+        --ptw-primary: #1b365d;
+      }
+      body {
+        background: var(--ptw-bg);
+        color: var(--ptw-ink);
+      }
+      .font-display {
+        font-family: "Playfair Display", serif;
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <header
+      class="border-b border-black/5 bg-[rgba(250,248,245,.8)] backdrop-blur sticky top-0"
+    >
+      <div
+        class="max-w-3xl mx-auto px-5 py-4 flex items-center justify-between"
+      >
+        <a
+          href="/"
+          class="font-display font-semibold text-lg md:text-xl"
+          style="color: var(--ptw-primary)"
+        >
+          Pause on the Way
+        </a>
+        <div class="flex gap-2">
+          <button id="btnKO" class="px-3 py-1.5 rounded-full text-sm border">
+            KO
+          </button>
+          <button id="btnEN" class="px-3 py-1.5 rounded-full text-sm border">
+            EN
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-3xl mx-auto px-5 py-10">
+      <h1 class="text-2xl font-semibold" id="title"></h1>
+      <p class="mt-2 text-sm text-gray-600" id="effective"></p>
+
+      <article
+        id="body"
+        class="mt-6 whitespace-pre-wrap text-[14px] leading-7 text-gray-800 bg-white/70 border border-black/5 rounded-2xl p-6"
+      ></article>
+    </main>
+
+    <footer class="border-t border-black/5">
+      <div class="max-w-3xl mx-auto px-5 py-8 text-sm text-gray-500">
+        © <span id="year"></span> Pause on the Way. All rights reserved.
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      const TERMS = {
+        ko: {
+          title: "이용약관",
+          body: `제1조(목적)
+본 약관은 주식회사 메리굿(이하 “회사”)이 제공하는 Pause on the Way 서비스(이하 “서비스”)의 이용과 관련하여, 회사와 이용자 간의 권리·의무 및 책임사항을 규정함을 목적으로 합니다.
+
+제2조(서비스 개요)
+1) 서비스는 호텔 라운지 또는 카페, 그리고 회사와 제휴한 City Space(파트너 카페·라운지·코워킹 공간 등)에서 진행되는 정서 케어 세션에 대한 예약, 결제 및 안내를 포함합니다.
+2) 본 세션은 의료행위가 아닌 심리·정서 지원(라이트 케어) 성격의 서비스로, 정신건강에 대한 진단, 치료 또는 처방을 제공하지 않습니다.
+
+제3조(예약 및 결제)
+1) 이용자는 회사가 제공하는 채널(웹, 설문 폼 등)을 통해 예약 신청 및 결제를 진행합니다.
+2) 회사는 예약 확정 및 변경·취소와 관련된 안내를 제공합니다.
+3) 취소·환불 기준 및 기타 세부 사항은 별도로 고지된 취소·환불 정책에 따릅니다.
+
+제4조(이용자 유의사항 및 금지행위)
+1) 이용자는 정확한 정보로 예약해야 하며, 허위 또는 부정 이용이 확인될 경우 서비스 이용이 제한될 수 있습니다.
+2) 세션 중 다음 각 호의 행위가 발생할 경우, 회사 또는 Carer는 세션을 즉시 중단할 수 있으며 환불은 제공되지 않습니다.
+- 욕설, 모욕, 위협 등 부적절한 언행
+- 성적 발언·제안 또는 신체 접촉 시도
+- 촬영 또는 녹음을 요구하거나 이를 강요하는 행위
+
+제5조(비밀유지 및 안전 예외)
+1) Carer는 세션 중 이루어진 대화 내용을 외부에 공유하지 않습니다.
+2) 다만, 자해 또는 타해의 위험 등 긴급한 안전 문제가 감지될 경우,
+이용자 및 타인의 안전 확보를 위해 외부 기관에 도움을 요청할 수 있습니다.
+
+제6조(개인정보)
+개인정보는 세션 매칭 및 서비스 안내 목적 외에는 사용되지 않으며,
+그 처리에 관한 사항은 개인정보처리방침에 따릅니다.
+
+제7조(면책)
+1) 회사는 천재지변 등 불가항력적인 사유로 인한 서비스 제공 불가에 대하여 책임을 지지 않습니다.
+2) 본 서비스는 치료 목적의 서비스가 아니며, 개인의 상태 개선이나 특정 결과를 보장하지 않습니다.
+
+제8조(약관의 변경)
+회사는 관련 법령을 위반하지 않는 범위 내에서 본 약관을 변경할 수 있으며,
+변경 시 그 내용을 사전에 고지합니다.
+
+제9조(준거법 및 관할)
+본 약관은 대한민국 법령을 준거법으로 하며,
+서비스 이용과 관련하여 발생하는 분쟁에 대해서는 회사의 본점 소재지를 관할하는 법원을 제1심 관할 법원으로 합니다.
+
+부칙
+본 약관은 게시일로부터 적용됩니다.
+`,
+        },
+        en: {
+          title: "Terms of Service",
+          body: `Article 1 (Purpose)
+These Terms of Service set out the rights, obligations, and responsibilities between Merrygood Co., Ltd. (“Company”) and users in connection with the use of the “Pause on the Way” service (“Service”).
+
+Article 2 (Service Overview)
+1) The Service includes booking, payment, and guidance for emotional care sessions conducted at hotel lounges or cafés, as well as City Spaces (partner cafés, lounges, coworking spaces, etc.).
+2) The sessions are non-medical in nature and are intended to provide psychological and emotional support (“light care”). The Service does not provide any diagnosis, treatment, or prescription related to mental health.
+
+Article 3 (Booking and Payment)
+1) Users apply for bookings and complete payments through channels provided by the Company (including websites or survey forms).
+2) The Company provides confirmation and guidance regarding booking confirmation, changes, and cancellations.
+3) Cancellation and refund rules are governed by the separate Cancellation & Refund Policy posted by the Company.
+
+Article 4 (User Responsibilities and Prohibited Conduct)
+1) Users must provide accurate information when making a booking. If false or fraudulent information is provided, the Company may restrict the use of the Service.
+2) If any of the following conduct occurs during a session, the Company or the Carer may immediately terminate the session, and no refund will be issued:
+- Verbal abuse, insults, or threats
+- Sexual remarks, propositions, or attempts at physical contact
+- Requests or coercion to record or audio/video capture the session
+
+Article 5 (Confidentiality and Safety Exception)
+1) Carers do not share the content of session conversations with third parties.
+2) However, if there is a reasonable concern of imminent self-harm or harm to others,
+external assistance may be contacted to ensure the safety of the user or others.
+
+Article 6 (Personal Data)
+Personal data is used solely for session matching and service communication.
+Details regarding the processing of personal data are governed by the Privacy Policy.
+
+Article 7 (Disclaimer)
+1) The Company shall not be liable for any failure to provide the Service due to force majeure events.
+2) The Service is not intended as medical treatment and does not guarantee any particular outcome or improvement.
+
+Article 8 (Amendments)
+The Company may amend these Terms within the limits permitted by applicable laws and will provide notice of material changes.
+
+Article 9 (Governing Law and Jurisdiction)
+These Terms are governed by the laws of the Republic of Korea.
+Any disputes arising out of or in connection with the Service shall be submitted to the court having jurisdiction over the Company’s principal place of business as the court of first instance.
+
+Supplementary Provision
+These Terms shall take effect as of the date of posting.
+`,
+        },
+      };
+
+      function getInitialLang() {
+        const urlLang = new URLSearchParams(location.search).get("lang");
+        if (urlLang) return urlLang.toLowerCase();
+        const saved = localStorage.getItem("ptw-lang");
+        if (saved) return saved;
+        return (navigator.language || "ko").startsWith("en") ? "en" : "ko";
+      }
+
+      function paintButtons(lang) {
+        const ko = document.getElementById("btnKO");
+        const en = document.getElementById("btnEN");
+        const on = "#1b365d";
+
+        ko.style.background = lang === "ko" ? on : "transparent";
+        ko.style.color = lang === "ko" ? "white" : "#111827";
+        ko.style.borderColor =
+          lang === "ko" ? "transparent" : "rgba(0,0,0,.12)";
+
+        en.style.background = lang === "en" ? on : "transparent";
+        en.style.color = lang === "en" ? "white" : "#111827";
+        en.style.borderColor =
+          lang === "en" ? "transparent" : "rgba(0,0,0,.12)";
+      }
+
+      function setLang(lang) {
+        const L = lang === "en" ? "en" : "ko";
+        localStorage.setItem("ptw-lang", L);
+        document.documentElement.lang = L;
+
+        const titles = {
+          ko: "이용약관 | Pause on the Way",
+          en: "Terms of Service | Pause on the Way",
+        };
+        document.title = titles[L];
+
+        const descriptions = {
+          ko: "Pause on the Way 서비스 이용약관 페이지",
+          en: "Pause on the Way Terms of Service page",
+        };
+        let metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) {
+          metaDesc.setAttribute("content", descriptions[L]);
+        }
+        document
+          .querySelector('meta[name="description"]')
+          .setAttribute("content", descriptions[L]);
+
+        document.getElementById("title").textContent = TERMS[L].title;
+        document.getElementById("body").textContent = TERMS[L].body;
+
+        paintButtons(L);
+
+        const u = new URL(location.href);
+        u.searchParams.set("lang", L);
+        history.replaceState({}, "", u.toString());
+      }
+
+      document
+        .getElementById("btnKO")
+        .addEventListener("click", () => setLang("ko"));
+      document
+        .getElementById("btnEN")
+        .addEventListener("click", () => setLang("en"));
+
+      setLang(getInitialLang());
+    </script>
+  </body>
+</html>

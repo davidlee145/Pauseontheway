@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>제휴 문의 | Pause on the Way</title>
+    <meta name="robots" content="noindex" />
+    <style>
+      body {
+        font-family: Inter, sans-serif;
+        background: #faf8f5;
+        color: #1f2937;
+        margin: 0;
+      }
+      main {
+        padding: 120px 16px;
+        max-width: 720px;
+        margin: 0 auto;
+      }
+      h1 {
+        font-size: 42px;
+        margin-bottom: 12px;
+      }
+      p {
+        color: #6b7280;
+        margin-bottom: 40px;
+      }
+      input, textarea {
+        width: 100%;
+        padding: 16px;
+        margin-bottom: 16px;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        font-size: 16px;
+        box-sizing: border-box;
+      }
+      textarea {
+        height: 200px;
+        resize: vertical;
+      }
+      button {
+        padding: 16px 24px;
+        border-radius: 999px;
+        border: 0;
+        background: #000;
+        color: #fff;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1 data-ko="궁금한 것이 있나요?" data-en="Have any questions?">
+        궁금한 것이 있나요?
+      </h1>
+
+      <p data-ko="서비스나 제휴에 대해 무엇이든 편하게 문의해주세요."
+         data-en="Feel free to reach out about our service or partnerships.">
+        서비스나 제휴에 대해 무엇이든 편하게 문의해주세요.
+      </p>
+
+      <form action="https://formsubmit.co/da6a8d5556503e8b9aa8c4af68017380" method="POST">
+        <input name="name" placeholder="이름" data-placeholder-ko="이름" data-placeholder-en="Name" required />
+        <input name="email" type="email" placeholder="이메일" data-placeholder-ko="이메일" data-placeholder-en="Email" required />
+        <input name="company" placeholder="회사명 (선택)" data-placeholder-ko="회사명 (선택)" data-placeholder-en="Company (optional)" />
+        <textarea name="message" placeholder="문의 내용을 작성해주세요" data-placeholder-ko="문의 내용을 작성해주세요" data-placeholder-en="Write your message" required></textarea>
+        <input type="hidden" name="_subject" id="form-subject" value="제휴 문의 — Pause on the Way" />
+        <input type="text" name="_gotcha" style="display: none" />
+        <button type="submit" data-ko="문의 보내기 →" data-en="Send message →">문의 보내기 →</button>
+      </form>
+
+      <p style="margin-top: 32px; color: #6b7280">
+        <span data-ko="또는 아래 이메일로 직접 문의해 주세요:" data-en="Or email us directly at:">
+          또는 아래 이메일로 직접 문의해 주세요:
+        </span>
+        <strong><a href="mailto:pauseontheway@gmail.com">pauseontheway@gmail.com</a></strong>
+      </p>
+    </main>
+
+    <script>
+      const lang = localStorage.getItem("ptw-lang") || "ko";
+      document.documentElement.lang = lang;
+
+      const titles = { ko: "제휴 문의 | Pause on the Way", en: "Partnership Inquiry | Pause on the Way" };
+      document.title = titles[lang];
+
+      const subjects = { ko: "제휴 문의 | Pause on the Way", en: "Partnership Inquiry | Pause on the Way" };
+      document.getElementById("form-subject").value = subjects[lang];
+
+      document.querySelectorAll("[data-ko]").forEach(el => {
+        if(lang === "en" && el.dataset.en){
+          el.textContent = el.dataset.en;
+        } else if(lang === "ko") {
+          el.textContent = el.dataset.ko;
+        }
+      });
+
+      document.querySelectorAll("[data-placeholder-ko]").forEach(el => {
+        el.placeholder = lang === "en" ? el.dataset.placeholderEn : el.dataset.placeholderKo;
+      });
+
+      const btn = document.querySelector("button[type=submit]");
+      btn.textContent = lang === "en" ? btn.dataset.en : btn.dataset.ko;
+    </script>
+  </body>
+</html>

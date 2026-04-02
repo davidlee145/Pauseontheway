@@ -1,0 +1,1109 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-LQP3VZB2V0"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-LQP3VZB2V0");
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>포즈 온 더 웨이 | 낯선 길 위에서도 멈추어 쉬다</title>
+    <meta
+      name="description"
+      content="노마드·여행자·출장자를 위한 호텔 정서 케어 서비스. 투숙 중 편안한 라운지 또는 카페에서 검증된 케어러가 가벼운 대화로 마음의 여백을 만들어 드립니다."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="icon" href="favicon-64.png" sizes="64x64" type="image/png" />
+    <link rel="icon" href="favicon-192.png" sizes="192x192" type="image/png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        --ptw-bg: #faf8f5; /* warm beige */
+        --ptw-ink: #1f2937; /* slate-800 */
+        --ptw-accent: #9ca3af; /* gray-400 */
+        --ptw-primary: #1b365d; /* deep navy */
+        --ptw-gold: #c8a676; /* soft gold */
+      }
+      #siteHeader {
+        transition: transform 0.3s ease;
+      }
+      html,
+      body {
+        background: var(--ptw-bg);
+        color: var(--ptw-ink);
+      }
+      .font-display {
+        font-family: "Playfair Display", serif;
+      }
+      .font-sans {
+        font-family:
+          "Inter",
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Helvetica,
+          Arial,
+          "Apple Color Emoji",
+          "Segoe UI Emoji",
+          "Segoe UI Symbol",
+          sans-serif;
+      }
+      .fade-up {
+        opacity: 0;
+        transform: translateY(12px);
+        animation: fadeUp 0.8s ease-out forwards;
+      }
+      @keyframes fadeUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .glass {
+        backdrop-filter: blur(8px);
+        background: rgba(255, 255, 255, 0.6);
+        border: 1px solid rgba(0, 0, 0, 0.06);
+      }
+      .soft-shadow {
+        box-shadow: 0 10px 30px rgba(31, 54, 93, 0.08);
+      }
+      .u-ink {
+        position: relative;
+      }
+      .u-ink::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -6px;
+        width: 100%;
+        height: 8px;
+        background: linear-gradient(90deg, var(--ptw-gold), transparent);
+        opacity: 0.35;
+        border-radius: 9999px;
+      }
+      .lang-toggle {
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        background: white;
+      }
+      .lang-toggle[aria-pressed="true"] {
+        background: var(--ptw-primary);
+        color: white;
+        border-color: transparent;
+      }
+      .brand-text {
+        font-size: clamp(16px, 4.6vw, 20px);
+        line-height: 1.2;
+      }
+      @media (max-width: 360px) {
+        .brand-text {
+          font-size: clamp(15px, 4.8vw, 19px);
+        }
+        .lang-toggle {
+          padding-left: 0.6rem;
+          padding-right: 0.6rem;
+        }
+      }
+    </style>
+  </head>
+  <body class="font-sans antialiased">
+    <header
+      id="siteHeader"
+      class="sticky top-0 z-50 bg-[rgba(250,248,245,.7)]/70 backdrop-blur border-b border-black/5"
+    >
+      <div
+        class="mx-auto max-w-7xl px-5 py-4 flex items-center justify-between flex-nowrap"
+        style="
+          padding-left: max(1.25rem, env(safe-area-inset-left));
+          padding-right: max(1.25rem, env(safe-area-inset-right));
+        "
+      >
+        <a
+          href="/"
+          class="flex items-center gap-3 shrink-0 whitespace-nowrap mr-3 md:mr-5"
+          aria-label="Pause on the Way 홈"
+          data-i18n-aria="logo_aria"
+        >
+          <div
+            class="h-9 w-9 rounded-full bg-gradient-to-br from-[#E8E1D7] to-white border border-black/5 flex items-center justify-center"
+          >
+            <span
+              class="text-sm font-semibold tracking-wide"
+              style="color: var(--ptw-primary)"
+              >PAUSE</span
+            >
+          </div>
+          <span
+            class="font-display brand-text whitespace-nowrap truncate max-w-[55vw] md:max-w-none"
+            >Pause on the Way</span
+          >
+        </a>
+        <nav
+          class="hidden md:flex items-center gap-4 md:gap-6 text-[15px] ml-1 md:ml-3"
+        >
+          <a href="#about" class="hover:opacity-70" data-i18n="nav_about"
+            >소개</a
+          >
+          <a href="#features" class="hover:opacity-70" data-i18n="nav_features"
+            >서비스</a
+          >
+          <a href="#flow" class="hover:opacity-70" data-i18n="nav_flow"
+            >이용방법</a
+          >
+          <a href="#hotels" class="hover:opacity-70" data-i18n="nav_hotels"
+            >호텔 제휴</a
+          >
+          <a
+            href="https://walla.my/survey/WYxRHuxf8mPDEB3dBHjf"
+            class="inline-flex items-center gap-2 rounded-full px-4 py-2 text-white"
+            style="background: var(--ptw-primary)"
+            data-i18n="nav_book"
+            >지금 예약</a
+          >
+          <div
+            class="flex items-center gap-2 ml-3 md:ml-5"
+            role="group"
+            aria-label="Language"
+          >
+            <button
+              id="btnKO"
+              class="px-3 py-2 rounded-full text-sm lang-toggle"
+              data-lang="ko"
+              aria-pressed="true"
+            >
+              KO
+            </button>
+            <button
+              id="btnEN"
+              class="px-3 py-2 rounded-full text-sm lang-toggle"
+              data-lang="en"
+              aria-pressed="false"
+            >
+              EN
+            </button>
+          </div>
+        </nav>
+        <div class="md:hidden flex items-center gap-3 flex-none">
+          <div
+            class="flex items-center gap-2"
+            role="group"
+            aria-label="Language"
+          >
+            <button
+              id="btnKOM"
+              class="px-3 py-2 rounded-full text-sm lang-toggle"
+              data-lang="ko"
+              aria-pressed="true"
+            >
+              KO
+            </button>
+            <button
+              id="btnENM"
+              class="px-3 py-2 rounded-full text-sm lang-toggle"
+              data-lang="en"
+              aria-pressed="false"
+            >
+              EN
+            </button>
+          </div>
+          <button
+            id="menuBtn"
+            class="rounded-full border px-3 py-2 text-sm"
+            aria-controls="mobileMenu"
+            aria-expanded="false"
+            aria-label="모바일 메뉴 열기"
+            data-i18n-aria="menu_open_aria"
+          >
+            메뉴
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div id="menuOverlay" class="hidden fixed inset-0 bg-black/20 z-40"></div>
+    <div
+      id="mobileMenu"
+      class="hidden md:hidden fixed top-[64px] left-0 right-0 z-50 border-b border-black/5 bg-white/90 backdrop-blur"
+    >
+      <div class="max-w-7xl mx-auto px-5 py-4 flex flex-col gap-3 text-[15px]">
+        <a
+          href="#about"
+          class="mobile-link hover:opacity-70"
+          data-i18n="nav_about"
+          >소개</a
+        >
+        <a
+          href="#features"
+          class="mobile-link hover:opacity-70"
+          data-i18n="nav_features"
+          >서비스</a
+        >
+        <a
+          href="#flow"
+          class="mobile-link hover:opacity-70"
+          data-i18n="nav_flow"
+          >이용방법</a
+        >
+        <a
+          href="#hotels"
+          class="mobile-link hover:opacity-70"
+          data-i18n="nav_hotels"
+          >호텔 제휴</a
+        >
+        <a
+          href="https://walla.my/survey/WYxRHuxf8mPDEB3dBHjf"
+          class="mobile-link inline-flex items-center justify-center rounded-full px-4 py-2 text-white w-max"
+          style="background: var(--ptw-primary)"
+          data-i18n="nav_book"
+          >지금 예약</a
+        >
+      </div>
+    </div>
+
+    <section class="relative overflow-hidden">
+      <div
+        class="absolute -top-20 -right-10 h-72 w-72 rounded-full bg-[#D9E4EC] blur-3xl opacity-40"
+      ></div>
+      <div
+        class="absolute -bottom-20 -left-10 h-72 w-72 rounded-full bg-[#E5D9CC] blur-3xl opacity-50"
+      ></div>
+
+      <div
+        class="max-w-7xl mx-auto px-5 pt-14 pb-10 md:pt-24 md:pb-20 grid md:grid-cols-2 items-center gap-10"
+      >
+        <div class="fade-up">
+          <h1
+            class="font-display text-4xl md:text-5xl leading-tight"
+            data-i18n="hero_title"
+          >
+            낯선 길 위에서도 <span class="u-ink">멈추어 쉬다</span>
+          </h1>
+          <p
+            class="mt-5 text-[17px] leading-7 text-gray-600"
+            data-i18n="hero_desc"
+          >
+            Pause on the Way는 노마드·여행자·출장자를 위한
+            <strong>호텔 기반 정서 케어</strong> 서비스입니다. 투숙 중 편안한
+            라운지 또는 카페에서, 검증된 케어러가 <em>가벼운 대화</em>로 마음의
+            여백을 만들어 드립니다.
+          </p>
+          <div class="mt-8 flex flex-wrap items-center gap-3">
+            <a
+              href="https://walla.my/survey/WYxRHuxf8mPDEB3dBHjf"
+              class="rounded-full px-5 py-3 text-white soft-shadow"
+              style="background: var(--ptw-primary)"
+              data-i18n="cta_book"
+              >지금 예약</a
+            >
+            <a
+              href="#features"
+              class="rounded-full px-5 py-3 border soft-shadow bg-white/70"
+              data-i18n="cta_view"
+              >서비스 보기</a
+            >
+          </div>
+          <div class="mt-6 text-sm text-gray-500" data-i18n="hero_note">
+            * 50분 대화 · 호텔 라운지/카페 선택 가능 · 익명·비밀보장
+          </div>
+        </div>
+
+        <div class="relative fade-up md:delay-100">
+          <div class="glass soft-shadow rounded-3xl p-6 md:p-8">
+            <div class="flex items-center gap-3 mb-4">
+              <div
+                class="h-10 w-10 rounded-full bg-[#F2EEE8] border border-black/5 flex items-center justify-center"
+              >
+                <span
+                  class="text-xs tracking-wider font-semibold"
+                  style="color: var(--ptw-primary)"
+                  >REST</span
+                >
+              </div>
+              <div>
+                <p class="text-sm text-gray-500" data-i18n="preview_label">
+                  세션 미리보기
+                </p>
+                <p class="font-medium" data-i18n="preview_q">
+                  “오늘, 마음은 어디쯤 와 있나요?”
+                </p>
+              </div>
+            </div>
+            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+              <li
+                class="rounded-2xl border bg-white/70 p-4"
+                data-i18n="preview_1"
+              >
+                감정 체크 & 기분 기록
+              </li>
+              <li
+                class="rounded-2xl border bg-white/70 p-4"
+                data-i18n="preview_2"
+              >
+                스트레스 완화
+              </li>
+              <li
+                class="rounded-2xl border bg-white/70 p-4"
+                data-i18n="preview_3"
+              >
+                수면·리듬 코칭
+              </li>
+              <li
+                class="rounded-2xl border bg-white/70 p-4"
+                data-i18n="preview_4"
+              >
+                관계/업무 긴장 이완
+              </li>
+            </ul>
+            <div class="mt-4 rounded-2xl border p-4 bg-white/70">
+              <p
+                class="text-sm text-gray-600 leading-6"
+                data-i18n="preview_tip"
+              >
+                “가볍게 이야기하고, 편안하게 쉬세요. 내일의 걸음은 더
+                가벼워집니다.”
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="max-w-7xl mx-auto px-5 py-12 md:py-20">
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div class="fade-up">
+          <h2 class="font-display text-3xl md:text-4xl" data-i18n="about_title">
+            왜 호텔에서 대화를 하나요?
+          </h2>
+
+          <p class="mt-5 text-gray-600 leading-7" data-i18n="about_desc">
+            호텔은 일상에서 잠시 분리된 상태를 만드는 공간이며, 익숙한 흐름에서
+            한 걸음 물러날 때 사람은 자신의 상태를 더 분명하게 느낄 수 있습니다.
+            이동은 점점 빨라지고 효율적이지만, 그 과정에서 사람은 피로와 긴장,
+            때로는 고립을 느끼기도 합니다. Pause on the Way는 이러한 환경이 주는
+            힘에 주목해, 호텔 라운지와 카페에서 <strong>가벼운 대화</strong>를
+            통해 사람과 사람이 잠시 마주 앉는 시간을 만듭니다.
+          </p>
+        </div>
+        <div class="fade-up md:delay-100">
+          <div
+            class="rounded-3xl border soft-shadow bg-white/70 p-6 grid gap-4"
+          >
+            <div class="flex items-start gap-4">
+              <div
+                class="h-10 w-10 rounded-full bg-[#E9EEF3] flex items-center justify-center"
+              >
+                🧭
+              </div>
+              <div>
+                <p class="font-medium" data-i18n="about_b1_t">여정 친화적</p>
+                <p class="text-sm text-gray-600" data-i18n="about_b1_d">
+                  체크인-체크아웃 일정에 맞춘 유연한 스케줄링
+                </p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div
+                class="h-10 w-10 rounded-full bg-[#EDE7DF] flex items-center justify-center"
+              >
+                🤝
+              </div>
+              <div>
+                <p class="font-medium" data-i18n="about_b2_t">신뢰 가능</p>
+                <p class="text-sm text-gray-600" data-i18n="about_b2_d">
+                  경력 검증된 상담사, 익명·비밀 보장
+                </p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div
+                class="h-10 w-10 rounded-full bg-[#E7EFE7] flex items-center justify-center"
+              >
+                🫖
+              </div>
+              <div>
+                <p class="font-medium" data-i18n="about_b3_t">공간의 힘</p>
+                <p class="text-sm text-gray-600" data-i18n="about_b3_d">
+                  라운지·카페 중 원하는 분위기를 선택
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="max-w-7xl mx-auto px-5 py-12 md:py-20">
+      <h2
+        class="font-display text-3xl md:text-4xl text-center"
+        data-i18n="features_title"
+      >
+        서비스
+      </h2>
+      <p class="mt-4 text-center text-gray-600" data-i18n="features_sub">
+        가벼운 대화로, 내일의 발걸음을 가볍게
+      </p>
+
+      <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="rounded-3xl border bg-white/70 p-6 soft-shadow">
+          <p class="text-2xl">🌤️</p>
+          <h3 class="mt-3 font-medium" data-i18n="f1_t">Mood Check</h3>
+          <p class="mt-2 text-sm text-gray-600" data-i18n="f1_d">
+            30초 감정 체크 & 세션 요약 제공
+          </p>
+        </div>
+        <div class="rounded-3xl border bg-white/70 p-6 soft-shadow">
+          <p class="text-2xl">🧘</p>
+          <h3 class="mt-3 font-medium" data-i18n="f2_t">Breathing & Ease</h3>
+          <p class="mt-2 text-sm text-gray-600" data-i18n="f2_d">
+            5분 호흡/이완 루틴으로 즉각적 안정
+          </p>
+        </div>
+        <div class="rounded-3xl border bg-white/70 p-6 soft-shadow">
+          <p class="text-2xl">🗺️</p>
+          <h3 class="mt-3 font-medium" data-i18n="f3_t">Travel Coaching</h3>
+          <p class="mt-2 text-sm text-gray-600" data-i18n="f3_d">
+            수면·루틴·관계 스트레스 경량 코칭
+          </p>
+        </div>
+        <div class="rounded-3xl border bg-white/70 p-6 soft-shadow">
+          <p class="text-2xl">☕</p>
+          <h3 class="mt-3 font-medium" data-i18n="f4_t">Cafe Talk</h3>
+          <p class="mt-2 text-sm text-gray-600" data-i18n="f4_d">
+            카페에서 부담 없이 나누는 스몰토크
+          </p>
+        </div>
+        <div class="rounded-3xl border bg-white/70 p-6 soft-shadow">
+          <p class="text-2xl">🔒</p>
+          <h3 class="mt-3 font-medium" data-i18n="f5_t">Privacy First</h3>
+          <p class="mt-2 text-sm text-gray-600" data-i18n="f5_d">
+            익명 가능, 대화 메모 비공개 기본
+          </p>
+        </div>
+        <div class="rounded-3xl border bg-white/70 p-6 soft-shadow">
+          <p class="text-2xl">📄</p>
+          <h3 class="mt-3 font-medium" data-i18n="f6_t">Session Note</h3>
+          <p class="mt-2 text-sm text-gray-600" data-i18n="f6_d">
+            요약 리포트로 내일의 나를 가볍게
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="flow" class="max-w-7xl mx-auto px-5 py-12 md:py-20">
+      <h2
+        class="font-display text-3xl md:text-4xl text-center"
+        data-i18n="flow_title"
+      >
+        이용 방법
+      </h2>
+      <div class="mt-10 grid md:grid-cols-4 gap-6">
+        <div class="rounded-3xl border bg-white/70 p-6 soft-shadow">
+          <p class="text-sm text-gray-500" data-i18n="flow_s1_l">STEP 1</p>
+          <p class="font-medium mt-1" data-i18n="flow_s1_t">호텔/시간 선택</p>
+          <p class="text-sm text-gray-600 mt-2" data-i18n="flow_s1_d">
+            라운지·카페 중 원하는 장소 선택
+          </p>
+        </div>
+        <div class="rounded-3xl border bg-white/70 p-6 soft-shadow">
+          <p class="text-sm text-gray-500" data-i18n="flow_s2_l">STEP 2</p>
+          <p class="font-medium mt-1" data-i18n="flow_s2_t">NAP Check-in</p>
+          <p class="text-sm text-gray-600 mt-2" data-i18n="flow_s2_d">
+            이동과 일상 속 컨디션을 가볍게 정리
+          </p>
+        </div>
+        <div class="rounded-3xl border bg-white/70 p-6 soft-shadow">
+          <p class="text-sm text-gray-500" data-i18n="flow_s3_l">STEP 3</p>
+          <p class="font-medium mt-1" data-i18n="flow_s3_t">세션 진행</p>
+          <p class="text-sm text-gray-600 mt-2" data-i18n="flow_s3_d">
+            5분 NAP Check-in 브리핑, 45분 대화
+          </p>
+        </div>
+        <div class="rounded-3xl border bg-white/70 p-6 soft-shadow">
+          <p class="text-sm text-gray-500" data-i18n="flow_s4_l">STEP 4</p>
+          <p class="font-medium mt-1" data-i18n="flow_s4_t">
+            요약 & 다음 한 걸음
+          </p>
+          <p class="text-sm text-gray-600 mt-2" data-i18n="flow_s4_d">
+            세션 요약과 작은 루틴 제안
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="hotels" class="relative overflow-hidden">
+      <div
+        class="absolute inset-0 bg-gradient-to-br from-[#EDE6DB] to-transparent"
+      ></div>
+      <div
+        class="relative max-w-7xl mx-auto px-5 py-14 md:py-20 grid md:grid-cols-2 gap-10 items-center"
+      >
+        <div class="fade-up">
+          <h2
+            class="font-display text-3xl md:text-4xl"
+            data-i18n="hotels_title"
+          >
+            호텔 제휴
+          </h2>
+          <p class="mt-4 text-gray-700 leading-7" data-i18n="hotels_desc">
+            Pause on the Way는 투숙 경험을 정서적 웰니스로 확장합니다. 라운지
+            팝업부터 카페, 라운지 프라이빗 세션까지, 호텔의 톤앤매너에 맞춘
+            모듈형 운영이 가능합니다.
+          </p>
+          <ul class="mt-4 grid gap-2 text-sm text-gray-700 list-disc ml-5">
+            <li data-i18n="hotels_l1">
+              라운지 팝업: 1–2인 상담 부스 / 4–8시간 운영
+            </li>
+            <li data-i18n="hotels_l2">
+              카페, 라운지 프라이빗: 사전 예약제, 익명·비밀보장
+            </li>
+            <li data-i18n="hotels_l3">
+              월간 웰니스 이벤트: ‘Pause Night’ 토크 & 라이브
+            </li>
+          </ul>
+          <a
+            href="/contact/"
+            class="mt-6 inline-flex rounded-full px-6 py-3 text-white shadow-md hover:shadow-lg transition"
+            style="background: var(--ptw-primary)"
+            data-i18n="hotels_cta"
+          >
+            제휴 문의
+          </a>
+        </div>
+        <div class="fade-up md:delay-100">
+          <div class="rounded-3xl border soft-shadow bg-white/70 p-6">
+            <p class="text-sm text-gray-500" data-i18n="brand_label">
+              브랜드 문장
+            </p>
+            <p
+              class="text-xl font-display leading-relaxed mt-2"
+              data-i18n="brand_copy"
+            >
+              “호텔에서의 하루가 단순한 숙박이 아니라, 당신 마음의 쉼이 되도록.”
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cta" class="max-w-7xl mx-auto px-5 py-16 md:py-24">
+      <div
+        class="rounded-3xl border soft-shadow bg-white p-8 md:p-12 text-center"
+      >
+        <h2 class="font-display text-3xl md:text-4xl" data-i18n="cta_title">
+          지금, 여기, 나를 위한 시간
+        </h2>
+        <p class="mt-3 text-gray-600" data-i18n="cta_sub">
+          50분의 가벼운 대화 · 호텔 라운지/카페 중 선택 · 익명·비밀보장
+        </p>
+        <div class="mt-6 flex flex-wrap gap-3 justify-center">
+          <a
+            href="/contact/"
+            class="mt-6 inline-flex rounded-full px-6 py-3 text-white shadow-md hover:shadow-lg transition"
+            style="background: var(--ptw-primary)"
+            data-i18n="cta_email"
+          >
+            이메일 문의
+          </a>
+          <a
+            href="tel:07080804224"
+            onclick="return copyPhone(event);"
+            class="mt-6 inline-flex rounded-full px-6 py-3 border shadow-md hover:shadow-lg transition"
+            data-i18n="cta_phone"
+          >
+            전화 문의
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="max-w-7xl mx-auto px-5 pb-14 md:pb-20">
+      <p
+        class="text-xs text-gray-500 leading-6 text-right"
+        data-i18n="city_note"
+      ></p>
+    </div>
+
+    <footer class="border-t border-black/5">
+      <div
+        class="max-w-7xl mx-auto px-5 py-10 grid md:grid-cols-2 gap-6 items-center"
+      >
+        <div>
+          <p class="font-display text-xl">Pause on the Way</p>
+          <p class="text-sm text-gray-600 mt-1" data-i18n="footer_tag">
+            길 위의 쉼, 마음의 회복.
+          </p>
+        </div>
+        <div
+          class="justify-self-start md:justify-self-end text-sm text-gray-500 text-left md:text-right"
+        >
+          <p>
+            © <span id="year"></span> Pause on the Way.
+            <span data-i18n="footer_all">All rights reserved.</span>
+          </p>
+          <p
+            class="mt-1 text-[11px] leading-relaxed text-gray-400"
+            data-i18n="footer_biz"
+          ></p>
+          <div
+            class="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-[11px] text-gray-400 justify-start md:justify-end"
+          >
+            <a
+              id="linkTerms"
+              href="/terms/"
+              class="hover:text-gray-600 underline underline-offset-2"
+              data-i18n="footer_terms"
+            >
+              이용약관
+            </a>
+            <a
+              id="linkPrivacy"
+              href="/privacy/"
+              class="hover:text-gray-600 underline underline-offset-2"
+              data-i18n="footer_privacy"
+            >
+              개인정보처리방침
+            </a>
+            <a
+              id="linkRefund"
+              href="/refund/"
+              class="hover:text-gray-600 underline underline-offset-2"
+              data-i18n="footer_refund"
+            >
+              취소·환불 정책
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const I18N = {
+        nav_about: { ko: "소개", en: "About" },
+        nav_features: { ko: "서비스", en: "Services" },
+        nav_flow: { ko: "이용방법", en: "How it works" },
+        nav_hotels: { ko: "호텔 제휴", en: "For Hotels" },
+        nav_book: { ko: "지금 예약", en: "Book now" },
+        logo_aria: { ko: "Pause on the Way 홈", en: "Pause on the Way — Home" },
+        menu_open_aria: { ko: "모바일 메뉴 열기", en: "Open mobile menu" },
+
+        hero_title: {
+          ko: '낯선 길 위에서도 <span class="u-ink">멈추어 쉬다</span>',
+          en: 'On unfamiliar roads, <span class="u-ink">pause and rest</span>',
+        },
+        hero_desc: {
+          ko: "Pause on the Way는 노마드·여행자·출장자를 위한 <strong>호텔 기반 정서 케어</strong> 서비스입니다. 투숙 중 편안한 라운지 또는 카페에서, 검증된 케어러가 <em>가벼운 대화</em>로 마음의 여백을 만들어 드립니다.",
+          en: "Pause on the Way is <strong>a hotel-based emotional wellbeing</strong> service for nomads, travelers, and business guests. During your stay, meet a vetted carer for <em>a light conversation</em> in a cozy lounge or cafe and make room in your mind.",
+        },
+        cta_book: { ko: "지금 예약", en: "Book now" },
+        cta_view: { ko: "서비스 보기", en: "See services" },
+        hero_note: {
+          ko: "* 50분 세션 · 호텔 라운지/카페 선택 가능 · 익명·비밀보장",
+          en: "* 50 min session · Lounge/Cafe option · Anonymous·Confidential",
+        },
+
+        preview_label: { ko: "세션 미리보기", en: "Session preview" },
+        preview_q: {
+          ko: "“오늘, 마음은 어디쯤 와 있나요?”",
+          en: "“Where is your mind at today?”",
+        },
+        preview_1: {
+          ko: "감정 체크 & 기분 기록",
+          en: "Mood check & feeling log",
+        },
+        preview_2: { ko: "스트레스 완화", en: "Stress relief" },
+        preview_3: { ko: "수면·리듬 코칭", en: "Sleep & rhythm coaching" },
+        preview_4: {
+          ko: "관계/업무 긴장 이완",
+          en: "Ease relationship/work tension",
+        },
+        preview_tip: {
+          ko: "“가볍게 이야기하고, 편안하게 쉬세요. 내일의 걸음은 더 가벼워집니다”",
+          en: "“Talk lightly and rest gently. Tomorrow's steps will feel lighter”",
+        },
+
+        about_title: {
+          ko: "왜 호텔에서 대화를 하나요?",
+          en: "Why conversations in a hotel?",
+        },
+        about_desc: {
+          ko: "호텔은 일상에서 잠시 분리된 상태를 만드는 공간이며, 익숙한 흐름에서 한 걸음 물러날 때 사람은 자신의 상태를 더 분명하게 느낄 수 있습니다. 이동은 점점 빨라지고 효율적이지만, 그 과정에서 사람은 피로와 긴장, 때로는 고립을 느끼기도 합니다. Pause on the Way는 이러한 환경이 주는 힘에 주목해, 호텔 라운지와 카페에서 <strong>가벼운 대화</strong>를 나누며 사람과 사람이 잠시 마주 앉는 시간을 만듭니다.",
+          en: "A hotel is a place that creates a brief separation from everyday life. When you step back from familiar routines, you can perceive your inner state more clearly. As movement becomes faster and more efficient, people often experience fatigue, tension, and sometimes isolation. Pause on the Way draws on the quiet power of this setting, creating moments where people briefly sit face to face through a <strong>gentle conversation</strong> in a hotel lounge or café.",
+        },
+
+        about_b1_t: { ko: "여정 친화적", en: "Journey-friendly" },
+        about_b1_d: {
+          ko: "체크인-체크아웃 일정에 맞춘 유연한 스케줄링",
+          en: "Flexible scheduling that fits check-in and check-out",
+        },
+        about_b2_t: { ko: "신뢰 가능", en: "Trusted" },
+        about_b2_d: {
+          ko: "경력 검증된 케어러, 익명·비밀 보장",
+          en: "Verified carers. Anonymity and confidentiality by default",
+        },
+        about_b3_t: { ko: "공간의 힘", en: "Power of place" },
+        about_b3_d: {
+          ko: "라운지·카페 중 원하는 분위기를 선택",
+          en: "Choose the vibe you like — lounge or cafe",
+        },
+
+        features_title: { ko: "서비스", en: "Services" },
+        features_sub: {
+          ko: "가벼운 대화로, 내일의 발걸음을 가볍게",
+          en: "Light conversation that makes tomorrow’s steps feel lighter",
+        },
+        f1_t: { ko: "Mood Check", en: "Mood Check" },
+        f1_d: {
+          ko: "30초 감정 체크 & 세션 요약 제공",
+          en: "30-second mood check & session summary",
+        },
+        f2_t: { ko: "Breathing & Ease", en: "Breathing & Ease" },
+        f2_d: {
+          ko: "5분 호흡/이완 루틴으로 즉각적 안정",
+          en: "5-minute breathing/relaxation for instant calm",
+        },
+        f3_t: { ko: "Travel Coaching", en: "Travel Coaching" },
+        f3_d: {
+          ko: "수면·루틴·관계 스트레스 경량 코칭",
+          en: "Light coaching for sleep, routines, and relationships",
+        },
+        f4_t: { ko: "Cafe Talk", en: "Cafe Talk" },
+        f4_d: {
+          ko: "카페에서 부담 없이 나누는 스몰토크",
+          en: "Low-pressure small talk in the cafe",
+        },
+        f5_t: { ko: "Privacy First", en: "Privacy First" },
+        f5_d: {
+          ko: "익명 가능, 대화 메모 비공개 기본",
+          en: "Anonymous option. Notes are private by default",
+        },
+        f6_t: { ko: "Session Note", en: "Session Note" },
+        f6_d: {
+          ko: "요약 리포트로 내일의 나를 가볍게",
+          en: "Leave with a concise summary for next steps",
+        },
+
+        flow_title: { ko: "이용 방법", en: "How it works" },
+        flow_s1_l: { ko: "STEP 1", en: "STEP 1" },
+        flow_s1_t: { ko: "호텔/시간 선택", en: "Choose hotel & time" },
+        flow_s1_d: {
+          ko: "라운지·카페 중 원하는 장소 선택",
+          en: "Pick lounge or cafe as you like",
+        },
+        flow_s2_l: { ko: "STEP 2", en: "STEP 2" },
+        flow_s2_t: {
+          ko: "NAP Check-in",
+          en: "NAP Check-in",
+        },
+        flow_s2_d: {
+          ko: "이동과 일상 속 컨디션을 가볍게 정리",
+          en: "A brief check-in to organize your current state",
+        },
+
+        flow_s3_l: { ko: "STEP 3", en: "STEP 3" },
+        flow_s3_t: {
+          ko: "세션 진행",
+          en: "Session",
+        },
+        flow_s3_d: {
+          ko: "5분 NAP 브리핑, 45분 대화",
+          en: "5-minute NAP briefing, followed by 45 minutes of conversation",
+        },
+        flow_s4_l: { ko: "STEP 4", en: "STEP 4" },
+        flow_s4_t: { ko: "요약 & 다음 한 걸음", en: "Summary & next step" },
+        flow_s4_d: {
+          ko: "세션 요약과 작은 루틴 제안",
+          en: "Session summary and a small routine to try",
+        },
+
+        hotels_title: { ko: "호텔 제휴", en: "For Hotels" },
+        hotels_desc: {
+          ko: "Pause on the Way는 투숙 경험을 정서적 웰니스로 확장합니다. 라운지 팝업부터 카페, 라운지 프라이빗 세션까지, 호텔의 톤앤매너에 맞춘 모듈형 운영이 가능합니다.",
+          en: "Pause on the Way extends the stay into emotional wellness. From lounge pop-ups to private cafe/lounge sessions, we operate in modular formats that match your brand tone and manner.",
+        },
+        hotels_l1: {
+          ko: "라운지 팝업: 1–2인 케어 부스 / 4–8시간 운영",
+          en: "Lounge pop-up: 1–2 person conversation booth / 4–8 hours",
+        },
+        hotels_l2: {
+          ko: "카페, 라운지 프라이빗: 사전 예약제, 익명·비밀보장",
+          en: "Private cafe/lounge: reservation only, anonymous·confidential",
+        },
+        hotels_l3: {
+          ko: "월간 웰니스 이벤트: ‘Pause Night’ 토크 & 라이브",
+          en: "Monthly wellness event: “Pause Night” talk & live",
+        },
+        hotels_cta: { ko: "제휴 문의", en: "Partner with us" },
+
+        brand_label: { ko: "브랜드 문장", en: "Brand line" },
+        brand_copy: {
+          ko: "“호텔에서의 하루가 단순한 숙박이 아니라, 당신 마음의 쉼이 되도록.”",
+          en: "“Let a hotel night be more than a stay — let it be rest for your mind.”",
+        },
+
+        cta_title: {
+          ko: "지금, 여기, 나를 위한 시간",
+          en: "A moment for yourself, here and now.",
+        },
+        cta_sub: {
+          ko: "50분 세션 · 호텔 라운지/카페 중 선택 · 익명·비밀보장",
+          en: "50 min session · Lounge/Cafe option · Anonymous·Confidential",
+        },
+        cta_email: { ko: "이메일 문의", en: "Email us" },
+        cta_phone: { ko: "전화 문의", en: "Phone us" },
+
+        footer_tag: {
+          ko: "길 위의 쉼, 마음의 회복",
+          en: "Rest on the road. Recovery for the mind",
+        },
+        footer_all: {
+          ko: "All rights reserved.",
+          en: "All rights reserved.",
+        },
+        footer_biz: {
+          ko: [
+            "사업자등록번호 : 494-81-03292",
+            "통신판매업신고번호 : 2026-서울강서-0012",
+            "주식회사 메리굿",
+            "대표 : 이경원",
+            "전화 : 070-8080-4224",
+            "주소 : 서울특별시 강서구 마곡중앙6로 11 314-14호 (마곡동 보타닉파크타워3)",
+          ],
+          en: [
+            "Biz reg. no : 494-81-03292",
+            "E-commerce reg. no : 2026-Seoul-Gangseo-0012",
+            "Merrygood Co., Ltd",
+            "CEO : Kyoung-Won Lee",
+            "Phone : 070-8080-4224",
+            "Address : 314-14-ho 11 Magokjungang 6-ro Gangseo-gu Seoul 07801 Republic of Korea (Botanic Park Tower 3)",
+          ],
+        },
+        footer_refund: { ko: "취소·환불 정책", en: "Cancellation & Refund" },
+        footer_terms: { ko: "이용약관", en: "Terms of Service" },
+        footer_privacy: { ko: "개인정보처리방침", en: "Privacy Policy" },
+        city_note: {
+          ko: "* 도시의 일상 속에서도 잠시 멈출 수 있어요. 투숙 중인 호텔 라운지·카페뿐 아니라, 도심의 <strong>City Space(파트너 카페·라운지·코워킹 공간)</strong>에서도 정서 케어를 제공합니다.",
+          en: "* You can pause even in everyday city life. We offer emotional care not only in hotel lounges and cafés during your stay, but also in quiet, safe <strong>City Spaces (partner cafés, lounges, and coworking spaces)</strong>.",
+        },
+      };
+
+      const META = {
+        ko: {
+          title: "포즈 온 더 웨이 | 낯선 길 위에서도 멈추어 쉬다",
+          desc: "노마드·여행자·출장자를 위한 호텔 정서 케어 서비스. 투숙 중 편안한 라운지 또는 카페에서 검증된 케어러가 가벼운 대화로 마음의 여백을 만들어 드립니다.",
+        },
+        en: {
+          title: "Pause on the Way | Pause and rest, even on unfamiliar roads",
+          desc: "A hotel-based emotional care service for nomads, travelers and business guests. During your stay, meet a vetted carer for a light, supportive conversation in a comfortable lounge or café.",
+        },
+      };
+
+      function updateMeta(lang) {
+        const m = META[lang] || META.ko;
+        document.title = m.title;
+        const md = document.querySelector('meta[name="description"]');
+        if (md) md.setAttribute("content", m.desc);
+        document.documentElement.lang = lang;
+      }
+
+      function applyI18n(lang) {
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const key = el.getAttribute("data-i18n");
+          const pack = I18N[key];
+          if (!pack) return;
+
+          const value = pack[lang] || pack.ko;
+
+          const allowHtmlKeys = new Set([
+            "hero_title",
+            "hero_desc",
+            "preview_tip",
+            "about_desc",
+            "footer_biz",
+            "brand_copy",
+            "city_note",
+          ]);
+
+          if (key === "footer_biz") {
+            el.innerHTML = value
+              .map((item, idx) => `<span>${idx > 0 ? " | " : ""}${item}</span>`)
+              .join("");
+          } else if (allowHtmlKeys.has(key)) {
+            el.innerHTML = value;
+          } else {
+            el.textContent = value;
+          }
+
+          const t = document.getElementById("linkTerms");
+          const p = document.getElementById("linkPrivacy");
+          const r = document.getElementById("linkRefund");
+
+          if (t) t.href = `/terms/`;
+          if (p) p.href = `/privacy/`;
+          if (r) r.href = `/refund/`;
+        });
+
+        document.querySelectorAll("[data-i18n-aria]").forEach((el) => {
+          const key = el.getAttribute("data-i18n-aria");
+          const pack = I18N[key];
+          if (pack) el.setAttribute("aria-label", pack[lang] || pack.ko);
+        });
+
+        const menuBtn = document.getElementById("menuBtn");
+        if (menuBtn) menuBtn.textContent = lang === "en" ? "Menu" : "메뉴";
+
+        [
+          document.getElementById("btnKO"),
+          document.getElementById("btnEN"),
+          document.getElementById("btnKOM"),
+          document.getElementById("btnENM"),
+        ]
+          .filter(Boolean)
+          .forEach((btn) =>
+            btn.setAttribute(
+              "aria-pressed",
+              btn.dataset.lang === lang ? "true" : "false",
+            ),
+          );
+
+        updateMeta(lang);
+        localStorage.setItem("ptw-lang", lang);
+      }
+
+      function setLangFrom(pref) {
+        const lang = pref === "en" || pref === "ko" ? pref : "ko";
+        applyI18n(lang);
+      }
+
+      function getInitialLang() {
+        const saved = localStorage.getItem("ptw-lang");
+        if (saved) return saved;
+        return (navigator.language || "ko").startsWith("en") ? "en" : "ko";
+      }
+
+      function copyPhone(e) {
+        const lang = localStorage.getItem("ptw-lang") || "ko";
+        const phone = "070-8080-4224";
+
+        const message =
+          lang === "en"
+            ? "Phone number copied: " + phone
+            : "전화번호가 복사되었습니다: " + phone;
+
+        const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+        if (isMobile) {
+          return true;
+        } else {
+          e.preventDefault();
+          fallbackCopy(phone, message);
+          return false;
+        }
+      }
+
+      function tryOpen(url) {
+        window.location.href = url;
+      }
+
+      function fallbackCopy(text, message) {
+        navigator.clipboard.writeText(text).then(() => {
+          alert(message);
+        });
+      }
+
+      const header = document.getElementById("siteHeader");
+      const btn = document.getElementById("menuBtn");
+      const mm = document.getElementById("mobileMenu");
+      const overlay = document.getElementById("menuOverlay");
+
+      function closeMenu() {
+        if (!mm) return;
+        mm.classList.add("hidden");
+        if (overlay) overlay.classList.add("hidden");
+        if (btn) btn.setAttribute("aria-expanded", "false");
+      }
+      function openMenu() {
+        if (!mm) return;
+        mm.classList.remove("hidden");
+        if (overlay) overlay.classList.remove("hidden");
+        if (btn) btn.setAttribute("aria-expanded", "true");
+      }
+
+      if (btn) {
+        btn.addEventListener("click", () =>
+          mm.classList.contains("hidden") ? openMenu() : closeMenu(),
+        );
+      }
+      if (overlay) overlay.addEventListener("click", closeMenu);
+
+      function scrollToHash(hash) {
+        const el = document.querySelector(hash);
+        if (!el) return;
+        const offset = header ? header.offsetHeight + 8 : 0;
+        const y = el.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+
+      document.querySelectorAll('a[href^="#"]').forEach((a) => {
+        a.addEventListener("click", (e) => {
+          const hash = a.getAttribute("href");
+          if (hash && hash.length > 1) {
+            e.preventDefault();
+            scrollToHash(hash);
+            history.replaceState(null, null, location.pathname);
+            closeMenu();
+          }
+        });
+      });
+
+      window.addEventListener("scroll", closeMenu);
+      window.addEventListener("resize", closeMenu);
+
+      document.querySelectorAll("section[id]").forEach((sec) => {
+        sec.style.scrollMarginTop =
+          (header ? header.offsetHeight + 12 : 72) + "px";
+      });
+
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      ["btnKO", "btnEN", "btnKOM", "btnENM"].forEach((id) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.addEventListener("click", () => setLangFrom(el.dataset.lang));
+      });
+
+      setLangFrom(getInitialLang());
+
+      let lastScrollY = window.scrollY;
+
+      window.addEventListener("scroll", () => {
+        const currentScroll = window.scrollY;
+
+        if (currentScroll > lastScrollY && currentScroll > 80) {
+          header.style.transform = "translateY(-100%)";
+        } else {
+          header.style.transform = "translateY(0)";
+        }
+
+        lastScrollY = currentScroll;
+      });
+    </script>
+  </body>
+</html>
