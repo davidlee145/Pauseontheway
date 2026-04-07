@@ -36,11 +36,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       :root {
-        --ptw-bg: #faf8f5; /* warm beige */
-        --ptw-ink: #1f2937; /* slate-800 */
-        --ptw-accent: #9ca3af; /* gray-400 */
-        --ptw-primary: #1b365d; /* deep navy */
-        --ptw-gold: #c8a676; /* soft gold */
+        --ptw-bg: #faf8f5;
+        --ptw-ink: #1f2937; 
+        --ptw-accent: #9ca3af; 
+        --ptw-primary: #1b365d;
+        --ptw-gold: #c8a676; 
       }
       #siteHeader {
         transition: transform 0.3s ease;
@@ -121,6 +121,28 @@
           padding-left: 0.6rem;
           padding-right: 0.6rem;
         }
+      }
+      .social-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 9999px;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        background: rgba(255, 255, 255, 0.78);
+        color: var(--ptw-primary);
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease,
+          background 0.2s ease,
+          color 0.2s ease;
+      }
+      .social-link:hover {
+        transform: translateY(-1px);
+        background: var(--ptw-primary);
+        color: white;
+        box-shadow: 0 8px 20px rgba(27, 54, 93, 0.14);
       }
     </style>
   </head>
@@ -650,6 +672,34 @@
           <p class="text-sm text-gray-600 mt-1" data-i18n="footer_tag">
             길 위의 쉼, 마음의 회복.
           </p>
+          <div class="mt-4 flex items-center gap-3" aria-label="Social links">
+            <a
+              href="https://www.youtube.com/@pauseontheway"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-link"
+              aria-label="Pause on the Way YouTube"
+            >
+              <svg viewBox="0 0 24 24" class="h-5 w-5 fill-current">
+                <path
+                  d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.2 31.2 0 0 0 0 12a31.2 31.2 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.2 31.2 0 0 0 24 12a31.2 31.2 0 0 0-.5-5.8ZM9.6 15.7V8.3L16 12l-6.4 3.7Z"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://www.instagram.com/pauseontheway"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-link"
+              aria-label="Pause on the Way Instagram"
+            >
+              <svg viewBox="0 0 24 24" class="h-5 w-5 fill-current">
+                <path
+                  d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm0 1.8A4 4 0 0 0 3.8 7.8v8.4a4 4 0 0 0 4 4h8.4a4 4 0 0 0 4-4V7.8a4 4 0 0 0-4-4H7.8Zm8.9 1.5a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.8A3.2 3.2 0 1 0 12 15.2 3.2 3.2 0 0 0 12 8.8Z"
+                />
+              </svg>
+            </a>
+          </div>
         </div>
         <div
           class="justify-self-start md:justify-self-end text-sm text-gray-500 text-left md:text-right"
