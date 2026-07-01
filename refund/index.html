@@ -12,7 +12,6 @@
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-
       gtag("config", "G-LQP3VZB2V0");
     </script>
     <meta charset="UTF-8" />
@@ -28,9 +27,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       :root {
-        --ptw-bg: #faf8f5;
-        --ptw-ink: #1f2937;
-        --ptw-primary: #1b365d;
+        --ptw-bg: #fffcf7;
+        --ptw-ink: #171412;
+        --ptw-primary: #073b3a;
+        --ptw-muted: #6f665f;
       }
       body {
         background: var(--ptw-bg);
@@ -39,11 +39,22 @@
       .font-display {
         font-family: "Playfair Display", serif;
       }
+      .lang-toggle[aria-pressed="true"] {
+        background: var(--ptw-primary);
+        color: white;
+        border-color: transparent;
+      }
+      .policy-card {
+        background: rgba(255,255,255,.74);
+        border: 1px solid rgba(7,59,58,.10);
+        box-shadow: 0 18px 42px rgba(7,59,58,.08);
+      }
+
     </style>
   </head>
-  <body class="antialiased">
+  <body class="antialiased font-sans">
     <header
-      class="border-b border-black/5 bg-[rgba(250,248,245,.8)] backdrop-blur sticky top-0"
+      class="border-b border-black/5 bg-[rgba(255,252,247,.86)] backdrop-blur sticky top-0 z-50"
     >
       <div
         class="max-w-3xl mx-auto px-5 py-4 flex items-center justify-between"
@@ -55,19 +66,11 @@
         >
           Pause on the Way
         </a>
-        <div class="flex gap-2">
-          <button
-            id="btnKO"
-            class="px-3 py-1.5 rounded-full text-sm border"
-            type="button"
-          >
+        <div class="flex gap-2" aria-label="Language" role="group">
+          <button id="btnKO" class="lang-toggle px-3 py-1.5 rounded-full text-sm border" type="button" aria-pressed="true">
             KO
           </button>
-          <button
-            id="btnEN"
-            class="px-3 py-1.5 rounded-full text-sm border"
-            type="button"
-          >
+          <button id="btnEN" class="lang-toggle px-3 py-1.5 rounded-full text-sm border" type="button" aria-pressed="false">
             EN
           </button>
         </div>
@@ -79,8 +82,9 @@
 
       <article
         id="body"
-        class="mt-6 whitespace-pre-wrap text-[14px] leading-7 text-gray-800 bg-white/70 border border-black/5 rounded-2xl p-6"
+        class="policy-card mt-6 whitespace-pre-wrap text-[14px] leading-7 text-gray-800 rounded-2xl p-6"
       ></article>
+      <p class="mt-5 text-sm text-right" style="color: var(--ptw-muted)" id="effective"></p>
     </main>
 
     <footer class="border-t border-black/5">
@@ -92,83 +96,18 @@
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
 
-      const REFUND = {
-        ko: {
-          title: "취소·환불정책",
-          body: `[공통 안내]
-- Pause on the Way의 모든 세션은 사전 예약제로 운영되며, 예약 시점에 Carer와 공간이 함께 배정됩니다.
-- 변경/취소가 필요하신 경우 가능한 한 빠르게 요청해 주세요.
-
-[호텔 세션 (Hotel Lounge/Café)]
-- 세션 시작 24시간 전까지: 100% 환불
-- 세션 시작 24시간 이내: 환불 불가
-  (투숙 일정 및 Carer 스케줄이 사전에 확정·배정되므로, 24시간 이내에는 재배정이 어렵습니다.)
-- 노쇼(무단 미참석) 또는 지각으로 세션 진행이 어려운 경우: 환불 불가
-  (단, 현장 상황에 따라 남은 시간 내에서 세션은 진행될 수 있습니다.)
-
-[City Space 세션 (파트너 카페·라운지·코워킹 공간 등)]
-- 세션 시작 24시간 전까지: 100% 환불
-- 세션 시작 24시간 이내: 환불 불가
-  단, 7일 이내 1회에 한하여 일정 변경 가능(가능한 시간대에 한함)
-  (일정 변경은 City Space 세션에 한하며, 예약 확정 후 안내되는 방법으로 요청해 주세요.)
-- 노쇼(무단 미참석) 또는 지각으로 세션 진행이 어려운 경우: 환불 불가
-  (단, 현장 상황에 따라 남은 시간 내에서 세션은 진행될 수 있습니다.)
-
-[운영 사유로 진행이 불가한 경우]
-- 회사/파트너 공간/Carer의 사유로 세션 진행이 불가능한 경우: 100% 환불 또는 고객 동의 시 일정 변경
-
-[이용 유의사항]
-- 세션 중 아래 행위가 발생할 경우 세션은 즉시 중단되며 환불은 제공되지 않습니다.
-  · 욕설, 모욕, 위협 등 부적절한 언행
-  · 성적 발언·제안 또는 신체 접촉 시도
-  · 촬영 또는 녹음 요구·강요
-
-[환불 처리]
-- 카드 결제: 결제대행사(PG) 및 카드사 처리 일정에 따라 승인 취소/부분 취소로 처리됩니다(영업일 기준 소요).
-- 계좌 환불: 접수 후 영업일 기준 처리됩니다.
-
-본 방침은 게시일로부터 적용됩니다.
-`,
+      const POLICY = {
+        "ko": {
+                "title": "취소·환불정책",
+                "effective": "게시일: 2026년 6월 25일 · 시행일: 2026년 6월 25일",
+                "body": "[공통 안내]\n- 본 취소·환불정책은 Pause on the Way의 유료 50분 웨이메이트 세션에 적용됩니다.\n- 문의글 작성, 예약 가능 여부 확인 등 결제 전 단계에는 별도의 이용료가 부과되지 않습니다.\n- 모든 세션은 사전 예약제로 운영되며, 예약 확정 시 웨이메이트와 장소가 함께 배정됩니다.\n- 변경 또는 취소가 필요한 경우 가능한 한 빠르게 회사에 요청해 주세요.\n\n[취소 및 환불 기준]\n- 세션 시작 24시간 전까지 취소: 결제금액 100% 환불\n- 세션 시작 24시간 이내 취소: 환불 불가\n- 예약 시간 이후 취소 또는 노쇼: 환불 불가\n\n[일정 변경]\n- 세션 시작 24시간 전까지: 가능한 일정이 있는 경우 1회에 한하여 일정 변경 가능\n- 세션 시작 24시간 이내: 원칙적으로 일정 변경 불가\n- 회사, 웨이메이트 또는 제휴 공간 사정으로 기존 일정 진행이 어려운 경우: 고객 동의 하에 일정 변경 또는 100% 환불\n\n[지각 및 현장 진행]\n- 이용자가 늦게 도착한 경우 세션은 원래 예약된 종료 시간에 종료됩니다.\n- 지각으로 인해 이용 시간이 줄어든 경우 부분 환불은 제공되지 않습니다.\n- 예약 시작 후 15분 이상 연락 없이 나타나지 않는 경우 노쇼로 처리될 수 있습니다.\n- 현장 상황에 따라 남은 시간 내에서 세션이 진행될 수 있습니다.\n\n[중도 종료 및 환불 제한]\n아래 행위가 발생하는 경우 회사 또는 웨이메이트는 세션을 즉시 중단할 수 있으며, 이 경우 환불은 제공되지 않을 수 있습니다.\n- 욕설, 모욕, 위협, 폭력적 언행\n- 성적 발언, 성적 제안, 신체 접촉 시도\n- 웨이메이트의 개인 연락처 요구 또는 사적 만남 강요\n- 무단 촬영, 녹음, 녹화 또는 이를 강요하는 행위\n- 음주, 약물, 폭력적 행동 등으로 정상적인 세션 진행이 어려운 경우\n\n[운영 사유로 진행이 불가한 경우]\n- 회사, 웨이메이트 또는 제휴 공간의 사정으로 세션 진행이 불가능한 경우 고객에게 100% 환불 또는 일정 변경 중 선택할 수 있도록 안내합니다.\n- 천재지변, 감염병, 심각한 교통 장애, 공간 운영 중단 등 불가피한 사정이 발생한 경우 회사는 가능한 대체 일정 또는 환불 방법을 안내합니다.\n\n[환불 처리 방식]\n- 카드 결제: 결제대행사(PG) 및 카드사 처리 일정에 따라 승인 취소 또는 부분 취소로 처리됩니다.\n- 계좌이체 또는 기타 결제수단: 회사 확인 후 영업일 기준 순차 처리됩니다.\n- 결제수단, 카드사, 은행, PG사의 사정에 따라 실제 환불 완료까지 시간이 소요될 수 있습니다.\n\n[정책 변경]\n회사는 운영상 필요 또는 관계 법령 변경에 따라 본 정책을 변경할 수 있으며, 중요한 변경은 웹사이트 또는 서비스 채널을 통해 안내합니다.\n"
         },
-        en: {
-          title: "Cancellation & Refund Policy",
-          body: `[General Policy]
-- All Pause on the Way sessions are reservation-based. A Carer and venue are assigned in advance upon booking.
-- Please request any changes or cancellations as early as possible.
-
-[Hotel Sessions (Hotel Lounge/Café)]
-- Up to 24 hours before the session start time: 100% refund
-- Within 24 hours of the session start time: non-refundable
-  (Hotel schedules and Carer availability are confirmed in advance, making reassignment difficult within 24 hours.)
-- No-show or inability to proceed due to lateness: non-refundable
-  (The session may still proceed within the remaining time, depending on on-site circumstances.)
-
-[City Space Sessions (Partner cafés, lounges, coworking spaces)]
-- Up to 24 hours before the session start time: 100% refund
-- Within 24 hours of the session start time: non-refundable
-  However, one reschedule within 7 days is allowed (subject to availability).
-  (Rescheduling applies only to City Space sessions. Please follow the instructions provided after booking.)
-- No-show or inability to proceed due to lateness: non-refundable
-  (The session may still proceed within the remaining time, depending on on-site circumstances.)
-
-[Operational Cancellations]
-- If a session cannot proceed due to reasons attributable to the Company, the partner venue, or the Carer:
-  a full refund will be issued, or the session may be rescheduled with the user’s consent.
-
-[Important Notice]
-- If any of the following behaviors occur during the session, the session will be terminated immediately and no refund will be issued:
-  · Verbal abuse, insults, or threats
-  · Sexual remarks, propositions, or attempts at physical contact
-  · Requests or coercion to record (audio/video) the session
-
-[Processing]
-- Card payments are refunded according to the payment processor (PG) and card issuer timelines (business days may apply).
-- Bank transfers are processed within business days after confirmation.
-
-Effective date: upon posting.
-`,
-        },
-      };
+        "en": {
+                "title": "Cancellation & Refund Policy",
+                "effective": "Posted: June 25, 2026 · Effective: June 25, 2026",
+                "body": "[General]\n- This Cancellation & Refund Policy applies to paid 50-minute Pause on the Way Waymate sessions.\n- Inquiry submission and availability checks before payment are not subject to separate fees.\n- All sessions are reservation-based. Once confirmed, a Waymate and venue are assigned in advance.\n- Please request any changes or cancellations as early as possible.\n\n[Cancellation and Refund]\n- Cancellation up to 24 hours before the session start time: 100% refund\n- Cancellation within 24 hours of the session start time: non-refundable\n- Cancellation after the scheduled start time or no-show: non-refundable\n\n[Rescheduling]\n- Up to 24 hours before the session start time: one reschedule may be allowed, subject to availability\n- Within 24 hours of the session start time: rescheduling is generally not available\n- If the original schedule cannot proceed due to reasons attributable to the Company, the Waymate, or the partner venue: the User may choose either a reschedule or a 100% refund\n\n[Lateness and On-site Operation]\n- If a User arrives late, the session will still end at the originally scheduled end time.\n- No partial refund is provided for reduced session time due to lateness.\n- If a User does not appear or contact the Company for more than 15 minutes after the scheduled start time, the booking may be treated as a no-show.\n- Depending on on-site circumstances, the session may still proceed within the remaining time.\n\n[Early Termination and Refund Restrictions]\nIf any of the following conduct occurs, the Company or the Waymate may immediately terminate the session, and no refund may be issued:\n- Verbal abuse, insults, threats, or violent language\n- Sexual remarks, sexual propositions, or attempts at physical contact\n- Requests for a Waymate’s private contact details or coercion for private meetings\n- Unauthorized filming, recording, or coercion to do so\n- Inability to proceed normally due to intoxication, drugs, violence, or disruptive behavior\n\n[Operational Cancellations]\n- If a session cannot proceed due to reasons attributable to the Company, the Waymate, or the partner venue, the User will be offered either a 100% refund or a reschedule.\n- If unavoidable circumstances occur, including natural disasters, infectious disease situations, severe transportation disruption, or venue suspension, the Company will provide guidance on available alternatives or refund methods.\n\n[Refund Processing]\n- Card payments are processed as full or partial cancellations according to the timelines of the payment processor and card issuer.\n- Bank transfers or other payment methods are processed sequentially after Company confirmation, on business days.\n- Actual refund completion may take time depending on the payment method, card issuer, bank, or payment processor.\n\n[Policy Changes]\nThe Company may amend this Policy due to operational needs or changes in applicable laws. Material changes will be announced through the website or service channels.\n"
+        }
+};
 
       function getInitialLang() {
         const urlLang = new URLSearchParams(location.search).get("lang");
@@ -181,17 +120,20 @@ Effective date: upon posting.
       function paintButtons(lang) {
         const ko = document.getElementById("btnKO");
         const en = document.getElementById("btnEN");
-        const on = "#1b365d";
+        const on = "#073b3a";
+
+        ko.setAttribute("aria-pressed", lang === "ko" ? "true" : "false");
+        en.setAttribute("aria-pressed", lang === "en" ? "true" : "false");
 
         ko.style.background = lang === "ko" ? on : "transparent";
-        ko.style.color = lang === "ko" ? "white" : "#111827";
+        ko.style.color = lang === "ko" ? "white" : "#171412";
         ko.style.borderColor =
-          lang === "ko" ? "transparent" : "rgba(0,0,0,.12)";
+          lang === "ko" ? "transparent" : "rgba(23,20,18,.12)";
 
         en.style.background = lang === "en" ? on : "transparent";
-        en.style.color = lang === "en" ? "white" : "#111827";
+        en.style.color = lang === "en" ? "white" : "#171412";
         en.style.borderColor =
-          lang === "en" ? "transparent" : "rgba(0,0,0,.12)";
+          lang === "en" ? "transparent" : "rgba(23,20,18,.12)";
       }
 
       function setLang(lang) {
@@ -200,25 +142,23 @@ Effective date: upon posting.
         document.documentElement.lang = L;
 
         const titles = {
-          ko: "취소·환불정책 | Pause on the Way",
-          en: "Cancellation & Refund Policy | Pause on the Way",
-        };
+          "ko": "취소·환불정책 | Pause on the Way",
+          "en": "Cancellation & Refund Policy | Pause on the Way"
+};
         document.title = titles[L];
 
         const descriptions = {
-          ko: "Pause on the Way 취소·환불정책 페이지",
-          en: "Pause on the Way Cancellation & Refund Policy page",
-        };
-        let metaDesc = document.querySelector('meta[name="description"]');
+          "ko": "Pause on the Way 취소·환불정책",
+          "en": "Pause on the Way Cancellation & Refund Policy"
+};
+        const metaDesc = document.querySelector('meta[name="description"]');
         if (metaDesc) {
           metaDesc.setAttribute("content", descriptions[L]);
         }
-         document
-          .querySelector('meta[name="description"]')
-          .setAttribute("content", descriptions[L]);
 
-        document.getElementById("title").textContent = REFUND[L].title;
-        document.getElementById("body").textContent = REFUND[L].body;
+        document.getElementById("title").textContent = POLICY[L].title;
+        document.getElementById("effective").textContent = POLICY[L].effective;
+        document.getElementById("body").textContent = POLICY[L].body;
 
         paintButtons(L);
 

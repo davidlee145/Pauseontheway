@@ -12,7 +12,6 @@
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-
       gtag("config", "G-LQP3VZB2V0");
     </script>
     <meta charset="UTF-8" />
@@ -28,9 +27,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       :root {
-        --ptw-bg: #faf8f5;
-        --ptw-ink: #1f2937;
-        --ptw-primary: #1b365d;
+        --ptw-bg: #fffcf7;
+        --ptw-ink: #171412;
+        --ptw-primary: #073b3a;
+        --ptw-muted: #6f665f;
       }
       body {
         background: var(--ptw-bg);
@@ -39,11 +39,22 @@
       .font-display {
         font-family: "Playfair Display", serif;
       }
+      .lang-toggle[aria-pressed="true"] {
+        background: var(--ptw-primary);
+        color: white;
+        border-color: transparent;
+      }
+      .policy-card {
+        background: rgba(255,255,255,.74);
+        border: 1px solid rgba(7,59,58,.10);
+        box-shadow: 0 18px 42px rgba(7,59,58,.08);
+      }
+
     </style>
   </head>
-  <body class="antialiased">
+  <body class="antialiased font-sans">
     <header
-      class="border-b border-black/5 bg-[rgba(250,248,245,.8)] backdrop-blur sticky top-0"
+      class="border-b border-black/5 bg-[rgba(255,252,247,.86)] backdrop-blur sticky top-0 z-50"
     >
       <div
         class="max-w-3xl mx-auto px-5 py-4 flex items-center justify-between"
@@ -55,11 +66,11 @@
         >
           Pause on the Way
         </a>
-        <div class="flex gap-2">
-          <button id="btnKO" class="px-3 py-1.5 rounded-full text-sm border">
+        <div class="flex gap-2" aria-label="Language" role="group">
+          <button id="btnKO" class="lang-toggle px-3 py-1.5 rounded-full text-sm border" type="button" aria-pressed="true">
             KO
           </button>
-          <button id="btnEN" class="px-3 py-1.5 rounded-full text-sm border">
+          <button id="btnEN" class="lang-toggle px-3 py-1.5 rounded-full text-sm border" type="button" aria-pressed="false">
             EN
           </button>
         </div>
@@ -68,12 +79,12 @@
 
     <main class="max-w-3xl mx-auto px-5 py-10">
       <h1 class="text-2xl font-semibold" id="title"></h1>
-      <p class="mt-2 text-sm text-gray-600" id="effective"></p>
 
       <article
         id="body"
-        class="mt-6 whitespace-pre-wrap text-[14px] leading-7 text-gray-800 bg-white/70 border border-black/5 rounded-2xl p-6"
+        class="policy-card mt-6 whitespace-pre-wrap text-[14px] leading-7 text-gray-800 rounded-2xl p-6"
       ></article>
+      <p class="mt-5 text-sm text-right" style="color: var(--ptw-muted)" id="effective"></p>
     </main>
 
     <footer class="border-t border-black/5">
@@ -86,98 +97,17 @@
       document.getElementById("year").textContent = new Date().getFullYear();
 
       const TERMS = {
-        ko: {
-          title: "이용약관",
-          body: `제1조(목적)
-본 약관은 주식회사 메리굿(이하 “회사”)이 제공하는 Pause on the Way 서비스(이하 “서비스”)의 이용과 관련하여, 회사와 이용자 간의 권리·의무 및 책임사항을 규정함을 목적으로 합니다.
-
-제2조(서비스 개요)
-1) 서비스는 호텔 라운지 또는 카페, 그리고 회사와 제휴한 City Space(파트너 카페·라운지·코워킹 공간 등)에서 진행되는 정서 케어 세션에 대한 예약, 결제 및 안내를 포함합니다.
-2) 본 세션은 의료행위가 아닌 심리·정서 지원(라이트 케어) 성격의 서비스로, 정신건강에 대한 진단, 치료 또는 처방을 제공하지 않습니다.
-
-제3조(예약 및 결제)
-1) 이용자는 회사가 제공하는 채널(웹, 설문 폼 등)을 통해 예약 신청 및 결제를 진행합니다.
-2) 회사는 예약 확정 및 변경·취소와 관련된 안내를 제공합니다.
-3) 취소·환불 기준 및 기타 세부 사항은 별도로 고지된 취소·환불 정책에 따릅니다.
-
-제4조(이용자 유의사항 및 금지행위)
-1) 이용자는 정확한 정보로 예약해야 하며, 허위 또는 부정 이용이 확인될 경우 서비스 이용이 제한될 수 있습니다.
-2) 세션 중 다음 각 호의 행위가 발생할 경우, 회사 또는 Carer는 세션을 즉시 중단할 수 있으며 환불은 제공되지 않습니다.
-- 욕설, 모욕, 위협 등 부적절한 언행
-- 성적 발언·제안 또는 신체 접촉 시도
-- 촬영 또는 녹음을 요구하거나 이를 강요하는 행위
-
-제5조(비밀유지 및 안전 예외)
-1) Carer는 세션 중 이루어진 대화 내용을 외부에 공유하지 않습니다.
-2) 다만, 자해 또는 타해의 위험 등 긴급한 안전 문제가 감지될 경우,
-이용자 및 타인의 안전 확보를 위해 외부 기관에 도움을 요청할 수 있습니다.
-
-제6조(개인정보)
-개인정보는 세션 매칭 및 서비스 안내 목적 외에는 사용되지 않으며,
-그 처리에 관한 사항은 개인정보처리방침에 따릅니다.
-
-제7조(면책)
-1) 회사는 천재지변 등 불가항력적인 사유로 인한 서비스 제공 불가에 대하여 책임을 지지 않습니다.
-2) 본 서비스는 치료 목적의 서비스가 아니며, 개인의 상태 개선이나 특정 결과를 보장하지 않습니다.
-
-제8조(약관의 변경)
-회사는 관련 법령을 위반하지 않는 범위 내에서 본 약관을 변경할 수 있으며,
-변경 시 그 내용을 사전에 고지합니다.
-
-제9조(준거법 및 관할)
-본 약관은 대한민국 법령을 준거법으로 하며,
-서비스 이용과 관련하여 발생하는 분쟁에 대해서는 회사의 본점 소재지를 관할하는 법원을 제1심 관할 법원으로 합니다.
-
-부칙
-본 약관은 게시일로부터 적용됩니다.
-`,
+        "ko": {
+                "title": "이용약관",
+                "effective": "게시일: 2026년 6월 25일 · 시행일: 2026년 6월 25일",
+                "body": "제1조(목적)\n본 약관은 주식회사 메리굿(이하 “회사”)이 제공하는 Pause on the Way 서비스(이하 “서비스”)의 이용과 관련하여 회사와 이용자 간의 권리, 의무 및 책임사항을 정함을 목적으로 합니다.\n\n제2조(정의)\n1. “서비스”란 회사가 서울과 제주에서 제공하는 사람 대화 동행 서비스로서, 50분 웨이메이트 세션에 대한 문의, 예약, 매칭, 안내, 진행 및 결제 관련 절차를 말합니다.\n2. “이용자”란 회사가 제공하는 웹사이트, 문의 폼, 설문 폼, 유선·이메일 등 채널을 통해 서비스를 문의하거나 이용하는 사람을 말합니다.\n3. “웨이메이트”란 이용자와 공개적이고 조용한 공간에서 마주 앉아 50분 동안 대화 동행을 제공하는 사람을 말합니다.\n4. “세션”이란 이용자와 웨이메이트가 사전 예약된 시간과 장소에서 진행하는 50분 대화 동행 시간을 말합니다.\n\n제3조(서비스의 성격)\n1. 서비스는 의료행위, 심리치료, 정신건강 상담, 진단, 처방, 코칭 또는 문제 해결을 제공하는 서비스가 아닙니다.\n2. 웨이메이트는 상담사, 치료사, 의사, 코치 또는 보호자가 아니며, 이용자의 이야기를 판단하거나 진단하지 않습니다.\n3. 이용자에게 자해·타해 위험, 정신건강 위기, 범죄 피해, 긴급 구조가 필요한 상황이 있는 경우에는 112, 119, 의료기관, 전문 상담기관 또는 지역 응급지원기관에 즉시 도움을 요청해야 합니다.\n\n제4조(서비스 이용 및 예약)\n1. 이용자는 회사가 제공하는 채널을 통해 문의, 예약 신청 및 결제를 진행할 수 있습니다.\n2. 회사는 예약 가능 지역, 일정, 장소, 웨이메이트 매칭 가능 여부, 세션 진행 방식 및 변경·취소 기준을 안내합니다.\n3. 세션은 사전 예약제로 운영되며, 예약 확정 후 이용자에게 세션 장소와 준비사항이 안내됩니다.\n4. 서비스 제공 지역은 운영 상황에 따라 변경될 수 있으며, 변경 시 웹사이트 또는 서비스 채널을 통해 안내합니다.\n\n제5조(결제, 변경 및 취소)\n1. 유료 세션의 결제, 변경, 취소 및 환불은 회사가 별도로 게시한 취소·환불정책에 따릅니다.\n2. 문의글 작성, 예약 가능 여부 확인 등 결제 전 단계는 무료로 제공될 수 있습니다.\n3. 예약 확정 후 이용자의 사정으로 일정 변경 또는 취소가 필요한 경우, 이용자는 가능한 한 빠르게 회사에 알려야 합니다.\n\n제6조(이용자 의무 및 금지행위)\n1. 이용자는 문의, 예약, 결제 및 세션 진행 과정에서 정확한 정보를 제공해야 합니다.\n2. 이용자는 세션 장소의 이용 규칙, 회사의 안내사항, 웨이메이트의 안전 관련 안내를 준수해야 합니다.\n3. 이용자는 다음 행위를 해서는 안 됩니다.\n- 욕설, 모욕, 위협, 폭력적 언행 또는 공포감을 유발하는 행위\n- 성적 발언, 성적 제안, 신체 접촉 시도 또는 사적 만남 강요\n- 웨이메이트의 개인 연락처 요구, 사적 관계 형성 강요 또는 서비스 범위를 벗어난 요청\n- 세션의 무단 촬영, 녹음, 녹화, 공개 또는 공유\n- 음주, 약물, 폭력적 행동, 심각한 지각 등으로 정상적인 세션 진행을 방해하는 행위\n- 허위 예약, 타인 명의 이용, 결제 부정 사용 등 부정 이용 행위\n4. 위 금지행위가 발생하는 경우 회사 또는 웨이메이트는 세션을 즉시 중단할 수 있으며, 환불이 제한될 수 있습니다.\n\n제7조(비밀유지 및 안전 예외)\n1. 회사와 웨이메이트는 세션 운영 과정에서 알게 된 이용자의 이야기를 서비스 운영 목적 외에 부당하게 외부에 공유하지 않습니다.\n2. 다만, 자해 또는 타해 위험, 폭력, 범죄, 실종, 응급상황 등 긴급한 안전 문제가 감지되는 경우, 이용자 및 타인의 안전 확보를 위해 필요한 최소한의 정보를 외부 기관 또는 관계자에게 제공하거나 도움을 요청할 수 있습니다.\n\n제8조(개인정보)\n회사는 문의, 예약, 매칭, 세션 안내, 결제, 고객 응대 및 안전한 서비스 운영을 위해 필요한 범위 내에서 개인정보를 처리하며, 구체적인 사항은 개인정보처리방침에 따릅니다.\n\n제9조(서비스 중단 및 제한)\n1. 회사는 운영상 필요, 제휴 공간 사정, 웨이메이트 사정, 천재지변, 감염병, 교통·통신 장애 등으로 서비스의 전부 또는 일부를 변경하거나 중단할 수 있습니다.\n2. 이용자가 본 약관 또는 회사의 안내사항을 위반한 경우 회사는 서비스 이용을 제한할 수 있습니다.\n\n제10조(면책)\n1. 회사는 불가항력 또는 이용자의 귀책사유로 인해 발생한 서비스 이용 장애에 대해 책임을 지지 않습니다.\n2. 서비스는 특정한 감정 상태 개선, 관계 회복, 건강 개선, 업무 성과 또는 삶의 결과를 보장하지 않습니다.\n3. 이용자가 세션 이후 웨이메이트와 회사의 공식 채널을 벗어나 개별적으로 연락하거나 만나는 과정에서 발생한 문제에 대해 회사는 책임을 지지 않습니다.\n\n제11조(약관의 변경)\n회사는 관련 법령을 위반하지 않는 범위에서 본 약관을 변경할 수 있으며, 중요한 변경이 있는 경우 웹사이트 또는 서비스 채널을 통해 사전에 고지합니다.\n\n제12조(준거법 및 관할)\n본 약관은 대한민국 법령을 준거법으로 하며, 서비스와 관련하여 발생하는 분쟁에 대해서는 민사소송법 등 관계 법령에 따른 관할 법원을 제1심 관할 법원으로 합니다.\n"
         },
-        en: {
-          title: "Terms of Service",
-          body: `Article 1 (Purpose)
-These Terms of Service set out the rights, obligations, and responsibilities between Merrygood Co., Ltd. (“Company”) and users in connection with the use of the “Pause on the Way” service (“Service”).
-
-Article 2 (Service Overview)
-1) The Service includes booking, payment, and guidance for emotional care sessions conducted at hotel lounges or cafés, as well as City Spaces (partner cafés, lounges, coworking spaces, etc.).
-2) The sessions are non-medical in nature and are intended to provide psychological and emotional support (“light care”). The Service does not provide any diagnosis, treatment, or prescription related to mental health.
-
-Article 3 (Booking and Payment)
-1) Users apply for bookings and complete payments through channels provided by the Company (including websites or survey forms).
-2) The Company provides confirmation and guidance regarding booking confirmation, changes, and cancellations.
-3) Cancellation and refund rules are governed by the separate Cancellation & Refund Policy posted by the Company.
-
-Article 4 (User Responsibilities and Prohibited Conduct)
-1) Users must provide accurate information when making a booking. If false or fraudulent information is provided, the Company may restrict the use of the Service.
-2) If any of the following conduct occurs during a session, the Company or the Carer may immediately terminate the session, and no refund will be issued:
-- Verbal abuse, insults, or threats
-- Sexual remarks, propositions, or attempts at physical contact
-- Requests or coercion to record or audio/video capture the session
-
-Article 5 (Confidentiality and Safety Exception)
-1) Carers do not share the content of session conversations with third parties.
-2) However, if there is a reasonable concern of imminent self-harm or harm to others,
-external assistance may be contacted to ensure the safety of the user or others.
-
-Article 6 (Personal Data)
-Personal data is used solely for session matching and service communication.
-Details regarding the processing of personal data are governed by the Privacy Policy.
-
-Article 7 (Disclaimer)
-1) The Company shall not be liable for any failure to provide the Service due to force majeure events.
-2) The Service is not intended as medical treatment and does not guarantee any particular outcome or improvement.
-
-Article 8 (Amendments)
-The Company may amend these Terms within the limits permitted by applicable laws and will provide notice of material changes.
-
-Article 9 (Governing Law and Jurisdiction)
-These Terms are governed by the laws of the Republic of Korea.
-Any disputes arising out of or in connection with the Service shall be submitted to the court having jurisdiction over the Company’s principal place of business as the court of first instance.
-
-Supplementary Provision
-These Terms shall take effect as of the date of posting.
-`,
-        },
-      };
+        "en": {
+                "title": "Terms of Service",
+                "effective": "Posted: June 25, 2026 · Effective: June 25, 2026",
+                "body": "Article 1 (Purpose)\nThese Terms of Service set out the rights, obligations, and responsibilities between Merrygood Co., Ltd. (“Company”) and users in connection with the use of Pause on the Way (“Service”).\n\nArticle 2 (Definitions)\n1. “Service” means the human conversation companion service provided by the Company in Seoul and Jeju, including inquiries, bookings, matching, guidance, session operation, and payment-related procedures for 50-minute Waymate sessions.\n2. “User” means a person who inquires about or uses the Service through the Company’s website, inquiry forms, survey forms, phone, email, or other channels.\n3. “Waymate” means a person who provides conversation companionship to a User for 50 minutes in a public and calm space.\n4. “Session” means a 50-minute conversation companion experience between a User and a Waymate at a pre-booked time and place.\n\nArticle 3 (Nature of the Service)\n1. The Service does not provide medical care, psychotherapy, mental health counseling, diagnosis, prescription, coaching, or problem-solving services.\n2. A Waymate is not a counselor, therapist, doctor, coach, or guardian and does not judge or diagnose a User’s story.\n3. If a User faces a risk of self-harm or harm to others, a mental health crisis, a crime-related issue, or an emergency, the User should immediately seek assistance from emergency services, medical institutions, professional counseling organizations, or local crisis resources.\n\nArticle 4 (Use of Service and Bookings)\n1. Users may make inquiries, booking requests, and payments through channels provided by the Company.\n2. The Company provides guidance regarding available service areas, schedules, venues, Waymate matching availability, session procedures, and change/cancellation rules.\n3. Sessions are operated on a reservation-only basis. After confirmation, Users receive venue and preparation guidance.\n4. Service areas may change depending on operational circumstances, and changes will be announced through the website or service channels.\n\nArticle 5 (Payment, Changes, and Cancellation)\n1. Payment, change, cancellation, and refund for paid sessions are governed by the Company’s separate Cancellation & Refund Policy.\n2. Inquiry submission and availability checks before payment may be provided free of charge.\n3. If a User needs to change or cancel a confirmed booking, the User should notify the Company as early as possible.\n\nArticle 6 (User Responsibilities and Prohibited Conduct)\n1. Users must provide accurate information during inquiries, bookings, payments, and sessions.\n2. Users must follow venue rules, Company guidance, and Waymate safety-related instructions.\n3. Users must not engage in the following conduct:\n- Verbal abuse, insults, threats, violent language, or conduct that causes fear\n- Sexual remarks, sexual propositions, attempts at physical contact, or coercion for private meetings\n- Requests for a Waymate’s private contact details, coercion into a private relationship, or requests outside the Service scope\n- Unauthorized filming, recording, capturing, publishing, or sharing of sessions\n- Disruption of normal session operation due to intoxication, drugs, violence, or significant lateness\n- Fraudulent bookings, use of another person’s identity, or payment misuse\n4. If prohibited conduct occurs, the Company or the Waymate may immediately terminate the session, and refunds may be restricted.\n\nArticle 7 (Confidentiality and Safety Exception)\n1. The Company and Waymates do not improperly share a User’s session content outside the purpose of operating the Service.\n2. However, if there is an urgent safety concern such as risk of self-harm or harm to others, violence, crime, disappearance, or emergency, the Company may provide the minimum necessary information to external agencies or relevant parties or request assistance to protect the safety of the User or others.\n\nArticle 8 (Personal Data)\nThe Company processes personal data only to the extent necessary for inquiries, bookings, matching, session guidance, payment, customer support, and safe operation. Details are provided in the Privacy Policy.\n\nArticle 9 (Service Suspension and Restrictions)\n1. The Company may change or suspend all or part of the Service due to operational needs, partner venue circumstances, Waymate availability, natural disasters, infectious disease situations, traffic or communication disruptions, or other reasons.\n2. If a User violates these Terms or Company guidance, the Company may restrict the User’s access to the Service.\n\nArticle 10 (Disclaimer)\n1. The Company is not liable for service interruptions caused by force majeure events or reasons attributable to the User.\n2. The Service does not guarantee any specific improvement in emotional state, relationships, health, work performance, or life outcomes.\n3. The Company is not responsible for issues arising from private contact or meetings between a User and a Waymate outside the Company’s official channels after a session.\n\nArticle 11 (Amendments)\nThe Company may amend these Terms within the limits permitted by applicable laws. Material changes will be announced in advance through the website or service channels.\n\nArticle 12 (Governing Law and Jurisdiction)\nThese Terms are governed by the laws of the Republic of Korea. Disputes arising from or related to the Service shall be submitted to the competent court under applicable laws, including the Korean Civil Procedure Act.\n"
+        }
+};
 
       function getInitialLang() {
         const urlLang = new URLSearchParams(location.search).get("lang");
@@ -190,17 +120,20 @@ These Terms shall take effect as of the date of posting.
       function paintButtons(lang) {
         const ko = document.getElementById("btnKO");
         const en = document.getElementById("btnEN");
-        const on = "#1b365d";
+        const on = "#073b3a";
+
+        ko.setAttribute("aria-pressed", lang === "ko" ? "true" : "false");
+        en.setAttribute("aria-pressed", lang === "en" ? "true" : "false");
 
         ko.style.background = lang === "ko" ? on : "transparent";
-        ko.style.color = lang === "ko" ? "white" : "#111827";
+        ko.style.color = lang === "ko" ? "white" : "#171412";
         ko.style.borderColor =
-          lang === "ko" ? "transparent" : "rgba(0,0,0,.12)";
+          lang === "ko" ? "transparent" : "rgba(23,20,18,.12)";
 
         en.style.background = lang === "en" ? on : "transparent";
-        en.style.color = lang === "en" ? "white" : "#111827";
+        en.style.color = lang === "en" ? "white" : "#171412";
         en.style.borderColor =
-          lang === "en" ? "transparent" : "rgba(0,0,0,.12)";
+          lang === "en" ? "transparent" : "rgba(23,20,18,.12)";
       }
 
       function setLang(lang) {
@@ -209,24 +142,22 @@ These Terms shall take effect as of the date of posting.
         document.documentElement.lang = L;
 
         const titles = {
-          ko: "이용약관 | Pause on the Way",
-          en: "Terms of Service | Pause on the Way",
-        };
+          "ko": "이용약관 | Pause on the Way",
+          "en": "Terms of Service | Pause on the Way"
+};
         document.title = titles[L];
 
         const descriptions = {
-          ko: "Pause on the Way 서비스 이용약관 페이지",
-          en: "Pause on the Way Terms of Service page",
-        };
-        let metaDesc = document.querySelector('meta[name="description"]');
+          "ko": "Pause on the Way 이용약관",
+          "en": "Pause on the Way Terms of Service"
+};
+        const metaDesc = document.querySelector('meta[name="description"]');
         if (metaDesc) {
           metaDesc.setAttribute("content", descriptions[L]);
         }
-        document
-          .querySelector('meta[name="description"]')
-          .setAttribute("content", descriptions[L]);
 
         document.getElementById("title").textContent = TERMS[L].title;
+        document.getElementById("effective").textContent = TERMS[L].effective;
         document.getElementById("body").textContent = TERMS[L].body;
 
         paintButtons(L);

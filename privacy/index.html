@@ -12,7 +12,6 @@
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-
       gtag("config", "G-LQP3VZB2V0");
     </script>
     <meta charset="UTF-8" />
@@ -28,9 +27,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       :root {
-        --ptw-bg: #faf8f5;
-        --ptw-ink: #1f2937;
-        --ptw-primary: #1b365d;
+        --ptw-bg: #fffcf7;
+        --ptw-ink: #171412;
+        --ptw-primary: #073b3a;
+        --ptw-muted: #6f665f;
       }
       body {
         background: var(--ptw-bg);
@@ -39,11 +39,22 @@
       .font-display {
         font-family: "Playfair Display", serif;
       }
+      .lang-toggle[aria-pressed="true"] {
+        background: var(--ptw-primary);
+        color: white;
+        border-color: transparent;
+      }
+      .policy-card {
+        background: rgba(255,255,255,.74);
+        border: 1px solid rgba(7,59,58,.10);
+        box-shadow: 0 18px 42px rgba(7,59,58,.08);
+      }
+
     </style>
   </head>
-  <body class="antialiased">
+  <body class="antialiased font-sans">
     <header
-      class="border-b border-black/5 bg-[rgba(250,248,245,.8)] backdrop-blur sticky top-0"
+      class="border-b border-black/5 bg-[rgba(255,252,247,.86)] backdrop-blur sticky top-0 z-50"
     >
       <div
         class="max-w-3xl mx-auto px-5 py-4 flex items-center justify-between"
@@ -55,19 +66,11 @@
         >
           Pause on the Way
         </a>
-        <div class="flex gap-2">
-          <button
-            id="btnKO"
-            class="px-3 py-1.5 rounded-full text-sm border"
-            type="button"
-          >
+        <div class="flex gap-2" aria-label="Language" role="group">
+          <button id="btnKO" class="lang-toggle px-3 py-1.5 rounded-full text-sm border" type="button" aria-pressed="true">
             KO
           </button>
-          <button
-            id="btnEN"
-            class="px-3 py-1.5 rounded-full text-sm border"
-            type="button"
-          >
+          <button id="btnEN" class="lang-toggle px-3 py-1.5 rounded-full text-sm border" type="button" aria-pressed="false">
             EN
           </button>
         </div>
@@ -79,8 +82,9 @@
 
       <article
         id="body"
-        class="mt-6 whitespace-pre-wrap text-[14px] leading-7 text-gray-800 bg-white/70 border border-black/5 rounded-2xl p-6"
+        class="policy-card mt-6 whitespace-pre-wrap text-[14px] leading-7 text-gray-800 rounded-2xl p-6"
       ></article>
+      <p class="mt-5 text-sm text-right" style="color: var(--ptw-muted)" id="effective"></p>
     </main>
 
     <footer class="border-t border-black/5">
@@ -92,140 +96,18 @@
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
 
-      const PRIVACY = {
-        ko: {
-          title: "개인정보처리방침",
-          body: `1. 수집하는 개인정보 항목
-회사는 서비스 제공 및 안전한 세션 운영을 위해 다음과 같은 개인정보를 수집할 수 있습니다.
-
-- 예약 및 기본 정보
-  이름(또는 닉네임), 연령대(예: 30대, 40대), 성별(선택), 연락처(휴대전화/이메일)
-
-- 장소 및 일정 정보
-  이용 장소(호텔 라운지/카페 또는 City Space), 희망 날짜 및 시간, 예약 내역
-
-- 세션 매칭 및 운영 정보
-  선호하는 Carer 성별(선택),
-  세션에서 나누고 싶은 주제(객관식),
-  간단한 컨디션 체크 항목(선택)
-
-- 결제 관련 정보
-  결제 승인/취소/환불 내역, 거래 식별 정보
-  (카드번호 등 민감한 결제 정보는 결제대행사(PG사)가 직접 처리하며,
-  회사는 이를 저장하거나 보관하지 않습니다.)
-
-- 약관 동의 및 문의 기록
-  이용약관/개인정보처리방침 동의 여부 및 일시, 고객 문의 내용(이메일/전화 등)
-
-- 자동 수집 정보(웹 이용 시)
-  접속 로그, IP 주소, 쿠키, 기기/브라우저 정보(서비스 안정화 및 보안 목적)
-
-2. 이용 목적
-회사는 수집한 개인정보를 다음 목적 범위 내에서 이용합니다.
-- 예약 확인 및 안내, 고객 응대
-- 세션 운영을 위한 매칭 및 커뮤니케이션
-- 결제/환불 처리, 정산 및 회계
-- 서비스 품질 개선(통계/분석: 개인 식별이 불필요한 형태로 처리)
-- 부정 이용 방지 및 보안, 안전 이슈 대응
-
-3. 보관 기간 및 파기
-- 회사는 개인정보를 수집·이용 목적 달성 시 지체 없이 파기합니다.
-- 다만, 관련 법령에 따라 일정 기간 보관이 필요한 정보는 해당 기간 동안 보관 후 파기합니다.
-  (예: 전자상거래 등에서의 소비자보호에 관한 법률, 국세기본법 등)
-
-4. 제3자 제공 및 처리위탁
-1) 제3자 제공
-회사는 원칙적으로 이용자의 개인정보를 제3자에게 제공하지 않습니다.
-다만, 이용자의 동의가 있거나 법령에 따라 요구되는 경우, 또는 긴급한 안전 문제가 있는 경우(7항)에는 예외로 합니다.
-
-2) 처리위탁
-서비스 운영을 위해 아래 업무를 외부 업체에 위탁할 수 있습니다.
-- 결제(PG): 토스페이먼츠 등 결제대행사
-- 예약/설문/폼 운영: 예약 및 설문 제공 서비스(예: Walla 등, 사용 시)
-- 문자/이메일 발송: 알림 발송 대행사(사용 시)
-※ 제공/위탁 시 항목, 목적, 기간을 최소화하여 운영하며, 위탁업체를 관리·감독합니다.
-
-5. 이용자의 권리
-이용자는 개인정보 열람/정정/삭제/처리정지 등을 요청할 수 있습니다.
-- 문의: pauseontheway@gmail.com
-
-6. 안전성 확보 조치
-회사는 개인정보 보호를 위해 접근권한 관리, 내부 통제, 전송구간 암호화 등 합리적 보호조치를 시행합니다.
-
-7. 고지 및 안전 예외
-- 개인정보는 세션 매칭 및 서비스 안내 목적 외 사용되지 않습니다.
-- 다만, 자/타해 등 긴급한 안전 문제가 감지될 경우 이용자 및 타인의 안전 확보를 위해
-  외부 기관(예: 112/119 등)에 도움을 요청할 수 있으며,
-  이 과정에서 필요한 최소한의 정보(연락처, 위치, 상황 설명 등)가 제공될 수 있습니다.
-
-본 방침은 게시일로부터 적용됩니다.
-`,
+      const POLICY = {
+        "ko": {
+                "title": "개인정보처리방침",
+                "effective": "게시일: 2026년 6월 25일 · 시행일: 2026년 6월 25일",
+                "body": "주식회사 메리굿(이하 “회사”)은 Pause on the Way 서비스(이하 “서비스”) 이용자의 개인정보를 중요하게 생각하며, 관련 법령에 따라 개인정보를 안전하게 처리하기 위해 본 개인정보처리방침을 공개합니다.\n\n1. 개인정보 처리자\n- 회사명: 주식회사 메리굿\n- 서비스명: Pause on the Way\n- 대표자: 이경원\n- 연락처: pauseontheway@gmail.com / 070-8080-4224\n\n2. 수집하는 개인정보 항목\n회사는 서비스 문의, 예약, 매칭, 결제, 고객 응대 및 안전한 세션 운영을 위해 아래 정보를 수집할 수 있습니다.\n\n[문의 및 기본 정보]\n- 이름 또는 닉네임, 이메일, 연락처, 문의 내용\n\n[예약 및 세션 운영 정보]\n- 희망 지역(서울·제주), 희망 날짜와 시간, 세션 장소, 예약 내역, 세션 진행 안내에 필요한 정보\n- 대화 목적 또는 관심 주제, 요청사항, 웨이메이트 매칭에 필요한 최소 정보\n\n[결제 및 환불 정보]\n- 결제 승인·취소·환불 내역, 거래 식별 정보, 환불 처리에 필요한 정보\n- 카드번호 등 민감한 결제 정보는 결제대행사(PG) 또는 결제수단 제공자가 직접 처리하며, 회사는 이를 저장하지 않습니다.\n\n[문의 및 고객 응대 기록]\n- 이메일, 전화, 문의 폼, 설문 폼 등을 통해 접수된 문의 내용과 처리 기록\n\n[자동 수집 정보]\n- 접속 로그, IP 주소, 쿠키, 기기·브라우저 정보, 방문 페이지, 체류 시간, 유입 경로 등 웹사이트 이용 정보\n- 회사는 웹사이트 이용 현황 분석과 서비스 개선을 위해 Google Analytics를 사용할 수 있습니다.\n\n3. 개인정보의 이용 목적\n회사는 수집한 개인정보를 다음 목적 범위 내에서 이용합니다.\n- 서비스 문의 확인 및 답변\n- 예약 가능 여부 확인, 일정 조율, 세션 안내\n- 웨이메이트 매칭 및 세션 운영\n- 결제, 취소, 환불, 정산 및 회계 처리\n- 고객 응대, 불만 처리, 공지사항 전달\n- 서비스 품질 개선 및 이용 통계 분석\n- 부정 이용 방지, 분쟁 대응, 안전 이슈 대응\n- 법령상 의무 이행\n\n4. Google Analytics 사용 고지\n1) 회사는 Google Analytics를 사용하여 웹사이트 방문자 수, 방문 경로, 페이지 이용 현황, 기기·브라우저 정보 등 이용 통계를 분석할 수 있습니다.\n2) Google Analytics는 쿠키 또는 유사 기술을 사용하여 이용 정보를 수집할 수 있으며, 이 정보는 Google의 정책에 따라 처리될 수 있습니다.\n3) 이용자는 브라우저 설정에서 쿠키 저장을 거부하거나 삭제할 수 있습니다. 다만, 쿠키를 제한할 경우 일부 웹사이트 기능이 원활하게 작동하지 않을 수 있습니다.\n4) Google Analytics를 통해 수집되는 정보는 서비스 개선, 이용 흐름 분석, 웹사이트 안정화 목적에 사용됩니다.\n\n5. 개인정보의 보관 및 이용 기간\n회사는 개인정보 수집·이용 목적이 달성되면 지체 없이 파기합니다. 다만, 관계 법령에 따라 보관이 필요한 경우 해당 기간 동안 보관합니다.\n\n- 계약 또는 청약철회 등에 관한 기록: 5년\n- 대금결제 및 재화 등의 공급에 관한 기록: 5년\n- 소비자 불만 또는 분쟁처리에 관한 기록: 3년\n- 접속 로그 등 통신사실확인자료: 관련 법령에 따른 기간\n- 문의 기록: 처리 완료 후 3년 또는 분쟁 대응에 필요한 기간\n- Google Analytics 관련 이용 통계: Google Analytics 설정 및 Google 정책에 따른 기간\n\n6. 개인정보의 제3자 제공\n회사는 원칙적으로 이용자의 개인정보를 제3자에게 제공하지 않습니다. 다만, 다음의 경우에는 예외로 합니다.\n- 이용자가 사전에 동의한 경우\n- 법령에 따라 제출 의무가 있는 경우\n- 자해·타해 위험, 폭력, 범죄, 응급상황 등 긴급한 안전 문제가 있어 이용자 또는 타인의 생명·신체·안전 보호를 위해 필요한 경우\n\n7. 개인정보 처리위탁\n회사는 원활한 서비스 제공을 위해 아래 업무를 외부 서비스에 위탁하거나 외부 서비스를 이용할 수 있습니다.\n- 문의 폼 접수 및 이메일 전달: FormSubmit 등 폼 처리 서비스\n- 예약·설문 폼 운영: Walla 등 예약·설문 제공 서비스(사용 시)\n- 결제 처리: 결제대행사(PG) 또는 결제수단 제공자(사용 시)\n- 웹사이트 이용 분석: Google Analytics\n- 이메일·문자 등 알림 발송: 발송 대행 서비스(사용 시)\n회사는 위탁 또는 외부 서비스 이용 시 필요한 범위 내에서만 정보를 처리하도록 관리합니다.\n\n8. 개인정보의 파기 절차 및 방법\n- 전자 파일: 복구 및 재생이 어렵도록 삭제\n- 종이 문서: 분쇄 또는 소각\n- 보관 기간이 경과하거나 처리 목적이 달성된 개인정보는 지체 없이 파기합니다.\n\n9. 이용자의 권리와 행사 방법\n이용자는 자신의 개인정보에 대해 열람, 정정, 삭제, 처리정지, 동의 철회를 요청할 수 있습니다.\n- 요청 방법: pauseontheway@gmail.com으로 문의\n회사는 본인 확인 후 관련 법령에 따라 지체 없이 처리합니다. 다만, 법령상 보관 의무가 있는 정보는 삭제가 제한될 수 있습니다.\n\n10. 쿠키의 사용 및 거부\n회사는 웹사이트 운영, 이용 통계 분석, 서비스 개선을 위해 쿠키를 사용할 수 있습니다. 이용자는 브라우저 설정을 통해 쿠키 저장을 거부하거나 삭제할 수 있습니다.\n\n11. 개인정보 보호책임자\n- 개인정보 보호책임자: 이경원\n- 이메일: pauseontheway@gmail.com\n- 전화: 070-8080-4224\n\n12. 안전성 확보 조치\n회사는 개인정보 보호를 위해 접근권한 관리, 내부 관리 기준 운영, 전송구간 암호화, 보안 프로그램 사용, 외부 서비스 접근 관리 등 합리적인 보호조치를 시행합니다.\n\n13. 방침의 변경\n본 개인정보처리방침은 법령, 서비스 내용, 운영 방식 변경에 따라 수정될 수 있습니다. 중요한 변경이 있는 경우 웹사이트 또는 서비스 채널을 통해 고지합니다.\n"
         },
-        en: {
-          title: "Privacy Policy",
-          body: `1. Personal Data We Collect
-To provide the Service and ensure safe session operations, the Company may collect the following personal data:
-
-- Booking & Basic Information
-  Name (or nickname), age range (e.g., 30s, 40s), gender (optional), contact details (phone/email)
-
-- Location & Schedule Information
-  Service location (hotel lounge/café or a City Space), preferred date and time, booking details
-
-- Session Matching & Operations Information
-  Preferred Carer gender (optional),
-  selected session topics (multiple choice),
-  a brief check-in on your current condition (optional)
-
-- Payment Information
-  Payment approval/cancellation/refund records and transaction identifiers
-  (Sensitive payment data such as full card numbers is processed by the payment processor (PG) and is not stored by the Company.)
-
-- Consents & Support Records
-  Records of consent to the Terms of Service and Privacy Policy (including date/time), and customer support communications (email/phone)
-
-- Automatically Collected Data (when using the website)
-  Access logs, IP address, cookies, and device/browser information (for security and service stability)
-
-2. Purposes of Use
-We use personal data only for the purposes below:
-- Booking confirmation and guidance, customer support
-- Session operations, including matching and communication
-- Payment/refund processing, settlement, and accounting
-- Service improvement through statistics/analysis (processed in a way that does not require identification)
-- Fraud prevention, security, and handling safety-related issues
-
-3. Retention and Deletion
-- We delete personal data without undue delay once it is no longer needed for the purposes above.
-- However, certain data may be retained as required by applicable laws (e-commerce, tax, and accounting regulations), and deleted after the required period.
-
-4. Sharing and Processors
-1) Sharing with Third Parties
-We do not share personal data with third parties in principle, except with your consent, when required by law, or in emergencies (see Section 7).
-
-2) Processors (Service Providers)
-We may use third-party service providers for:
-- Payment processing (PG), e.g., Toss Payments
-- Booking/survey form operation (e.g., Walla, if used)
-- Notification delivery (SMS/email vendors, if used)
-We minimize scope and retention and supervise vendors to ensure appropriate safeguards.
-
-5. Your Rights
-You may request access, correction, deletion, or restriction of processing.
-Contact: pauseontheway@gmail.com
-
-6. Security Measures
-We apply reasonable safeguards, including access control, internal policies, and encryption for data in transit where applicable.
-
-7. Notice & Safety Exception (Emergency)
-- Personal data is used only for session matching and service communication.
-- If an imminent safety risk is identified (e.g., risk of self-harm or harm to others), we may contact external assistance (e.g., emergency services).
-  In doing so, we may share only the minimum information necessary (such as contact details, location, and a brief description of the situation).
-
-Effective date: upon posting.
-`,
-        },
-      };
+        "en": {
+                "title": "Privacy Policy",
+                "effective": "Posted: June 25, 2026 · Effective: June 25, 2026",
+                "body": "Merrygood Co., Ltd. (“Company”) values the privacy of users of Pause on the Way (“Service”) and publishes this Privacy Policy to explain how personal data is processed and protected.\n\n1. Data Controller\n- Company: Merrygood Co., Ltd.\n- Service: Pause on the Way\n- Representative: Kyoung-won Lee\n- Contact: pauseontheway@gmail.com / 070-8080-4224\n\n2. Personal Data We Collect\nThe Company may collect the following personal data for inquiries, bookings, matching, payment, customer support, and safe session operation.\n\n[Inquiry and Basic Information]\n- Name or nickname, email address, phone number, and inquiry details\n\n[Booking and Session Operation Information]\n- Preferred area (Seoul or Jeju), preferred date and time, session venue, booking history, and information necessary for session guidance\n- Conversation purpose or topics of interest, requests, and minimum information necessary for Waymate matching\n\n[Payment and Refund Information]\n- Payment approval, cancellation, refund records, transaction identifiers, and information necessary for refund processing\n- Sensitive payment data such as card numbers is processed directly by the payment processor or payment method provider, and is not stored by the Company.\n\n[Inquiry and Customer Support Records]\n- Inquiry details and handling records received through email, phone, inquiry forms, survey forms, or other channels\n\n[Automatically Collected Information]\n- Access logs, IP address, cookies, device/browser information, visited pages, time on site, referral path, and other website usage information\n- The Company may use Google Analytics to analyze website usage and improve the Service.\n\n3. Purposes of Use\nThe Company uses personal data only for the purposes below:\n- Responding to service inquiries\n- Checking booking availability, coordinating schedules, and providing session guidance\n- Waymate matching and session operation\n- Payment, cancellation, refund, settlement, and accounting\n- Customer support, complaint handling, and notices\n- Service quality improvement and usage statistics analysis\n- Fraud prevention, dispute handling, and safety issue response\n- Compliance with legal obligations\n\n4. Notice on Google Analytics\n1) The Company may use Google Analytics to analyze website traffic, referral paths, page usage, device/browser information, and other usage statistics.\n2) Google Analytics may collect information through cookies or similar technologies, and such information may be processed in accordance with Google’s policies.\n3) Users may refuse or delete cookies through browser settings. However, limiting cookies may affect the availability of certain website functions.\n4) Information collected through Google Analytics is used for service improvement, usage flow analysis, and website stability.\n\n5. Retention and Use Period\nThe Company deletes personal data without undue delay once the purposes of collection and use are fulfilled. However, certain data may be retained as required by applicable laws.\n\n- Records on contracts or withdrawal of subscription: 5 years\n- Records on payment and provision of goods/services: 5 years\n- Records on consumer complaints or dispute handling: 3 years\n- Access logs and communications-related records: period required under applicable laws\n- Inquiry records: 3 years after completion or for the period necessary to respond to disputes\n- Google Analytics usage statistics: according to Google Analytics settings and Google policies\n\n6. Provision to Third Parties\nThe Company does not provide personal data to third parties in principle, except in the following cases:\n- The User has given prior consent\n- Disclosure is required by law\n- There is an urgent safety concern such as risk of self-harm or harm to others, violence, crime, or emergency, and disclosure is necessary to protect the life, body, or safety of the User or others\n\n7. Processors and External Services\nThe Company may outsource or use external services for the following tasks:\n- Inquiry form submission and email delivery: form processing services such as FormSubmit\n- Booking/survey form operation: booking or survey services such as Walla, if used\n- Payment processing: payment processors or payment method providers, if used\n- Website analytics: Google Analytics\n- Email/SMS notifications: notification delivery vendors, if used\nThe Company manages processing so that information is handled only within the necessary scope.\n\n8. Deletion Procedure and Method\n- Electronic files: deleted in a manner that makes recovery and reproduction difficult\n- Paper documents: shredded or incinerated\n- Personal data whose retention period has expired or whose processing purpose has been fulfilled is deleted without undue delay.\n\n9. User Rights and How to Exercise Them\nUsers may request access, correction, deletion, restriction of processing, or withdrawal of consent regarding their personal data.\n- Request method: contact pauseontheway@gmail.com\nThe Company will process requests without undue delay after verifying identity, in accordance with applicable laws. Deletion may be restricted where legal retention obligations apply.\n\n10. Cookies and Refusal\nThe Company may use cookies for website operation, usage statistics analysis, and service improvement. Users may refuse or delete cookies through browser settings.\n\n11. Privacy Officer\n- Privacy Officer: Kyoung-won Lee\n- Email: pauseontheway@gmail.com\n- Phone: 070-8080-4224\n\n12. Security Measures\nThe Company applies reasonable safeguards, including access control, internal management standards, encryption in transit where applicable, security software, and management of external service access.\n\n13. Changes to This Policy\nThis Privacy Policy may be amended due to changes in laws, service content, or operational methods. Material changes will be announced through the website or service channels.\n"
+        }
+};
 
       function getInitialLang() {
         const urlLang = new URLSearchParams(location.search).get("lang");
@@ -238,17 +120,20 @@ Effective date: upon posting.
       function paintButtons(lang) {
         const ko = document.getElementById("btnKO");
         const en = document.getElementById("btnEN");
-        const on = "#1b365d";
+        const on = "#073b3a";
+
+        ko.setAttribute("aria-pressed", lang === "ko" ? "true" : "false");
+        en.setAttribute("aria-pressed", lang === "en" ? "true" : "false");
 
         ko.style.background = lang === "ko" ? on : "transparent";
-        ko.style.color = lang === "ko" ? "white" : "#111827";
+        ko.style.color = lang === "ko" ? "white" : "#171412";
         ko.style.borderColor =
-          lang === "ko" ? "transparent" : "rgba(0,0,0,.12)";
+          lang === "ko" ? "transparent" : "rgba(23,20,18,.12)";
 
         en.style.background = lang === "en" ? on : "transparent";
-        en.style.color = lang === "en" ? "white" : "#111827";
+        en.style.color = lang === "en" ? "white" : "#171412";
         en.style.borderColor =
-          lang === "en" ? "transparent" : "rgba(0,0,0,.12)";
+          lang === "en" ? "transparent" : "rgba(23,20,18,.12)";
       }
 
       function setLang(lang) {
@@ -257,21 +142,23 @@ Effective date: upon posting.
         document.documentElement.lang = L;
 
         const titles = {
-          ko: "개인정보처리방침 | Pause on the Way",
-          en: "Privacy Policy | Pause on the Way",
-        };
+          "ko": "개인정보처리방침 | Pause on the Way",
+          "en": "Privacy Policy | Pause on the Way"
+};
         document.title = titles[L];
 
         const descriptions = {
-          ko: "Pause on the Way 개인정보처리방침",
-          en: "Pause on the Way Privacy Policy",
-        };
-        document
-          .querySelector('meta[name="description"]')
-          .setAttribute("content", descriptions[L]);
+          "ko": "Pause on the Way 개인정보처리방침",
+          "en": "Pause on the Way Privacy Policy"
+};
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) {
+          metaDesc.setAttribute("content", descriptions[L]);
+        }
 
-        document.getElementById("title").textContent = PRIVACY[L].title;
-        document.getElementById("body").textContent = PRIVACY[L].body;
+        document.getElementById("title").textContent = POLICY[L].title;
+        document.getElementById("effective").textContent = POLICY[L].effective;
+        document.getElementById("body").textContent = POLICY[L].body;
 
         paintButtons(L);
 
