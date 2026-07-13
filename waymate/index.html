@@ -119,6 +119,15 @@
         font-size: clamp(16px, 4.6vw, 20px);
         line-height: 1.2;
       }
+      @media (max-width: 360px) {
+        .brand-text {
+          font-size: clamp(15px, 4.8vw, 19px);
+        }
+        .lang-toggle {
+          padding-left: 0.6rem;
+          padding-right: 0.6rem;
+        }
+      }
       .lang-toggle {
         border: 1px solid rgba(23, 20, 18, 0.1);
         background: white;
@@ -217,7 +226,7 @@
           min-height: 420px;
         }
       }
-    </style>
+</style>
   </head>
   <body class="font-sans antialiased">
     <header
@@ -636,85 +645,43 @@
       </div>
     </section>
     <footer class="border-t border-black/5">
-      <div
-        class="max-w-7xl mx-auto px-5 py-10 grid md:grid-cols-2 gap-6 items-center"
-      >
-        <div>
-          <p class="font-display text-xl">Pause on the Way</p>
-          <p class="text-sm text-gray-600 mt-1" data-i18n="footer_tag">
-            길 위의 쉼, 마음의 회복
-          </p>
-          <div aria-label="Social links" class="mt-4 flex items-center gap-3">
-            <a
-              aria-label="Pause on the Way YouTube"
-              class="social-link"
-              href="https://www.youtube.com/@pauseontheway"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <svg class="h-5 w-5 fill-current" viewbox="0 0 24 24">
-                <path
-                  d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.2 31.2 0 0 0 0 12a31.2 31.2 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.2 31.2 0 0 0 24 12a31.2 31.2 0 0 0-.5-5.8ZM9.6 15.7V8.3L16 12l-6.4 3.7Z"
-                ></path>
-              </svg>
-            </a>
-            <a
-              aria-label="Pause on the Way Instagram"
-              class="social-link"
-              href="https://www.instagram.com/pauseontheway"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <svg class="h-5 w-5 fill-current" viewbox="0 0 24 24">
-                <path
-                  d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm0 1.8A4 4 0 0 0 3.8 7.8v8.4a4 4 0 0 0 4 4h8.4a4 4 0 0 0 4-4V7.8a4 4 0 0 0-4-4H7.8Zm8.9 1.5a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.8A3.2 3.2 0 1 0 12 15.2 3.2 3.2 0 0 0 12 8.8Z"
-                ></path>
-              </svg>
-            </a>
-          </div>
-        </div>
-        <div
-          class="justify-self-start md:justify-self-end text-sm text-gray-500 text-left md:text-right"
-        >
-          <p>
+<div class="max-w-7xl mx-auto px-5 py-10 grid md:grid-cols-2 gap-6 items-center">
+<div>
+<p class="font-display text-xl">Pause on the Way</p>
+<p class="text-sm text-gray-600 mt-1" data-i18n="footer_tag">길 위의 쉼, 마음의 회복</p>
+<div aria-label="Social links" class="mt-4 flex items-center gap-3">
+<a aria-label="Pause on the Way YouTube" class="social-link" href="https://www.youtube.com/@pauseontheway" rel="noopener noreferrer" target="_blank">
+<svg class="h-5 w-5 fill-current" viewbox="0 0 24 24">
+<path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.2 31.2 0 0 0 0 12a31.2 31.2 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.2 31.2 0 0 0 24 12a31.2 31.2 0 0 0-.5-5.8ZM9.6 15.7V8.3L16 12l-6.4 3.7Z"></path>
+</svg>
+</a>
+<a aria-label="Pause on the Way Instagram" class="social-link" href="https://www.instagram.com/pauseontheway" rel="noopener noreferrer" target="_blank">
+<svg class="h-5 w-5 fill-current" viewbox="0 0 24 24">
+<path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm0 1.8A4 4 0 0 0 3.8 7.8v8.4a4 4 0 0 0 4 4h8.4a4 4 0 0 0 4-4V7.8a4 4 0 0 0-4-4H7.8Zm8.9 1.5a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.8A3.2 3.2 0 1 0 12 15.2 3.2 3.2 0 0 0 12 8.8Z"></path>
+</svg>
+</a>
+</div>
+</div>
+<div class="justify-self-start md:justify-self-end text-sm text-gray-500 text-left md:text-right">
+<p>
             © <span id="year"></span> Pause on the Way.
             <span data-i18n="footer_all">All rights reserved.</span>
-          </p>
-          <p
-            class="mt-1 text-[11px] leading-relaxed text-gray-400"
-            data-i18n="footer_biz"
-          ></p>
-          <div
-            class="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-[11px] text-gray-400 justify-start md:justify-end"
-          >
-            <a
-              class="hover:text-gray-600 underline underline-offset-2"
-              data-i18n="footer_terms"
-              href="/terms/"
-              id="linkTerms"
-            >
+</p>
+<p class="mt-1 text-[11px] leading-relaxed text-gray-400" data-i18n="footer_biz"></p>
+<div class="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-[11px] text-gray-400 justify-start md:justify-end">
+<a class="hover:text-gray-600 underline underline-offset-2" data-i18n="footer_terms" href="/terms/" id="linkTerms">
               이용약관
             </a>
-            <a
-              class="hover:text-gray-600 underline underline-offset-2"
-              data-i18n="footer_privacy"
-              href="/privacy/"
-              id="linkPrivacy"
-            >
+<a class="hover:text-gray-600 underline underline-offset-2" data-i18n="footer_privacy" href="/privacy/" id="linkPrivacy">
               개인정보처리방침
             </a>
-            <a
-              class="hover:text-gray-600 underline underline-offset-2"
-              data-i18n="footer_refund"
-              href="/refund/"
-              id="linkRefund"
-            >
+<a class="hover:text-gray-600 underline underline-offset-2" data-i18n="footer_refund" href="/refund/" id="linkRefund">
               취소·환불 정책
             </a>
-          </div>
-        </div>
-      </div>
-    </footer>
+</div>
+</div>
+</div>
+</footer>
     <script>
       const PAGE_META = {
         ko: {
@@ -880,8 +847,22 @@
         },
         footer_all: { ko: "All rights reserved.", en: "All rights reserved." },
         footer_biz: {
-          ko: '사업자등록번호 : 494-81-03292 <span class="hidden md:inline">|</span><br class="md:hidden"/> 통신판매업신고번호 : 2026-서울강서-0012 <span class="hidden md:inline">|</span><br class="md:hidden"/> 주식회사 메리굿 <span class="hidden md:inline">|</span><br class="md:hidden"/> 대표 : 이경원 <span class="hidden md:inline">|</span><br class="md:hidden"/> 전화 : 070-8080-4224 <span class="hidden md:inline">|</span><br class="md:hidden"/> 주소 : 서울특별시 강서구 마곡중앙6로 11 314-14호 (마곡동 보타닉파크타워3)',
-          en: 'Business registration no. 494-81-03292 <span class="hidden md:inline">|</span><br class="md:hidden"/> Mail-order business report no. 2026-Seoul Gangseo-0012 <span class="hidden md:inline">|</span><br class="md:hidden"/> MerryGood Inc. <span class="hidden md:inline">|</span><br class="md:hidden"/> CEO: Kyoung-won Lee <span class="hidden md:inline">|</span><br class="md:hidden"/> Tel: 070-8080-4224 <span class="hidden md:inline">|</span><br class="md:hidden"/> Address: 314-14, 11, Magokjungang 6-ro, Gangseo-gu, Seoul, Korea',
+          ko: [
+            "사업자등록번호 : 494-81-03292",
+            "통신판매업신고번호 : 2026-서울강서-0012",
+            "주식회사 메리굿",
+            "대표 : 이경원",
+            "전화 : 070-8080-4224",
+            "주소 : 서울특별시 강서구 마곡중앙6로 11 314-14호 (마곡동 보타닉파크타워3)",
+          ],
+          en: [
+            "Biz reg. no : 494-81-03292",
+            "E-commerce reg. no : 2026-Seoul-Gangseo-0012",
+            "Merrygood Co., Ltd",
+            "CEO : Kyoung-Won Lee",
+            "Phone : 070-8080-4224",
+            "Address : 314-14-ho 11 Magokjungang 6-ro Gangseo-gu Seoul 07801 Republic of Korea (Botanic Park Tower 3)",
+          ],
         },
         footer_terms: { ko: "이용약관", en: "Terms" },
         footer_privacy: { ko: "개인정보처리방침", en: "Privacy Policy" },
@@ -889,7 +870,8 @@
       };
       const yearEl = document.getElementById("year");
       if (yearEl) yearEl.textContent = new Date().getFullYear();
-      const menuBtn = document.getElementById("menuBtn"),
+      const siteHeader = document.getElementById("siteHeader"),
+        menuBtn = document.getElementById("menuBtn"),
         mobileMenu = document.getElementById("mobileMenu"),
         menuOverlay = document.getElementById("menuOverlay");
       function setMenu(open) {
@@ -922,7 +904,7 @@
         return (navigator.language || "ko").startsWith("en") ? "en" : "ko";
       }
 
-      function updateLanguageLinks(lang) {
+      function updateLanguageLinks() {
         document.querySelectorAll("a[href]").forEach((a) => {
           const href = a.getAttribute("href");
           if (
@@ -936,22 +918,30 @@
             return;
           }
 
-          const shouldCarryLang =
-            href.includes("index.html") || href.includes("waymate/");
-          if (!shouldCarryLang) return;
-
           const [pathAndQuery, hash = ""] = href.split("#");
           const [path, query = ""] = pathAndQuery.split("?");
-          if (!path) return;
-
           const params = new URLSearchParams(query);
-          params.set("lang", lang);
+          params.delete("lang");
 
+          let cleanPath = path.replace(/index\.html$/i, "");
+          if (!cleanPath) cleanPath = "./";
+
+          const cleanQuery = params.toString();
           a.setAttribute(
             "href",
-            `${path}?${params.toString()}${hash ? "#" + hash : ""}`,
+            `${cleanPath}${cleanQuery ? "?" + cleanQuery : ""}${hash ? "#" + hash : ""}`,
           );
         });
+
+        const currentUrl = new URL(window.location.href);
+        currentUrl.searchParams.delete("lang");
+        currentUrl.pathname = currentUrl.pathname.replace(/\/index\.html$/i, "/");
+
+        const cleanCurrentUrl = `${currentUrl.pathname}${currentUrl.search}${currentUrl.hash}`;
+        const visibleCurrentUrl = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+        if (cleanCurrentUrl !== visibleCurrentUrl) {
+          history.replaceState(null, "", cleanCurrentUrl);
+        }
       }
 
       function setLanguage(lang) {
@@ -969,8 +959,16 @@
 
         document.querySelectorAll("[data-i18n]").forEach((el) => {
           const key = el.getAttribute("data-i18n");
-          if (I18N[key] && I18N[key][nextLang])
-            el.innerHTML = I18N[key][nextLang];
+          if (!I18N[key] || !I18N[key][nextLang]) return;
+
+          const value = I18N[key][nextLang];
+          if (key === "footer_biz") {
+            el.innerHTML = value
+              .map((item, idx) => `<span>${idx > 0 ? " | " : ""}${item}</span>`)
+              .join("");
+          } else {
+            el.innerHTML = value;
+          }
         });
         document.querySelectorAll("[data-i18n-aria]").forEach((el) => {
           const key = el.getAttribute("data-i18n-aria");
@@ -984,7 +982,7 @@
           ),
         );
         localStorage.setItem("ptw-lang", nextLang);
-        updateLanguageLinks(nextLang);
+        updateLanguageLinks();
       }
 
       langButtons.forEach((button) =>
@@ -994,6 +992,28 @@
       );
 
       setLanguage(getInitialLanguage());
+
+      window.addEventListener("resize", () => setMenu(false));
+
+      let lastScrollY = window.scrollY;
+      window.addEventListener(
+        "scroll",
+        () => {
+          setMenu(false);
+
+          if (!siteHeader) return;
+          const currentScrollY = window.scrollY;
+
+          if (currentScrollY > lastScrollY && currentScrollY > 80) {
+            siteHeader.style.transform = "translateY(-100%)";
+          } else {
+            siteHeader.style.transform = "translateY(0)";
+          }
+
+          lastScrollY = currentScrollY;
+        },
+        { passive: true },
+      );
     </script>
   </body>
 </html>
