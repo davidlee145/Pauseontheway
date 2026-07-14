@@ -39,6 +39,17 @@
       .font-display {
         font-family: "Playfair Display", serif;
       }
+
+      .lang-toggle {
+        background: transparent;
+        color: var(--ptw-ink);
+        border-color: rgba(23,20,18,.12);
+        transition: background .2s ease, color .2s ease, border-color .2s ease;
+      }
+      .lang-toggle:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(7,59,58,.12);
+      }
       .lang-toggle[aria-pressed="true"] {
         background: var(--ptw-primary);
         color: white;
@@ -57,7 +68,7 @@
       class="border-b border-black/5 bg-[rgba(255,252,247,.86)] backdrop-blur sticky top-0 z-50"
     >
       <div
-        class="max-w-3xl mx-auto px-5 py-4 flex items-center justify-between"
+        class="max-w-3xl mx-auto px-5 py-4 flex items-center justify-between gap-3"
       >
         <a
           href="/"
@@ -66,12 +77,46 @@
         >
           Pause on the Way
         </a>
-        <div class="flex gap-2" aria-label="Language" role="group">
-          <button id="btnKO" class="lang-toggle px-3 py-1.5 rounded-full text-sm border" type="button" aria-pressed="true">
+        <div
+          class="flex flex-wrap justify-end gap-1.5"
+          aria-label="Language"
+          role="group"
+        >
+          <button
+            id="btnKO"
+            class="lang-toggle px-2.5 py-1.5 rounded-full text-sm border"
+            type="button"
+            data-lang="ko"
+            aria-pressed="true"
+          >
             KO
           </button>
-          <button id="btnEN" class="lang-toggle px-3 py-1.5 rounded-full text-sm border" type="button" aria-pressed="false">
+          <button
+            id="btnEN"
+            class="lang-toggle px-2.5 py-1.5 rounded-full text-sm border"
+            type="button"
+            data-lang="en"
+            aria-pressed="false"
+          >
             EN
+          </button>
+          <button
+            id="btnJA"
+            class="lang-toggle px-2.5 py-1.5 rounded-full text-sm border"
+            type="button"
+            data-lang="ja"
+            aria-pressed="false"
+          >
+            JA
+          </button>
+          <button
+            id="btnZH"
+            class="lang-toggle px-2.5 py-1.5 rounded-full text-sm border"
+            type="button"
+            data-lang="zh"
+            aria-pressed="false"
+          >
+            中文
           </button>
         </div>
       </div>
@@ -89,7 +134,7 @@
 
     <footer class="border-t border-black/5">
       <div class="max-w-3xl mx-auto px-5 py-8 text-sm text-gray-500">
-        © <span id="year"></span> Pause on the Way. All rights reserved.
+        © <span id="year"></span> Pause on the Way. <span id="rights"></span>
       </div>
     </footer>
 
@@ -97,82 +142,144 @@
       document.getElementById("year").textContent = new Date().getFullYear();
 
       const POLICY = {
-        "ko": {
-                "title": "취소·환불정책",
-                "effective": "게시일: 2026년 6월 25일 · 시행일: 2026년 6월 25일",
-                "body": "[공통 안내]\n- 본 취소·환불정책은 Pause on the Way의 유료 50분 웨이메이트 세션에 적용됩니다.\n- 문의글 작성, 예약 가능 여부 확인 등 결제 전 단계에는 별도의 이용료가 부과되지 않습니다.\n- 모든 세션은 사전 예약제로 운영되며, 예약 확정 시 웨이메이트와 장소가 함께 배정됩니다.\n- 변경 또는 취소가 필요한 경우 가능한 한 빠르게 회사에 요청해 주세요.\n\n[취소 및 환불 기준]\n- 세션 시작 24시간 전까지 취소: 결제금액 100% 환불\n- 세션 시작 24시간 이내 취소: 환불 불가\n- 예약 시간 이후 취소 또는 노쇼: 환불 불가\n\n[일정 변경]\n- 세션 시작 24시간 전까지: 가능한 일정이 있는 경우 1회에 한하여 일정 변경 가능\n- 세션 시작 24시간 이내: 원칙적으로 일정 변경 불가\n- 회사, 웨이메이트 또는 제휴 공간 사정으로 기존 일정 진행이 어려운 경우: 고객 동의 하에 일정 변경 또는 100% 환불\n\n[지각 및 현장 진행]\n- 이용자가 늦게 도착한 경우 세션은 원래 예약된 종료 시간에 종료됩니다.\n- 지각으로 인해 이용 시간이 줄어든 경우 부분 환불은 제공되지 않습니다.\n- 예약 시작 후 15분 이상 연락 없이 나타나지 않는 경우 노쇼로 처리될 수 있습니다.\n- 현장 상황에 따라 남은 시간 내에서 세션이 진행될 수 있습니다.\n\n[중도 종료 및 환불 제한]\n아래 행위가 발생하는 경우 회사 또는 웨이메이트는 세션을 즉시 중단할 수 있으며, 이 경우 환불은 제공되지 않을 수 있습니다.\n- 욕설, 모욕, 위협, 폭력적 언행\n- 성적 발언, 성적 제안, 신체 접촉 시도\n- 웨이메이트의 개인 연락처 요구 또는 사적 만남 강요\n- 무단 촬영, 녹음, 녹화 또는 이를 강요하는 행위\n- 음주, 약물, 폭력적 행동 등으로 정상적인 세션 진행이 어려운 경우\n\n[운영 사유로 진행이 불가한 경우]\n- 회사, 웨이메이트 또는 제휴 공간의 사정으로 세션 진행이 불가능한 경우 고객에게 100% 환불 또는 일정 변경 중 선택할 수 있도록 안내합니다.\n- 천재지변, 감염병, 심각한 교통 장애, 공간 운영 중단 등 불가피한 사정이 발생한 경우 회사는 가능한 대체 일정 또는 환불 방법을 안내합니다.\n\n[환불 처리 방식]\n- 카드 결제: 결제대행사(PG) 및 카드사 처리 일정에 따라 승인 취소 또는 부분 취소로 처리됩니다.\n- 계좌이체 또는 기타 결제수단: 회사 확인 후 영업일 기준 순차 처리됩니다.\n- 결제수단, 카드사, 은행, PG사의 사정에 따라 실제 환불 완료까지 시간이 소요될 수 있습니다.\n\n[정책 변경]\n회사는 운영상 필요 또는 관계 법령 변경에 따라 본 정책을 변경할 수 있으며, 중요한 변경은 웹사이트 또는 서비스 채널을 통해 안내합니다.\n"
-        },
-        "en": {
-                "title": "Cancellation & Refund Policy",
-                "effective": "Posted: June 25, 2026 · Effective: June 25, 2026",
-                "body": "[General]\n- This Cancellation & Refund Policy applies to paid 50-minute Pause on the Way Waymate sessions.\n- Inquiry submission and availability checks before payment are not subject to separate fees.\n- All sessions are reservation-based. Once confirmed, a Waymate and venue are assigned in advance.\n- Please request any changes or cancellations as early as possible.\n\n[Cancellation and Refund]\n- Cancellation up to 24 hours before the session start time: 100% refund\n- Cancellation within 24 hours of the session start time: non-refundable\n- Cancellation after the scheduled start time or no-show: non-refundable\n\n[Rescheduling]\n- Up to 24 hours before the session start time: one reschedule may be allowed, subject to availability\n- Within 24 hours of the session start time: rescheduling is generally not available\n- If the original schedule cannot proceed due to reasons attributable to the Company, the Waymate, or the partner venue: the User may choose either a reschedule or a 100% refund\n\n[Lateness and On-site Operation]\n- If a User arrives late, the session will still end at the originally scheduled end time.\n- No partial refund is provided for reduced session time due to lateness.\n- If a User does not appear or contact the Company for more than 15 minutes after the scheduled start time, the booking may be treated as a no-show.\n- Depending on on-site circumstances, the session may still proceed within the remaining time.\n\n[Early Termination and Refund Restrictions]\nIf any of the following conduct occurs, the Company or the Waymate may immediately terminate the session, and no refund may be issued:\n- Verbal abuse, insults, threats, or violent language\n- Sexual remarks, sexual propositions, or attempts at physical contact\n- Requests for a Waymate’s private contact details or coercion for private meetings\n- Unauthorized filming, recording, or coercion to do so\n- Inability to proceed normally due to intoxication, drugs, violence, or disruptive behavior\n\n[Operational Cancellations]\n- If a session cannot proceed due to reasons attributable to the Company, the Waymate, or the partner venue, the User will be offered either a 100% refund or a reschedule.\n- If unavoidable circumstances occur, including natural disasters, infectious disease situations, severe transportation disruption, or venue suspension, the Company will provide guidance on available alternatives or refund methods.\n\n[Refund Processing]\n- Card payments are processed as full or partial cancellations according to the timelines of the payment processor and card issuer.\n- Bank transfers or other payment methods are processed sequentially after Company confirmation, on business days.\n- Actual refund completion may take time depending on the payment method, card issuer, bank, or payment processor.\n\n[Policy Changes]\nThe Company may amend this Policy due to operational needs or changes in applicable laws. Material changes will be announced through the website or service channels.\n"
-        }
+  "ko": {
+    "title": "취소·환불정책",
+    "effective": "게시일: 2026년 6월 25일 · 시행일: 2026년 6월 25일",
+    "body": "[공통 안내]\n- 본 취소·환불정책은 Pause on the Way의 유료 50분 웨이메이트 세션에 적용됩니다.\n- 문의글 작성, 예약 가능 여부 확인 등 결제 전 단계에는 별도의 이용료가 부과되지 않습니다.\n- 모든 세션은 사전 예약제로 운영되며, 예약 확정 시 웨이메이트와 장소가 함께 배정됩니다.\n- 변경 또는 취소가 필요한 경우 가능한 한 빠르게 회사에 요청해 주세요.\n\n[취소 및 환불 기준]\n- 세션 시작 24시간 전까지 취소: 결제금액 100% 환불\n- 세션 시작 24시간 이내 취소: 환불 불가\n- 예약 시간 이후 취소 또는 노쇼: 환불 불가\n\n[일정 변경]\n- 세션 시작 24시간 전까지: 가능한 일정이 있는 경우 1회에 한하여 일정 변경 가능\n- 세션 시작 24시간 이내: 원칙적으로 일정 변경 불가\n- 회사, 웨이메이트 또는 제휴 공간 사정으로 기존 일정 진행이 어려운 경우: 고객 동의 하에 일정 변경 또는 100% 환불\n\n[지각 및 현장 진행]\n- 이용자가 늦게 도착한 경우 세션은 원래 예약된 종료 시간에 종료됩니다.\n- 지각으로 인해 이용 시간이 줄어든 경우 부분 환불은 제공되지 않습니다.\n- 예약 시작 후 15분 이상 연락 없이 나타나지 않는 경우 노쇼로 처리될 수 있습니다.\n- 현장 상황에 따라 남은 시간 내에서 세션이 진행될 수 있습니다.\n\n[중도 종료 및 환불 제한]\n아래 행위가 발생하는 경우 회사 또는 웨이메이트는 세션을 즉시 중단할 수 있으며, 이 경우 환불은 제공되지 않을 수 있습니다.\n- 욕설, 모욕, 위협, 폭력적 언행\n- 성적 발언, 성적 제안, 신체 접촉 시도\n- 웨이메이트의 개인 연락처 요구 또는 사적 만남 강요\n- 무단 촬영, 녹음, 녹화 또는 이를 강요하는 행위\n- 음주, 약물, 폭력적 행동 등으로 정상적인 세션 진행이 어려운 경우\n\n[운영 사유로 진행이 불가한 경우]\n- 회사, 웨이메이트 또는 제휴 공간의 사정으로 세션 진행이 불가능한 경우 고객에게 100% 환불 또는 일정 변경 중 선택할 수 있도록 안내합니다.\n- 천재지변, 감염병, 심각한 교통 장애, 공간 운영 중단 등 불가피한 사정이 발생한 경우 회사는 가능한 대체 일정 또는 환불 방법을 안내합니다.\n\n[환불 처리 방식]\n- 카드 결제: 결제대행사(PG) 및 카드사 처리 일정에 따라 승인 취소 또는 부분 취소로 처리됩니다.\n- 계좌이체 또는 기타 결제수단: 회사 확인 후 영업일 기준 순차 처리됩니다.\n- 결제수단, 카드사, 은행, PG사의 사정에 따라 실제 환불 완료까지 시간이 소요될 수 있습니다.\n\n[정책 변경]\n회사는 운영상 필요 또는 관계 법령 변경에 따라 본 정책을 변경할 수 있으며, 중요한 변경은 웹사이트 또는 서비스 채널을 통해 안내합니다.\n"
+  },
+  "en": {
+    "title": "Cancellation & Refund Policy",
+    "effective": "Posted: June 25, 2026 · Effective: June 25, 2026",
+    "body": "[General]\n- This Cancellation & Refund Policy applies to paid 50-minute Pause on the Way Waymate sessions.\n- Inquiry submission and availability checks before payment are not subject to separate fees.\n- All sessions are reservation-based. Once confirmed, a Waymate and venue are assigned in advance.\n- Please request any changes or cancellations as early as possible.\n\n[Cancellation and Refund]\n- Cancellation up to 24 hours before the session start time: 100% refund\n- Cancellation within 24 hours of the session start time: non-refundable\n- Cancellation after the scheduled start time or no-show: non-refundable\n\n[Rescheduling]\n- Up to 24 hours before the session start time: one reschedule may be allowed, subject to availability\n- Within 24 hours of the session start time: rescheduling is generally not available\n- If the original schedule cannot proceed due to reasons attributable to the Company, the Waymate, or the partner venue: the User may choose either a reschedule or a 100% refund\n\n[Lateness and On-site Operation]\n- If a User arrives late, the session will still end at the originally scheduled end time.\n- No partial refund is provided for reduced session time due to lateness.\n- If a User does not appear or contact the Company for more than 15 minutes after the scheduled start time, the booking may be treated as a no-show.\n- Depending on on-site circumstances, the session may still proceed within the remaining time.\n\n[Early Termination and Refund Restrictions]\nIf any of the following conduct occurs, the Company or the Waymate may immediately terminate the session, and no refund may be issued:\n- Verbal abuse, insults, threats, or violent language\n- Sexual remarks, sexual propositions, or attempts at physical contact\n- Requests for a Waymate’s private contact details or coercion for private meetings\n- Unauthorized filming, recording, or coercion to do so\n- Inability to proceed normally due to intoxication, drugs, violence, or disruptive behavior\n\n[Operational Cancellations]\n- If a session cannot proceed due to reasons attributable to the Company, the Waymate, or the partner venue, the User will be offered either a 100% refund or a reschedule.\n- If unavoidable circumstances occur, including natural disasters, infectious disease situations, severe transportation disruption, or venue suspension, the Company will provide guidance on available alternatives or refund methods.\n\n[Refund Processing]\n- Card payments are processed as full or partial cancellations according to the timelines of the payment processor and card issuer.\n- Bank transfers or other payment methods are processed sequentially after Company confirmation, on business days.\n- Actual refund completion may take time depending on the payment method, card issuer, bank, or payment processor.\n\n[Policy Changes]\nThe Company may amend this Policy due to operational needs or changes in applicable laws. Material changes will be announced through the website or service channels.\n"
+  },
+  "ja": {
+    "title": "キャンセル・返金ポリシー",
+    "effective": "掲載日：2026年6月25日 · 施行日：2026年6月25日",
+    "body": "【共通事項】\n- 本キャンセル・返金ポリシーは、Pause on the Wayの有料50分Waymateセッションに適用されます。\n- お問い合わせの送信や予約可否の確認など、決済前の段階では別途料金は発生しません。\n- すべてのセッションは事前予約制で、予約確定時にWaymateと会場があわせて割り当てられます。\n- 変更またはキャンセルが必要な場合は、できるだけ早く当社へご連絡ください。\n\n【キャンセルおよび返金基準】\n- セッション開始時刻の24時間前までのキャンセル：決済金額の100％を返金\n- セッション開始時刻まで24時間を切ってからのキャンセル：返金不可\n- 予約時刻以降のキャンセルまたは無断欠席：返金不可\n\n【日程変更】\n- セッション開始時刻の24時間前まで：空きがある場合に限り、1回のみ日程変更が可能\n- セッション開始時刻まで24時間を切っている場合：原則として日程変更不可\n- 当社、Waymateまたは提携会場の都合により当初の日程で実施できない場合：利用者の同意のもと、日程変更または100％返金\n\n【遅刻および当日の進行】\n- 利用者が遅れて到着した場合でも、セッションは当初の予約終了時刻に終了します。\n- 遅刻により利用時間が短くなった場合、部分返金は行いません。\n- 予約開始時刻から15分以上、連絡なく現れない場合は無断欠席として扱うことがあります。\n- 当日の状況により、残り時間の範囲内でセッションを実施する場合があります。\n\n【途中終了および返金制限】\n以下の行為があった場合、当社またはWaymateはセッションを直ちに中止することがあり、その場合、返金を行わないことがあります。\n- 暴言、侮辱、脅迫または暴力的な言動\n- 性的な発言、性的な提案、身体接触の試み\n- Waymateの個人連絡先の要求または私的な面会の強要\n- 無断撮影、録音、録画、またはこれらを強要する行為\n- 飲酒、薬物、暴力的行為等により正常なセッションの進行が困難な場合\n\n【運営上の理由により実施できない場合】\n- 当社、Waymateまたは提携会場の事情によりセッションを実施できない場合、利用者は100％返金または日程変更のいずれかを選択できます。\n- 天災、感染症、重大な交通障害、会場の営業停止等のやむを得ない事情が生じた場合、当社は可能な代替日程または返金方法をご案内します。\n\n【返金処理方法】\n- カード決済：決済代行会社（PG）およびカード会社の処理日程に従い、決済取消または一部取消として処理されます。\n- 銀行振込またはその他の決済手段：当社による確認後、営業日に順次処理されます。\n- 決済手段、カード会社、銀行または決済代行会社の事情により、実際の返金完了まで時間を要する場合があります。\n\n【ポリシーの変更】\n当社は、運営上の必要または関係法令の変更により本ポリシーを変更することがあります。重要な変更は、ウェブサイトまたはサービスチャネルを通じてお知らせします。\n"
+  },
+  "zh": {
+    "title": "取消与退款政策",
+    "effective": "发布日期：2026年6月25日 · 生效日期：2026年6月25日",
+    "body": "【通用说明】\n- 本取消与退款政策适用于Pause on the Way提供的付费50分钟Waymate服务。\n- 提交咨询、确认可预约情况等付款前流程不另行收取费用。\n- 所有服务均采用提前预约制，预约确认后将同时安排Waymate及服务地点。\n- 如需变更或取消，请尽早联系本公司。\n\n【取消及退款标准】\n- 在服务开始前24小时及以上取消：退还支付金额的100%\n- 在服务开始前不足24小时取消：不予退款\n- 在预约开始时间后取消或未到场：不予退款\n\n【变更时间】\n- 在服务开始前24小时及以上：如有可用时间，可变更一次\n- 在服务开始前不足24小时：原则上不可变更\n- 因本公司、Waymate或合作场地原因无法按原计划进行：经用户同意，可变更时间或全额退款\n\n【迟到及现场安排】\n- 用户迟到时，服务仍将在原预约结束时间结束。\n- 因迟到导致服务时间缩短的，不提供部分退款。\n- 预约开始后超过15分钟仍未出现且未联系本公司的，可能按未到场处理。\n- 根据现场情况，可在剩余时间内继续提供服务。\n\n【提前终止及退款限制】\n如发生下列行为，本公司或Waymate可立即终止服务，且可能不予退款：\n- 辱骂、侮辱、威胁或暴力言行\n- 性暗示、性邀约或试图进行身体接触\n- 索要Waymate私人联系方式或强迫私下见面\n- 未经许可拍摄、录音、录像或强迫进行上述行为\n- 因饮酒、药物、暴力行为等导致服务无法正常进行\n\n【因运营原因无法提供服务】\n- 如因本公司、Waymate或合作场地原因无法进行服务，用户可选择全额退款或变更时间。\n- 如发生自然灾害、传染病、严重交通中断、场地暂停运营等不可避免的情况，本公司将提供可行的替代时间或退款方案。\n\n【退款处理方式】\n- 银行卡支付：根据支付服务提供商（PG）及发卡机构的处理时间，以全部或部分撤销交易的方式处理。\n- 银行转账或其他支付方式：经本公司确认后，于工作日依次处理。\n- 实际退款到账时间可能因支付方式、发卡机构、银行或支付服务提供商而有所不同。\n\n【政策变更】\n本公司可根据运营需要或相关法律法规的变化修改本政策。重大变更将通过网站或服务渠道予以公告。\n"
+  }
 };
 
+      const SUPPORTED_LANGUAGES = ["ko", "en", "ja", "zh"];
+
+      const DOCUMENT_LANGUAGES = {
+        ko: "ko",
+        en: "en",
+        ja: "ja",
+        zh: "zh-CN",
+      };
+
+      const TITLES = {
+        "ko": "취소·환불정책 | Pause on the Way",
+        "en": "Cancellation & Refund Policy | Pause on the Way",
+        "ja": "キャンセル・返金ポリシー | Pause on the Way",
+        "zh": "取消与退款政策 | Pause on the Way"
+};
+
+      const DESCRIPTIONS = {
+        "ko": "Pause on the Way 취소·환불정책",
+        "en": "Pause on the Way Cancellation & Refund Policy",
+        "ja": "Pause on the Way キャンセル・返金ポリシー",
+        "zh": "Pause on the Way 取消与退款政策"
+};
+
+      const RIGHTS = {
+        "ko": "모든 권리 보유.",
+        "en": "All rights reserved.",
+        "ja": "無断転載を禁じます。",
+        "zh": "保留所有权利。"
+};
+
+      function normalizeLanguage(value) {
+        const language = String(value || "").toLowerCase();
+
+        if (language === "ko" || language.startsWith("ko-")) return "ko";
+        if (language === "en" || language.startsWith("en-")) return "en";
+        if (
+          language === "ja" ||
+          language === "jp" ||
+          language.startsWith("ja-")
+        ) {
+          return "ja";
+        }
+        if (
+          language === "zh" ||
+          language === "cn" ||
+          language.startsWith("zh-")
+        ) {
+          return "zh";
+        }
+
+        return null;
+      }
+
       function getInitialLang() {
-        const urlLang = new URLSearchParams(location.search).get("lang");
-        if (urlLang) return urlLang.toLowerCase();
-        const saved = localStorage.getItem("ptw-lang");
-        if (saved) return saved;
-        return (navigator.language || "ko").startsWith("en") ? "en" : "ko";
+        const url = new URL(location.href);
+        const urlLang = normalizeLanguage(url.searchParams.get("lang"));
+
+        // 기존 ?lang= 링크는 한 번 인식한 뒤 주소창에서 제거합니다.
+        if (url.searchParams.has("lang")) {
+          url.searchParams.delete("lang");
+          history.replaceState(null, "", url.pathname + url.search + url.hash);
+        }
+
+        if (urlLang) return urlLang;
+
+        const savedLang = normalizeLanguage(localStorage.getItem("ptw-lang"));
+        if (savedLang) return savedLang;
+
+        const browserLanguages =
+          navigator.languages && navigator.languages.length
+            ? navigator.languages
+            : [navigator.language || "ko"];
+
+        for (const browserLanguage of browserLanguages) {
+          const normalized = normalizeLanguage(browserLanguage);
+          if (normalized) return normalized;
+        }
+
+        return "ko";
       }
 
       function paintButtons(lang) {
-        const ko = document.getElementById("btnKO");
-        const en = document.getElementById("btnEN");
-        const on = "#073b3a";
-
-        ko.setAttribute("aria-pressed", lang === "ko" ? "true" : "false");
-        en.setAttribute("aria-pressed", lang === "en" ? "true" : "false");
-
-        ko.style.background = lang === "ko" ? on : "transparent";
-        ko.style.color = lang === "ko" ? "white" : "#171412";
-        ko.style.borderColor =
-          lang === "ko" ? "transparent" : "rgba(23,20,18,.12)";
-
-        en.style.background = lang === "en" ? on : "transparent";
-        en.style.color = lang === "en" ? "white" : "#171412";
-        en.style.borderColor =
-          lang === "en" ? "transparent" : "rgba(23,20,18,.12)";
+        document.querySelectorAll("[data-lang]").forEach((button) => {
+          button.setAttribute(
+            "aria-pressed",
+            String(button.dataset.lang === lang),
+          );
+        });
       }
 
       function setLang(lang) {
-        const L = lang === "en" ? "en" : "ko";
+        const L = SUPPORTED_LANGUAGES.includes(lang) ? lang : "ko";
         localStorage.setItem("ptw-lang", L);
-        document.documentElement.lang = L;
+        document.documentElement.lang = DOCUMENT_LANGUAGES[L];
+        document.title = TITLES[L];
 
-        const titles = {
-          "ko": "취소·환불정책 | Pause on the Way",
-          "en": "Cancellation & Refund Policy | Pause on the Way"
-};
-        document.title = titles[L];
-
-        const descriptions = {
-          "ko": "Pause on the Way 취소·환불정책",
-          "en": "Pause on the Way Cancellation & Refund Policy"
-};
         const metaDesc = document.querySelector('meta[name="description"]');
         if (metaDesc) {
-          metaDesc.setAttribute("content", descriptions[L]);
+          metaDesc.setAttribute("content", DESCRIPTIONS[L]);
         }
 
         document.getElementById("title").textContent = POLICY[L].title;
-        document.getElementById("effective").textContent = POLICY[L].effective;
+        document.getElementById("effective").textContent =
+          POLICY[L].effective;
         document.getElementById("body").textContent = POLICY[L].body;
+        document.getElementById("rights").textContent = RIGHTS[L];
 
         paintButtons(L);
 
-        const u = new URL(location.href);
-        u.searchParams.set("lang", L);
-        history.replaceState({}, "", u.toString());
       }
 
-      document
-        .getElementById("btnKO")
-        .addEventListener("click", () => setLang("ko"));
-      document
-        .getElementById("btnEN")
-        .addEventListener("click", () => setLang("en"));
+      document.querySelectorAll("[data-lang]").forEach((button) => {
+        button.addEventListener("click", () => {
+          setLang(button.dataset.lang);
+        });
+      });
 
       setLang(getInitialLang());
     </script>

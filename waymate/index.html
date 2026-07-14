@@ -28,7 +28,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@500;600;700&amp;display=swap"
       rel="stylesheet"
     />
-    <link href="../favicon.ico" rel="icon" type="image/x-icon" />
+    <link href="/favicon.ico" rel="icon" type="image/x-icon" />
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       :root {
@@ -137,6 +137,16 @@
         color: white;
         border-color: transparent;
       }
+      .lang-select {
+        min-height: 2.35rem;
+        padding: 0.48rem 1.9rem 0.48rem 0.72rem;
+        border: 1px solid rgba(23, 20, 18, 0.12);
+        border-radius: 9999px;
+        background: white;
+        color: var(--ptw-ink);
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
       .quiet-kicker {
         display: inline-flex;
         align-items: center;
@@ -244,7 +254,7 @@
           aria-label="Pause on the Way 홈"
           class="flex items-center gap-3 shrink-0 whitespace-nowrap mr-3 md:mr-5"
           data-i18n-aria="logo_aria"
-          href="../index.html"
+          href="/"
         >
           <div
             class="h-9 w-9 rounded-full bg-gradient-to-br from-[#F6EFE6] to-white border border-[rgba(7,59,58,0.12)] flex items-center justify-center"
@@ -266,7 +276,7 @@
           <a
             class="ptw-btn ptw-btn-secondary ptw-btn-nav"
             data-i18n="nav_customer"
-            href="../index.html"
+            href="/"
             >고객 페이지</a
           >
           <a
@@ -280,47 +290,29 @@
             class="flex items-center gap-2 ml-3 md:ml-5"
             role="group"
           >
-            <button
-              aria-pressed="true"
-              class="px-3 py-2 rounded-full text-sm lang-toggle"
-              data-lang="ko"
-              id="btnKO"
-            >
+            <button aria-pressed="true" class="px-3 py-2 rounded-full text-sm lang-toggle" data-lang="ko" id="btnKO">
               KO
             </button>
-            <button
-              aria-pressed="false"
-              class="px-3 py-2 rounded-full text-sm lang-toggle"
-              data-lang="en"
-              id="btnEN"
-            >
+<button aria-pressed="false" class="px-3 py-2 rounded-full text-sm lang-toggle" data-lang="en" id="btnEN">
               EN
+            </button>
+<button aria-pressed="false" class="px-3 py-2 rounded-full text-sm lang-toggle" data-lang="ja" id="btnJA">
+              JA
+            </button>
+<button aria-pressed="false" class="px-3 py-2 rounded-full text-sm lang-toggle" data-lang="zh" id="btnZH">
+              中文
             </button>
           </div>
         </nav>
         <div class="md:hidden flex items-center gap-3 flex-none">
-          <div
-            aria-label="Language"
-            class="flex items-center gap-2"
-            role="group"
-          >
-            <button
-              aria-pressed="true"
-              class="px-3 py-2 rounded-full text-sm lang-toggle"
-              data-lang="ko"
-              id="btnKOM"
-            >
-              KO
-            </button>
-            <button
-              aria-pressed="false"
-              class="px-3 py-2 rounded-full text-sm lang-toggle"
-              data-lang="en"
-              id="btnENM"
-            >
-              EN
-            </button>
-          </div>
+          <div aria-label="Language" class="flex items-center" role="group">
+<select aria-label="Language" class="lang-select" id="langSelectM">
+<option value="ko">KO</option>
+<option value="en">EN</option>
+<option value="ja">日本語</option>
+<option value="zh">中文</option>
+</select>
+</div>
           <button
             aria-controls="mobileMenu"
             aria-expanded="false"
@@ -343,7 +335,7 @@
         <a
           class="mobile-link ptw-btn ptw-btn-secondary ptw-btn-nav w-max"
           data-i18n="nav_customer"
-          href="../index.html"
+          href="/"
           >고객 페이지</a
         >
         <a
@@ -638,7 +630,7 @@
           ><a
             class="ptw-btn ptw-btn-secondary"
             data-i18n="customer_page_cta"
-            href="../index.html"
+            href="/"
             >고객 페이지 보기</a
           >
         </div>
@@ -868,6 +860,257 @@
         footer_privacy: { ko: "개인정보처리방침", en: "Privacy Policy" },
         footer_refund: { ko: "취소·환불 정책", en: "Cancellation & Refund" },
       };
+      const EXTRA_I18N = {
+  "nav_features": {
+    "ja": "サービス",
+    "zh": "服务"
+  },
+  "nav_flow": {
+    "ja": "利用方法",
+    "zh": "使用方式"
+  },
+  "nav_hotels": {
+    "ja": "ホテル提携",
+    "zh": "酒店合作"
+  },
+  "nav_book": {
+    "ja": "予約する",
+    "zh": "立即预约"
+  },
+  "nav_switch": {
+    "ja": "ウェイメイトに応募",
+    "zh": "申请成为 Waymate"
+  },
+  "nav_customer": {
+    "ja": "お客様ページ",
+    "zh": "客户页面"
+  },
+  "nav_apply_waymate": {
+    "ja": "ウェイメイトに応募",
+    "zh": "申请成为 Waymate"
+  },
+  "logo_aria": {
+    "ja": "Pause on the Way ホーム",
+    "zh": "Pause on the Way 首页"
+  },
+  "menu_open_aria": {
+    "ja": "モバイルメニューを開く",
+    "zh": "打开移动端菜单"
+  },
+  "hero_title": {
+    "ja": "移動する時代、<br class=\"hidden md:block\"/> 人と少し立ち止まる時間",
+    "zh": "在流动的时代，<br class=\"hidden md:block\"/> 与一个人短暂停留"
+  },
+  "hero_desc": {
+    "ja": "Pause on the Wayは、移動中の人のための対話同行サービスです。旅行、出張、長期滞在、新しい街での暮らしの中で、ふと誰かと話したくなったとき、ウェイメイトがひとりの人としてそばに座ります。",
+    "zh": "Pause on the Way 是为流动中的人们提供的对话陪伴服务。旅行、出差、长期停留或在新城市生活时，当你突然想和某个人聊聊，Waymate 会以一个真实的人坐在你身边。"
+  },
+  "hero_apply": {
+    "ja": "ウェイメイトに応募",
+    "zh": "申请成为 Waymate"
+  },
+  "hero_about": {
+    "ja": "ウェイメイトとは？",
+    "zh": "什么是 Waymate？"
+  },
+  "philosophy_title": {
+    "ja": "AIは答えを知っています。<br/>人は傷を知っています。",
+    "zh": "AI 知道答案。<br/>人懂得受伤。"
+  },
+  "philosophy_desc_1": {
+    "ja": "AIは答えを示せます。しかし、AIは傷ついたことがありません。失敗し、恥ずかしさを感じ、失い、もう一度生き直した経験は、人だけが持っています。",
+    "zh": "AI 可以给出答案，但 AI 从未受过伤。失败、羞愧、失去，以及重新生活的经历，只有人真正拥有。"
+  },
+  "philosophy_desc_2": {
+    "ja": "Pause on the Wayは、その人間性そのものを一つの仕事にします。",
+    "zh": "Pause on the Way 把这种人性本身，变成一种新的工作。"
+  },
+  "role_title": {
+    "ja": "カウンセリングではなく、<br/>対話同行です。",
+    "zh": "不是咨询，<br/>而是对话陪伴。"
+  },
+  "role_desc": {
+    "ja": "私たちはお客様を分析しません。診断しません。答えを押しつけません。ただしばらく一緒に座り、今の考えや感情、物語を人と人として分かち合います。",
+    "zh": "我们不分析客户，不做诊断，也不强迫对方接受答案。只是暂时坐在一起，以人与人的方式分享此刻的想法、感受和故事。"
+  },
+  "role_1_t": {
+    "ja": "道の途中で、しばらく一緒に座る人",
+    "zh": "在路途中暂时陪你坐一会儿的人"
+  },
+  "role_1_d": {
+    "ja": "ウェイメイトは、カウンセラーより気軽で、友人より安全で、AIより人間らしい対話の同行者です。",
+    "zh": "Waymate 比咨询师更轻松，比朋友更有边界，也比 AI 更有人情味。"
+  },
+  "role_2_t": {
+    "ja": "完璧な専門家より、人生をくぐってきた人",
+    "zh": "不是完美专家，而是走过生活的人"
+  },
+  "role_2_d": {
+    "ja": "失敗し、揺らぎ、もう一度歩き出した人のぬくもりと沈黙が、この仕事の大切な資産です。",
+    "zh": "经历过失败、动摇，又重新走起来之人的温度与沉默，正是这份工作的资产。"
+  },
+  "role_3_t": {
+    "ja": "問題を解決するより、旅のそばにいる人",
+    "zh": "不是解决问题，而是陪在旅程旁的人"
+  },
+  "role_3_d": {
+    "ja": "ウェイメイトは問題を解決する人ではありません。自分の経験を携え、誰かの旅のそばにしばらく留まる人です。",
+    "zh": "Waymate 不是替别人解决问题的人，而是带着自己的生活经验，在另一个人的旅程旁停留片刻的人。"
+  },
+  "why_title": {
+    "ja": "人はもっと移動し、<br/>もっと頻繁にひとりになります。",
+    "zh": "人们移动得更多，<br/>也更常独自一人。"
+  },
+  "why_desc_1": {
+    "ja": "都市は近くなりましたが、関係は薄くなりました。AIと話す時間は増えましたが、人と安全に話す時間は減っています。",
+    "zh": "城市变得更近，关系却变得更薄。与 AI 对话的时间增加了，与人安全交谈的时间却减少了。"
+  },
+  "why_desc_2": {
+    "ja": "Pause on the Wayは、移動が日常になる時代に必要な新しい文化です。知らない場所でも、しばらく人と会える文化です。",
+    "zh": "Pause on the Way 是流动成为日常的时代所需要的新文化：即使身处陌生地方，也能短暂见到一个真实的人。"
+  },
+  "principles_title": {
+    "ja": "ウェイメイトがしないこと",
+    "zh": "Waymate 不做的事"
+  },
+  "principles_desc": {
+    "ja": "より気軽で日常的な場にとどまるために、境界を明確にします。",
+    "zh": "为了保持轻松和日常，我们清楚划定边界。"
+  },
+  "not_1_t": {
+    "ja": "診断しません",
+    "zh": "不做诊断"
+  },
+  "not_1_d": {
+    "ja": "医療、心理療法、メンタルヘルスの診断は提供しません。",
+    "zh": "不提供医疗、心理治疗或精神健康诊断。"
+  },
+  "not_2_t": {
+    "ja": "直そうとしません",
+    "zh": "不试图修复对方"
+  },
+  "not_2_d": {
+    "ja": "相手を変えたり、解決策を押しつけたりしません。",
+    "zh": "不试图改变对方，也不强迫对方接受解决方案。"
+  },
+  "not_3_t": {
+    "ja": "判断しません",
+    "zh": "不评判"
+  },
+  "not_3_d": {
+    "ja": "誰かの話を評価するのではなく、安全に話せる時間をつくります。",
+    "zh": "不评价一个人的故事，而是创造可以安心表达的时间。"
+  },
+  "platform_title": {
+    "ja": "お客様には対話同行を、<br/>ウェイメイトには新しい仕事のアイデンティティを。",
+    "zh": "为客户提供对话陪伴，<br/>为 Waymate 创造新的职业身份。"
+  },
+  "platform_desc": {
+    "ja": "Pause on the Wayは、移動する人と、そのそばにしばらく座れる人をつなぐ、人による対話同行プラットフォームです。私たちは会話サービスを販売するだけでなく、「ウェイメイト」という新しい人間の仕事をつくります。",
+    "zh": "Pause on the Way 是连接流动中的人和愿意暂时坐在其身旁之人的真人对话陪伴平台。我们不只提供对话服务，也在创造一种名为 Waymate 的新型人类职业。"
+  },
+  "step_1_t": {
+    "ja": "応募",
+    "zh": "申请"
+  },
+  "step_1_d": {
+    "ja": "人生経験、会話への姿勢、活動可能な地域を確認します。",
+    "zh": "我们会了解你的生活经历、对话态度和可活动地区。"
+  },
+  "step_2_t": {
+    "ja": "オンボーディング",
+    "zh": "入门培训"
+  },
+  "step_2_d": {
+    "ja": "会話の原則、安全基準、場所でのマナー、セッションの終え方を学びます。",
+    "zh": "学习对话原则、安全标准、空间礼仪和结束会面的方式。"
+  },
+  "step_3_t": {
+    "ja": "マッチング",
+    "zh": "匹配"
+  },
+  "step_3_d": {
+    "ja": "地域、時間、お客様が話したい目的に合わせてつながります。",
+    "zh": "根据地区、时间和客户的对话目的进行匹配。"
+  },
+  "step_4_t": {
+    "ja": "活動",
+    "zh": "开展会面"
+  },
+  "step_4_d": {
+    "ja": "ホテルラウンジやカフェで、50分間、人と人として会話を交わします。",
+    "zh": "在酒店大堂或咖啡馆进行 50 分钟的真人对话。"
+  },
+  "apply_title": {
+    "ja": "あなたの人生が、誰かの道の途中で仕事になるなら",
+    "zh": "如果你的人生经历，能在某个人的路途中成为一份工作"
+  },
+  "apply_desc": {
+    "ja": "完璧な人でなくてもかまいません。失敗し、揺らぎ、もう一度歩き出した人なら、誰かの旅のそばに座れるかもしれません。",
+    "zh": "你不必完美。只要经历过失败、动摇，并再次走起来，就可能坐在某个人的旅程旁。"
+  },
+  "waymate_contact_cta": {
+    "ja": "ウェイメイト応募について問い合わせる",
+    "zh": "咨询 Waymate 申请"
+  },
+  "customer_page_cta": {
+    "ja": "お客様ページを見る",
+    "zh": "查看客户页面"
+  },
+  "footer_tag": {
+    "ja": "道の途中の休息、心の回復",
+    "zh": "途中歇一歇，让心重新恢复"
+  },
+  "footer_all": {
+    "ja": "All rights reserved.",
+    "zh": "All rights reserved."
+  },
+  "footer_biz": {
+    "ja": [
+      "事業者登録番号：494-81-03292",
+      "通信販売業届出番号：2026-ソウル江西-0012",
+      "株式会社メリグッド",
+      "代表：イ・ギョンウォン",
+      "電話：070-8080-4224",
+      "住所：大韓民国 ソウル特別市 江西区 麻谷中央6路11 314-14号（麻谷洞 ボタニックパークタワー3）"
+    ],
+    "zh": [
+      "营业执照注册号：494-81-03292",
+      "通信销售备案号：2026-首尔江西-0012",
+      "Merrygood 株式会社",
+      "代表：李京元",
+      "电话：070-8080-4224",
+      "地址：韩国首尔特别市江西区麻谷中央6路11号314-14室（麻谷洞 Botanic Park Tower 3）"
+    ]
+  },
+  "footer_terms": {
+    "ja": "利用規約",
+    "zh": "使用条款"
+  },
+  "footer_privacy": {
+    "ja": "プライバシーポリシー",
+    "zh": "隐私政策"
+  },
+  "footer_refund": {
+    "ja": "キャンセル・返金ポリシー",
+    "zh": "取消与退款政策"
+  }
+};
+      Object.entries(EXTRA_I18N).forEach(([key, values]) => {
+        if (!I18N[key]) I18N[key] = {};
+        Object.assign(I18N[key], values);
+      });
+      Object.assign(PAGE_META, {
+  "ja": {
+    "title": "ウェイメイトに応募 | Pause on the Way",
+    "description": "ソウルと済州から始まるPause on the Wayのウェイメイト。移動する人のそばにしばらく座る、対話の同行者として参加しませんか。"
+  },
+  "zh": {
+    "title": "申请成为 Waymate | Pause on the Way",
+    "description": "加入从首尔与济州率先开始的 Pause on the Way，成为暂时坐在流动中的人身旁的真人对话陪伴者。"
+  }
+});
+
       const yearEl = document.getElementById("year");
       if (yearEl) yearEl.textContent = new Date().getFullYear();
       const siteHeader = document.getElementById("siteHeader"),
@@ -894,23 +1137,37 @@
       const langButtons = document.querySelectorAll("[data-lang]");
 
       function getInitialLanguage() {
-        const params = new URLSearchParams(window.location.search);
-        const fromUrl = params.get("lang");
-        if (fromUrl === "en" || fromUrl === "ko") return fromUrl;
+        const url = new URL(window.location.href);
+        const fromUrl = url.searchParams.get("lang");
+
+        // 기존 ?lang= 링크는 한 번 인식한 뒤 주소창에서 제거합니다.
+        if (url.searchParams.has("lang")) {
+          url.searchParams.delete("lang");
+          history.replaceState(
+            null,
+            "",
+            url.pathname + url.search + url.hash,
+          );
+        }
+
+        if (["ko", "en", "ja", "zh"].includes(fromUrl)) return fromUrl;
 
         const saved = localStorage.getItem("ptw-lang");
-        if (saved === "en" || saved === "ko") return saved;
+        if (["ko", "en", "ja", "zh"].includes(saved)) return saved;
 
-        return (navigator.language || "ko").startsWith("en") ? "en" : "ko";
+        const browserLang = (navigator.language || "ko").toLowerCase();
+        if (browserLang.startsWith("ja")) return "ja";
+        if (browserLang.startsWith("zh")) return "zh";
+        if (browserLang.startsWith("en")) return "en";
+        return "ko";
       }
 
-      function updateLanguageLinks() {
-        document.querySelectorAll("a[href]").forEach((a) => {
-          const href = a.getAttribute("href");
+      function cleanLanguageLinks() {
+        document.querySelectorAll("a[href]").forEach((anchor) => {
+          const href = anchor.getAttribute("href");
           if (
             !href ||
             href.startsWith("#") ||
-            href.startsWith("http") ||
             href.startsWith("mailto:") ||
             href.startsWith("tel:") ||
             href.startsWith("javascript:")
@@ -918,35 +1175,17 @@
             return;
           }
 
-          const [pathAndQuery, hash = ""] = href.split("#");
-          const [path, query = ""] = pathAndQuery.split("?");
-          const params = new URLSearchParams(query);
-          params.delete("lang");
+          const url = new URL(href, window.location.origin);
+          if (url.origin !== window.location.origin) return;
 
-          let cleanPath = path.replace(/index\.html$/i, "");
-          if (!cleanPath) cleanPath = "./";
-
-          const cleanQuery = params.toString();
-          a.setAttribute(
-            "href",
-            `${cleanPath}${cleanQuery ? "?" + cleanQuery : ""}${hash ? "#" + hash : ""}`,
-          );
+          url.searchParams.delete("lang");
+          anchor.setAttribute("href", url.pathname + url.search + url.hash);
         });
-
-        const currentUrl = new URL(window.location.href);
-        currentUrl.searchParams.delete("lang");
-        currentUrl.pathname = currentUrl.pathname.replace(/\/index\.html$/i, "/");
-
-        const cleanCurrentUrl = `${currentUrl.pathname}${currentUrl.search}${currentUrl.hash}`;
-        const visibleCurrentUrl = `${window.location.pathname}${window.location.search}${window.location.hash}`;
-        if (cleanCurrentUrl !== visibleCurrentUrl) {
-          history.replaceState(null, "", cleanCurrentUrl);
-        }
       }
 
       function setLanguage(lang) {
-        const nextLang = lang === "en" || lang === "ko" ? lang : "ko";
-        document.documentElement.lang = nextLang;
+        const nextLang = ["ko", "en", "ja", "zh"].includes(lang) ? lang : "ko";
+        document.documentElement.lang = nextLang === "zh" ? "zh-CN" : nextLang;
 
         document.title = PAGE_META[nextLang].title;
         const metaDescription = document.querySelector('meta[name="description"]');
@@ -975,6 +1214,10 @@
           if (I18N[key] && I18N[key][nextLang])
             el.setAttribute("aria-label", I18N[key][nextLang]);
         });
+        const menuLabels = { ko: "메뉴", en: "Menu", ja: "メニュー", zh: "菜单" };
+        if (menuBtn) menuBtn.textContent = menuLabels[nextLang] || menuLabels.ko;
+        const langSelectM = document.getElementById("langSelectM");
+        if (langSelectM) langSelectM.value = nextLang;
         langButtons.forEach((btn) =>
           btn.setAttribute(
             "aria-pressed",
@@ -982,7 +1225,7 @@
           ),
         );
         localStorage.setItem("ptw-lang", nextLang);
-        updateLanguageLinks();
+        cleanLanguageLinks();
       }
 
       langButtons.forEach((button) =>
@@ -990,6 +1233,13 @@
           setLanguage(button.dataset.lang),
         ),
       );
+
+      const langSelectM = document.getElementById("langSelectM");
+      if (langSelectM) {
+        langSelectM.addEventListener("change", () =>
+          setLanguage(langSelectM.value),
+        );
+      }
 
       setLanguage(getInitialLanguage());
 
