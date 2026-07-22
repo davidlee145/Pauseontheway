@@ -1051,9 +1051,212 @@
       font-size: 1.8rem;
     }
   }
+
+
+      /* Pilot test notice popup */
+      body.pilot-notice-open {
+        overflow: hidden;
+      }
+      .pilot-notice {
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.25rem;
+      }
+      .pilot-notice[hidden] {
+        display: none;
+      }
+      .pilot-notice-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(23, 20, 18, 0.38);
+        backdrop-filter: blur(5px);
+      }
+      .pilot-notice-dialog {
+        position: relative;
+        width: min(100%, 42rem);
+        max-height: min(90vh, 52rem);
+        overflow: hidden;
+        border: 1px solid rgba(7, 59, 58, 0.12);
+        border-radius: 1.75rem;
+        background: rgba(255, 252, 247, 0.98);
+        box-shadow: 0 28px 70px rgba(7, 59, 58, 0.24);
+        animation: pilotNoticeIn 0.28s ease-out both;
+      }
+      @keyframes pilotNoticeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px) scale(0.985);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      .pilot-notice-accent {
+        height: 0.3rem;
+        background: var(--ptw-primary);
+      }
+      .pilot-notice-content {
+        padding: 1.6rem 1.6rem 1.45rem;
+        max-height: calc(min(90vh, 52rem) - 0.3rem);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+      }
+      .pilot-notice-head {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+      .pilot-notice-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        margin-bottom: 0.75rem;
+        color: var(--ptw-primary);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      .pilot-notice-dot {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 9999px;
+        background: var(--ptw-coral);
+        box-shadow: 0 0 0 0.3rem rgba(217, 138, 114, 0.13);
+      }
+      .pilot-notice-title {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(1.55rem, 4vw, 1.9rem);
+        line-height: 1.25;
+        color: var(--ptw-ink);
+      }
+      .pilot-notice-close-icon {
+        display: inline-flex;
+        width: 2.35rem;
+        height: 2.35rem;
+        flex: none;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(23, 20, 18, 0.1);
+        border-radius: 9999px;
+        background: rgba(255, 255, 255, 0.82);
+        color: #5f5650;
+        transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+      }
+      .pilot-notice-close-icon:hover {
+        transform: translateY(-1px);
+        background: white;
+        color: var(--ptw-primary);
+      }
+      .pilot-notice-body {
+        margin-top: 1rem;
+        color: #5f5650;
+        font-size: 0.94rem;
+        line-height: 1.7;
+        word-break: keep-all;
+      }
+      .pilot-notice-languages {
+        display: grid;
+        gap: 0;
+        margin-top: 1rem;
+        border-top: 1px solid rgba(7, 59, 58, 0.08);
+      }
+      .pilot-notice-language {
+        padding: 0.9rem 0;
+        border-bottom: 1px solid rgba(7, 59, 58, 0.08);
+      }
+      .pilot-notice-language-label {
+        display: inline-flex;
+        align-items: center;
+        min-width: 3.3rem;
+        margin-bottom: 0.35rem;
+        color: var(--ptw-primary);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+      }
+      .pilot-notice-language p {
+        margin: 0;
+      }
+      .pilot-notice-actions {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 1.4rem;
+      }
+      .pilot-notice-confirm {
+        min-width: 7.5rem;
+      }
+      @media (max-width: 480px) {
+        .pilot-notice {
+          align-items: flex-end;
+          padding: 0.75rem;
+        }
+        .pilot-notice-dialog {
+          width: 100%;
+          border-radius: 1.5rem;
+        }
+        .pilot-notice-content {
+          padding: 1.35rem 1.2rem 1.2rem;
+        }
+        .pilot-notice-body {
+          font-size: 0.94rem;
+          line-height: 1.72;
+        }
+        .pilot-notice-actions,
+        .pilot-notice-confirm {
+          width: 100%;
+        }
+      }
+
 </style>
 </head>
 <body class="font-sans antialiased">
+
+<div aria-labelledby="pilotNoticeTitle" aria-describedby="pilotNoticeBody" aria-modal="true" class="pilot-notice" hidden id="pilotNotice" role="dialog">
+<div class="pilot-notice-backdrop" data-pilot-close></div>
+<div class="pilot-notice-dialog">
+<div class="pilot-notice-accent"></div>
+<div class="pilot-notice-content">
+<div class="pilot-notice-head">
+<div>
+<div class="pilot-notice-kicker"><span class="pilot-notice-dot"></span><span>NOTICE</span></div>
+<h2 class="pilot-notice-title" id="pilotNoticeTitle">파일럿 테스트 안내 · Pilot Test Notice</h2>
+</div>
+<button aria-label="공지 닫기" class="pilot-notice-close-icon" data-i18n-aria="pilot_notice_close_aria" data-pilot-close type="button">
+<svg aria-hidden="true" fill="none" height="18" viewbox="0 0 24 24" width="18"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg>
+</button>
+</div>
+<div class="pilot-notice-body pilot-notice-languages" id="pilotNoticeBody">
+<div class="pilot-notice-language" lang="ko">
+<span class="pilot-notice-language-label">한국어</span>
+<p>현재 파일럿 테스트 중으로 무료로 이용하실 수 있습니다. ‘예약하기’를 눌러 진행하시면 결제 없이 예약이 가능합니다. 편하게 이용해보세요.</p>
+</div>
+<div class="pilot-notice-language" lang="en">
+<span class="pilot-notice-language-label">ENGLISH</span>
+<p>We’re currently running a pilot test, so you can use the service free of charge. Click ‘Book now’ to continue and make a reservation without payment. Feel free to give it a try.</p>
+</div>
+<div class="pilot-notice-language" lang="ja">
+<span class="pilot-notice-language-label">日本語</span>
+<p>現在パイロットテスト中のため、無料でご利用いただけます。「予約する」を押して進むと、お支払いなしで予約できます。お気軽にお試しください。</p>
+</div>
+<div class="pilot-notice-language" lang="zh">
+<span class="pilot-notice-language-label">中文</span>
+<p>目前正在进行试运营，您可以免费使用本服务。点击“立即预约”继续，即可无需付款完成预约。欢迎轻松体验。</p>
+</div>
+</div>
+<div class="pilot-notice-actions">
+<button class="ptw-btn ptw-btn-primary pilot-notice-confirm" data-pilot-close type="button">확인 · Got it · 確認 · 知道了</button>
+</div>
+</div>
+</div>
+</div>
+
 <header class="sticky top-0 z-50 bg-[rgba(255,252,247,.86)]/70 backdrop-blur border-b border-black/5" id="siteHeader">
 <div class="mx-auto max-w-7xl px-5 py-4 flex items-center justify-between flex-nowrap" style="
           padding-left: max(1.25rem, env(safe-area-inset-left));
@@ -1397,6 +1600,31 @@
 </footer>
 <script>
       const I18N = {
+        pilot_notice_title: {
+          ko: "파일럿 테스트 안내",
+          en: "Pilot Test Notice",
+          ja: "パイロットテストのご案内",
+          zh: "试运营通知",
+        },
+        pilot_notice_body: {
+          ko: "현재 파일럿 테스트 중으로 무료로 이용하실 수 있습니다. ‘예약하기’를 눌러 진행하시면 결제 없이 예약이 가능합니다. 편하게 이용해보세요.",
+          en: "We’re currently running a pilot test, so you can use the service free of charge. Click ‘Book now’ to continue and make a reservation without payment. Feel free to give it a try.",
+          ja: "現在パイロットテスト中のため、無料でご利用いただけます。「予約する」を押して進むと、お支払いなしで予約できます。お気軽にお試しください。",
+          zh: "目前正在进行试运营，您可以免费使用本服务。点击“立即预约”继续，即可无需付款完成预约。欢迎轻松体验。",
+        },
+        pilot_notice_confirm: {
+          ko: "확인",
+          en: "Got it",
+          ja: "確認",
+          zh: "知道了",
+        },
+        pilot_notice_close_aria: {
+          ko: "공지 닫기",
+          en: "Close notice",
+          ja: "お知らせを閉じる",
+          zh: "关闭通知",
+        },
+
         nav_about: { ko: "웨이메이트", en: "Waymate" },
         nav_about_page: { ko: "웨이메이트란", en: "About Pause on the Way" },
         nav_about_philosophy: { ko: "철학과 가치", en: "Philosophy & values" },
@@ -2561,7 +2789,42 @@
     langSelectM.addEventListener("change", () => setLangFrom(langSelectM.value));
   }
 
+
+
+  const pilotNotice = document.getElementById("pilotNotice");
+  let pilotNoticeLastFocused = null;
+
+  function openPilotNotice() {
+    if (!pilotNotice) return;
+    pilotNoticeLastFocused = document.activeElement;
+    pilotNotice.hidden = false;
+    document.body.classList.add("pilot-notice-open");
+    const closeButton = pilotNotice.querySelector(".pilot-notice-close-icon");
+    requestAnimationFrame(() => closeButton?.focus({ preventScroll: true }));
+  }
+
+  function closePilotNotice() {
+    if (!pilotNotice || pilotNotice.hidden) return;
+    pilotNotice.hidden = true;
+    document.body.classList.remove("pilot-notice-open");
+    if (pilotNoticeLastFocused && typeof pilotNoticeLastFocused.focus === "function") {
+      pilotNoticeLastFocused.focus({ preventScroll: true });
+    }
+  }
+
+  document.querySelectorAll("[data-pilot-close]").forEach((el) => {
+    el.addEventListener("click", closePilotNotice);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && pilotNotice && !pilotNotice.hidden) {
+      closePilotNotice();
+    }
+  });
+
+
   setLangFrom(getInitialLang());
+  openPilotNotice();
 
   let lastScrollY = window.scrollY;
 
